@@ -1,591 +1,1312 @@
 <!DOCTYPE html>
-<html class="dark" lang="en">
+<html lang="en" class="dark scroll-smooth">
 <head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>Aganze Kulimushi Ariel - Software Engineer</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com" rel="preconnect"/>
-    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
-    <script>
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#061099",
-                        "background-light": "#f5f6f8",
-                        "background-dark": "#101122",
-                    },
-                    fontFamily: {
-                        "display": ["Space Grotesk", "sans-serif"]
-                    },
-                    borderRadius: {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                },
-            },
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aganze Kulimushi Ariel Portfolio</title>
+  <meta name="description" content="Modern software engineering and applied AI portfolio for Aganze Kulimushi Ariel, CTO and Full-Stack Engineer." />
+  <meta property="og:title" content="Aganze Kulimushi Ariel Portfolio" />
+  <meta property="og:description" content="Modern software engineering and applied AI portfolio for Aganze Kulimushi Ariel, CTO and Full-Stack Engineer." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              dark: '#0d0e11',
+              card: '#141518',
+              accent: '#10b981',
+            }
+          }
         }
-    </script>
-    <style>
-        .theme-toggle-icon {
-            display: none;
-        }
-        
-        .dark .dark-icon {
-            display: block;
-        }
-        
-        :not(.dark) .light-icon {
-            display: block;
-        }
-    </style>
+      }
+    };
+  </script>
+
+  <style>
+    html {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    body {
+      transition: background-color 0.25s ease, color 0.25s ease;
+    }
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    .dark ::-webkit-scrollbar-track {
+      background: #0d0e11;
+    }
+    :not(.dark) ::-webkit-scrollbar-track {
+      background: #f1f2f5;
+    }
+    .dark ::-webkit-scrollbar-thumb {
+      background: #27272a;
+      border-radius: 4px;
+    }
+    :not(.dark) ::-webkit-scrollbar-thumb {
+      background: #d4d4d8;
+      border-radius: 4px;
+    }
+    .theme-toggle-icon {
+      display: none;
+    }
+    .dark .dark-icon {
+      display: block;
+    }
+    :not(.dark) .light-icon {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.98); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .modal-animate {
+      animation: fadeIn 0.2s ease-out forwards;
+    }
+  </style>
 </head>
-<body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-[#F5F5F5]">
-    <div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
-        <!-- TopNavBar -->
-        <header class="sticky top-0 z-50 flex items-center justify-center border-b border-solid border-gray-200 dark:border-white/10 bg-white/80 dark:bg-background-dark/80 px-4 py-3 backdrop-blur-md">
-            <div class="flex w-full max-w-6xl items-center justify-between">
-                <div class="flex items-center gap-4">
-  <div class="w-6 h-6">
-    <img src="assets/images/projects/devops.png" alt="Logo" class="w-full h-full object-contain">
-  </div>
-  <h2 class="text-lg font-bold leading-tight tracking-[-0.015em] text-gray-800 dark:text-white">AKA</h2>
-</div>
+<body class="bg-[#f8f9fb] text-[#18181b] dark:bg-[#0d0e11] dark:text-[#f4f4f5] antialiased selection:bg-neutral-900 selection:text-white dark:selection:bg-white dark:selection:text-black min-h-screen">
 
-                <nav class="hidden items-center gap-8 md:flex">
-                    <a class="text-sm font-medium leading-normal text-gray-800 dark:text-white hover:text-primary" href="#home">Home</a>
-                    <a class="text-sm font-medium leading-normal text-gray-800 dark:text-white hover:text-primary" href="#about">About</a>
-                    <a class="text-sm font-medium leading-normal text-gray-800 dark:text-white hover:text-primary" href="#skills">Skills</a>
-                    <a class="text-sm font-medium leading-normal text-gray-800 dark:text-white hover:text-primary" href="#experience">Experience</a>
-                    <a class="text-sm font-medium leading-normal text-gray-800 dark:text-white hover:text-primary" href="#projects">Projects</a>
-                    <a class="text-sm font-medium leading-normal text-gray-800 dark:text-white hover:text-primary" href="#contact">Contact</a>
-                </nav>
-                <div class="flex items-center gap-4">
-                    <button id="theme-toggle" class="size-10 rounded-full flex items-center justify-center hover:bg-gray-100 dark:hover:bg-white/10">
-                        <svg class="theme-toggle-icon light-icon size-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
-                        </svg>
-                        <svg class="theme-toggle-icon dark-icon size-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
-                        </svg>
-                    </button>
-                    <a class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-primary h-10 px-4 text-sm font-bold leading-normal tracking-[0.015em] text-white transition-colors hover:bg-primary/90" href="#contact">
-                        <span class="truncate">Get In Touch</span>
-                    </a>
-                </div>
-            </div>
-        </header>
-        <main class="flex flex-1 flex-col items-center">
-            <div class="w-full max-w-6xl px-4">
-                <!-- Hero Section -->
-                <section class="flex min-h-[calc(100vh-64px)] items-center py-20 text-center lg:text-left" id="home">
-                    <div class="grid w-full grid-cols-1 items-center gap-12 lg:grid-cols-2">
-                        <div class="flex flex-col gap-6">
-                            <div class="flex flex-col gap-2">
-                                <h1 class="text-5xl font-black leading-tight tracking-[-0.033em] text-gray-900 dark:text-white md:text-7xl">Aganze Kulimushi Ariel</h1>
-                                <h2 class="text-5xl font-black leading-tight tracking-[-0.033em] text-[#061099] dark:text-white md:text-7xl">Software Engineer</h2>
-                                <h3 class="text-base font-normal leading-normal text-gray-600 dark:text-slate-300 md:text-lg">Motivated Software Engineer with experience in software development and applied AI.</h3>
-                            </div>
-                            <div class="flex justify-center gap-4 lg:justify-start">
-                                <a class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-primary h-12 px-5 text-base font-bold leading-normal tracking-[0.015em] text-white transition-colors hover:bg-primary/90" href="assets/docs/My CV EN.pdf" download>
-                                    <span class="truncate">Download CV</span>
-                                </a>
-                                <a class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg border border-gray-300 dark:border-white/20 bg-transparent h-12 px-5 text-base font-bold leading-normal tracking-[0.015em] text-gray-800 dark:text-white transition-colors hover:bg-gray-100 dark:hover:bg-white/10" href="https://www.linkedin.com/in/aganze-kulimushi-ariel-02295a256/" target="_blank" rel="noopener noreferrer">
-                                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.454C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/>
-                                    </svg>
-                                    <span>LinkedIn</span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="relative mx-auto h-80 w-80 lg:h-96 lg:w-96">
-                            <div class="absolute inset-0 rounded-full bg-primary/20 blur-2xl"></div>
-                            <div class="h-full w-full rounded-full bg-cover bg-center" data-alt="Professional headshot of Aganze Kulimushi Ariel" style='background-image: url("assets/images/profile.jpg");'></div>
-                        </div>
-                    </div>
-                </section>
-                <!-- About Section -->
-                <section class="py-20" id="about">
-                    <h2 class="text-4xl font-bold leading-tight tracking-[-0.015em] text-gray-900 dark:text-white">About Me</h2>
-                    <div class="mt-8 grid grid-cols-1 items-center gap-12 lg:grid-cols-3">
-                        <div class="h-96 w-full rounded-lg bg-cover bg-center lg:h-full" data-alt="Workspace of Aganze Kulimushi Ariel" style='background-image: url("assets/images/workspace.jpg");'></div>
-                        <p class="text-base font-normal leading-normal text-gray-600 dark:text-slate-300 lg:col-span-2">
-                            Motivated Software Engineer with experience in software development and applied AI. Skilled
-                            in designing and deploying intelligent web applications that integrate machine learning models
-                            for real-world problem solving. Proficient in Python, Django, HTML, CSS, and data science tools
-                            like scikit-learn, pandas, and numpy. Passionate about leveraging AI to enhance user
-                            experiences and deliver actionable insights. Strong foundations in backend development, full-stack web technologies, and model integration.
-                        </p>
-                    </div>
-                    <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <div class="rounded-lg border border-gray-200 dark:border-white/10 bg-white/50 dark:bg-white/5 p-6 transition-colors hover:bg-white dark:hover:bg-white/10">
-                            <h3 class="text-lg font-semibold mb-3 text-gray-800 dark:text-white">Languages</h3>
-                            <ul class="space-y-2 text-gray-600 dark:text-slate-300">
-                                <li>French – Native</li>
-                                <li>English – Professional</li>
-                                <li>Swahili – Conversational</li>
-                                <li>Lingala – Fluent</li>
-                            </ul>
-                        </div>
-                        <div class="rounded-lg border border-gray-200 dark:border-white/10 bg-white/50 dark:bg-white/5 p-6 transition-colors hover:bg-white dark:hover:bg-white/10 md:col-span-2">
-                            <h3 class="text-lg font-semibold mb-3 text-gray-800 dark:text-white">Interests</h3>
-                            <ul class="space-y-2 text-gray-600 dark:text-slate-300">
-                                <li>Data Science & Artificial Intelligence: Applying machine learning to real-world problems</li>
-                                <li>Blockchain Technology: Exploring decentralized solutions for transparency and security</li>
-                                <li>Ecology & Climate Change Remediation: Advocating for tech-driven environmental sustainability</li>
-                                <li>Cloud Computing & DevOps: Enhancing scalability and automation of modern applications</li>
-                                <li>Tech for Social Good: Using technology to drive education, equity, and health initiatives</li>
-                                <li>Human-Centered Design & UX: Building intuitive and accessible digital experiences</li>
-                            </ul>
-                        </div>
-                    </div>
-                </section>
-                <!-- Skills Section -->
-                <section class="py-20" id="skills">
-                    <h2 class="text-4xl font-bold leading-tight tracking-[-0.015em] text-gray-900 dark:text-white">Skills</h2>
-                    <div class="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-                        <div class="flex flex-col items-center gap-2 rounded-lg border border-gray-200 dark:border-white/10 bg-white/50 dark:bg-white/5 p-6 transition-colors hover:bg-white dark:hover:bg-white/10">
-                            <img alt="Python Logo" class="h-12 w-12" src="assets/images/projects/python-removebg-preview.png"/>
-                            <span class="text-sm font-medium text-gray-800 dark:text-white">Python</span>
-                        </div>
-                        <div class="flex flex-col items-center gap-2 rounded-lg border border-gray-200 dark:border-white/10 bg-white/50 dark:bg-white/5 p-6 transition-colors hover:bg-white dark:hover:bg-white/10">
-                            <img alt="JavaScript Logo" class="h-12 w-12" src="assets/images/projects/javascript.png"/>
-                            <span class="text-sm font-medium text-gray-800 dark:text-white">JavaScript</span>
-                        </div>
-                        <div class="flex flex-col items-center gap-2 rounded-lg border border-gray-200 dark:border-white/10 bg-white/50 dark:bg-white/5 p-6 transition-colors hover:bg-white dark:hover:bg-white/10">
-                            <img alt="HTML/CSS Logo" class="h-12 w-12" src="assets/images/projects/html-removebg-preview.png"/>
-                            <span class="text-sm font-medium text-gray-800 dark:text-white">HTML</span>
-                        </div>
-                        <div class="flex flex-col items-center gap-2 rounded-lg border border-gray-200 dark:border-white/10 bg-white/50 dark:bg-white/5 p-6 transition-colors hover:bg-white dark:hover:bg-white/10">
-                            <img alt="Django Logo" class="h-12 w-12" src="assets/images/projects/django-removebg-preview.png"/>
-                            <span class="text-sm font-medium text-gray-800 dark:text-white">Django</span>
-                        </div>
-                        <div class="flex flex-col items-center gap-2 rounded-lg border border-gray-200 dark:border-white/10 bg-white/50 dark:bg-white/5 p-6 transition-colors hover:bg-white dark:hover:bg-white/10">
-                            <img alt="PostgreSQL Logo" class="h-12 w-12" src="assets/images/projects/PostgreSQL-removebg-preview.png"/>
-                            <span class="text-sm font-medium text-gray-800 dark:text-white">PostgreSQL</span>
-                        </div>
-                        <div class="flex flex-col items-center gap-2 rounded-lg border border-gray-200 dark:border-white/10 bg-white/50 dark:bg-white/5 p-6 transition-colors hover:bg-white dark:hover:bg-white/10">
-                            <img alt="TensorFlow Logo" class="h-12 w-12" src="assets/images/projects/css-removebg-preview.png"/>
-                            <span class="text-sm font-medium text-gray-800 dark:text-white">CSS</span>
-                        </div>
-                    </div>
-                    <div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <div class="rounded-lg border border-gray-200 dark:border-white/10 bg-white/50 dark:bg-white/5 p-6 transition-colors hover:bg-white dark:hover:bg-white/10">
-                            <h3 class="text-lg font-semibold mb-4 text-gray-800 dark:text-white">Languages</h3>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="rounded-full bg-primary/20 px-3 py-1 text-xs font-medium text-primary">Python</span>
-                                <span class="rounded-full bg-primary/20 px-3 py-1 text-xs font-medium text-primary">JavaScript</span>
-                                <span class="rounded-full bg-primary/20 px-3 py-1 text-xs font-medium text-primary">HTML</span>
-                                <span class="rounded-full bg-primary/20 px-3 py-1 text-xs font-medium text-primary">CSS</span>
-                                <span class="rounded-full bg-primary/20 px-3 py-1 text-xs font-medium text-primary">C</span>
-                                <span class="rounded-full bg-primary/20 px-3 py-1 text-xs font-medium text-primary">Java</span>
-                                <span class="rounded-full bg-primary/20 px-3 py-1 text-xs font-medium text-primary">C#</span>
-                            </div>
-                        </div>
-                        <div class="rounded-lg border border-gray-200 dark:border-white/10 bg-white/50 dark:bg-white/5 p-6 transition-colors hover:bg-white dark:hover:bg-white/10">
-                            <h3 class="text-lg font-semibold mb-4 text-gray-800 dark:text-white">Frameworks</h3>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="rounded-full bg-primary/20 px-3 py-1 text-xs font-medium text-primary">Django</span>
-                                <span class="rounded-full bg-primary/20 px-3 py-1 text-xs font-medium text-primary">Bootstrap</span>
-                                <span class="rounded-full bg-primary/20 px-3 py-1 text-xs font-medium text-primary">scikit-learn</span>
-                                <span class="rounded-full bg-primary/20 px-3 py-1 text-xs font-medium text-primary">pandas</span>
-                                <span class="rounded-full bg-primary/20 px-3 py-1 text-xs font-medium text-primary">NumPy</span>
-                                <span class="rounded-full bg-primary/20 px-3 py-1 text-xs font-medium text-primary">Matplotlib</span>
-                                <span class="rounded-full bg-primary/20 px-3 py-1 text-xs font-medium text-primary">TensorFlow</span>
-                            </div>
-                        </div>
-                        <div class="rounded-lg border border-gray-200 dark:border-white/10 bg-white/50 dark:bg-white/5 p-6 transition-colors hover:bg-white dark:hover:bg-white/10">
-                            <h3 class="text-lg font-semibold mb-4 text-gray-800 dark:text-white">Tools & Databases</h3>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="rounded-full bg-primary/20 px-3 py-1 text-xs font-medium text-primary">Git</span>
-                                <span class="rounded-full bg-primary/20 px-3 py-1 text-xs font-medium text-primary">PostgreSQL</span>
-                                <span class="rounded-full bg-primary/20 px-3 py-1 text-xs font-medium text-primary">MySQL</span>
-                                <span class="rounded-full bg-primary/20 px-3 py-1 text-xs font-medium text-primary">VS Code</span>
-                                <span class="rounded-full bg-primary/20 px-3 py-1 text-xs font-medium text-primary">Jupyter</span>
-                                <span class="rounded-full bg-primary/20 px-3 py-1 text-xs font-medium text-primary">Figma</span>
-                                <span class="rounded-full bg-primary/20 px-3 py-1 text-xs font-medium text-primary">Docker</span>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <!-- Experience Section -->
-                <section class="py-20" id="experience">
-                    <h2 class="text-4xl font-bold leading-tight tracking-[-0.015em] text-gray-900 dark:text-white">Experience</h2>
-                    <div class="relative mt-12">
-                        <div class="absolute left-4 top-0 h-full w-0.5 bg-gray-200 dark:bg-white/10 lg:left-1/2 lg:-translate-x-1/2"></div>
-                        <div class="space-y-12">
-                            <!-- Experience 1 -->
-                            <div class="relative">
-                                <div class="absolute left-4 top-2.5 h-3 w-3 -translate-x-1/2 rounded-full bg-primary ring-4 ring-background-light dark:ring-background-dark lg:left-1/2"></div>
-                                <div class="flex flex-col items-start pl-10 lg:grid lg:grid-cols-2 lg:gap-8 lg:pl-0">
-                                    <div class="text-left lg:text-right">
-                                        <h3 class="text-lg font-bold text-gray-800 dark:text-white">Chief Technology Officer (CTO)</h3>
-                                        <p class="font-medium text-primary">LearningSpot Ltd</p>
-                                        <p class="text-sm text-gray-500 dark:text-slate-400">Apr 2025 – Present</p>
-                                    </div>
-                                    <div class="mt-2 lg:mt-0">
-                                        <p class="text-base text-gray-600 dark:text-slate-300">Directed the digital transformation of LearningSpot's platform to enhance accessibility and learning experience. Designed and implemented robust backend systems using Python and Django, integrating dynamic user management and course delivery features.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Experience 2 -->
-                            <div class="relative">
-                                <div class="absolute left-4 top-2.5 h-3 w-3 -translate-x-1/2 rounded-full bg-primary ring-4 ring-background-light dark:ring-background-dark lg:left-1/2"></div>
-                                <div class="flex flex-col items-start pl-10 lg:grid lg:grid-cols-2 lg:gap-8 lg:pl-0">
-                                    <div class="text-left lg:order-2 lg:text-left">
-                                        <h3 class="text-lg font-bold text-gray-800 dark:text-white">Full-Stack Developer</h3>
-                                        <p class="font-medium text-primary">LearningSpot Ltd</p>
-                                        <p class="text-sm text-gray-500 dark:text-slate-400">Oct 2024 – Apr 2025</p>
-                                    </div>
-                                    <div class="mt-2 lg:order-1 lg:mt-0 lg:text-right">
-                                        <p class="text-base text-gray-600 dark:text-slate-300">Designed and developed the full platform architecture using Python (Django) and modern frontend frameworks. Engineered database structures, secure authentication, and dynamic course delivery modules.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Experience 3 -->
-                            <div class="relative">
-                                <div class="absolute left-4 top-2.5 h-3 w-3 -translate-x-1/2 rounded-full bg-primary ring-4 ring-background-light dark:ring-background-dark lg:left-1/2"></div>
-                                <div class="flex flex-col items-start pl-10 lg:grid lg:grid-cols-2 lg:gap-8 lg:pl-0">
-                                    <div class="text-left lg:text-right">
-                                        <h3 class="text-lg font-bold text-gray-800 dark:text-white">Software Developer Intern</h3>
-                                        <p class="font-medium text-primary">Diolichat</p>
-                                        <p class="text-sm text-gray-500 dark:text-slate-400">Jan – Apr 2024</p>
-                                    </div>
-                                    <div class="mt-2 lg:mt-0">
-                                        <p class="text-base text-gray-600 dark:text-slate-300">Developed and optimized backend functionalities using Django and REST Framework. Implemented secure data models and API endpoints to streamline integration.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Education -->
-                            <div class="relative">
-                                <div class="absolute left-4 top-2.5 h-3 w-3 -translate-x-1/2 rounded-full bg-primary ring-4 ring-background-light dark:ring-background-dark lg:left-1/2"></div>
-                                <div class="flex flex-col items-start pl-10 lg:grid lg:grid-cols-2 lg:gap-8 lg:pl-0">
-                                    <div class="text-left lg:order-2 lg:text-left">
-                                        <h3 class="text-lg font-bold text-gray-800 dark:text-white">Bachelor's in Information Technology – Software Engineering</h3>
-                                        <p class="font-medium text-primary">Adventist University of Central Africa (AUCA)</p>
-                                        <p class="text-sm text-gray-500 dark:text-slate-400">2021 – 2025</p>
-                                    </div>
-                                    <div class="mt-2 lg:order-1 lg:mt-0 lg:text-right">
-                                        <p class="text-base text-gray-600 dark:text-slate-300">Completed a comprehensive software engineering program with focus on practical application development and theoretical foundations of computer science.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <!-- Projects Section -->
-                <section class="py-20" id="projects">
-                    <h2 class="text-4xl font-bold leading-tight tracking-[-0.015em] text-gray-900 dark:text-white">Projects</h2>
-                    <div class="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-                        <!-- Project Card 1 -->
-                        <div class="flex flex-col overflow-hidden rounded-lg border border-gray-200 dark:border-white/10 bg-white/50 dark:bg-white/5 transition-transform hover:-translate-y-1">
-                            <div class="aspect-video w-full bg-cover bg-center" data-alt="Screenshot of Digital Land Registration System" style='background-image: url("assets/images/projects/dlrms.png");'></div>
-                            <div class="flex flex-1 flex-col p-6">
-                                <h3 class="text-xl font-bold text-gray-800 dark:text-white">Digital Land Registration and Management System (DLRMS)</h3>
-                                <p class="text-sm text-gray-500 dark:text-slate-400 mb-3">Individual Project</p>
-                                <p class="mt-2 flex-1 text-sm text-gray-600 dark:text-slate-300">Designed and developed a web-based system to modernize land registration and management in the Democratic Republic of Congo (DRC).</p>
-                                <div class="mt-4 flex flex-wrap gap-2">
-                                    <span class="rounded-full bg-primary/20 px-3 py-1 text-xs font-medium text-primary">Python</span>
-                                    <span class="rounded-full bg-primary/20 px-3 py-1 text-xs font-medium text-primary">Django</span>
-                                    <span class="rounded-full bg-primary/20 px-3 py-1 text-xs font-medium text-primary">JavaScript</span>
-                                </div>
-                                <div class="mt-6 flex items-center gap-4">
-                                    <!-- <a class="text-sm font-bold text-gray-800 dark:text-white transition-colors hover:text-primary" href="#">Live Demo</a>
-                                    <a class="text-sm font-bold text-gray-800 dark:text-white transition-colors hover:text-primary" href="#">GitHub</a> -->
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Project Card 2 -->
-                        <div class="flex flex-col overflow-hidden rounded-lg border border-gray-200 dark:border-white/10 bg-white/50 dark:bg-white/5 transition-transform hover:-translate-y-1">
-                            <div class="aspect-video w-full bg-cover bg-center" data-alt="Screenshot of LearningSpot Platform" style='background-image: url("assets/images/projects/learningspot.png");'></div>
-                            <div class="flex flex-1 flex-col p-6">
-                                <h3 class="text-xl font-bold text-gray-800 dark:text-white">LearningSpot Platform</h3>
-                                <p class="text-sm text-gray-500 dark:text-slate-400 mb-3">Professional Project</p>
-                                <p class="mt-2 flex-1 text-sm text-gray-600 dark:text-slate-300">An educational platform focused on accessibility and enhanced learning experiences with dynamic user management and interactive course delivery.</p>
-                                <div class="mt-4 flex flex-wrap gap-2">
-                                    <span class="rounded-full bg-primary/20 px-3 py-1 text-xs font-medium text-primary">Python</span>
-                                    <span class="rounded-full bg-primary/20 px-3 py-1 text-xs font-medium text-primary">Django</span>
-                                    <span class="rounded-full bg-primary/20 px-3 py-1 text-xs font-medium text-primary">PostgreSQL</span>
-                                </div>
-                                <div class="mt-6 flex items-center gap-4">
-                                    <a class="text-sm font-bold text-gray-800 dark:text-white transition-colors hover:text-primary" href="https://learningspotltd.org/">Link to the Web Application</a>
-                                    <!-- <a class="text-sm font-bold text-gray-800 dark:text-white transition-colors hover:text-primary" href="#">GitHub</a> -->
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Project Card 3 -->
-                        <div class="flex flex-col overflow-hidden rounded-lg border border-gray-200 dark:border-white/10 bg-white/50 dark:bg-white/5 transition-transform hover:-translate-y-1">
-                            <div class="aspect-video w-full bg-cover bg-center" data-alt="Screenshot of Data Analysis Project" style='background-image: url("assets/images/projects/petrox.png");'></div>
-                            <div class="flex flex-1 flex-col p-6">
-                                <h3 class="text-xl font-bold text-gray-800 dark:text-white">Gas Station Management System</h3>
-                                <p class="text-sm text-gray-500 dark:text-slate-400 mb-3">Professional Project</p>
-                                <p class="mt-2 flex-1 text-sm text-gray-600 dark:text-slate-300">A comprehensive fuel station management solution that streamlines operations through integrated inventory tracking, sales monitoring, and financial management with real-time analytics and multi-user role-based controls.</p>
-                                <div class="mt-4 flex flex-wrap gap-2">
-                                    <span class="rounded-full bg-primary/20 px-3 py-1 text-xs font-medium text-primary">Python</span>
-                                    <span class="rounded-full bg-primary/20 px-3 py-1 text-xs font-medium text-primary">Django</span>
-                                    <span class="rounded-full bg-primary/20 px-3 py-1 text-xs font-medium text-primary">PostgreSQL</span>
-                                </div>
-                                <div class="mt-6 flex items-center gap-4">
-                                    <!-- <a class="text-sm font-bold text-gray-800 dark:text-white transition-colors hover:text-primary" href="#">Live Demo</a>
-                                    <a class="text-sm font-bold text-gray-800 dark:text-white transition-colors hover:text-primary" href="#">GitHub</a> -->
-                                </div>
-                            </div>
-                        </div>
+  <!-- Top Navigation Bar (Hythym 3-Zone Contract) -->
+  <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/85 dark:bg-[#0d0e11]/85 backdrop-blur-md border-b border-zinc-200 dark:border-white/[0.08] py-3.5">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between">
+      
+      <!-- Zone 1: Wordmark & Availability Badge -->
+      <div class="flex items-center gap-3">
+        <a href="#home" class="flex items-center gap-2.5 text-base font-bold tracking-tight text-zinc-950 dark:text-white hover:opacity-90 transition-opacity">
+          <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-zinc-200 dark:bg-white/10 border border-zinc-300 dark:border-white/10 text-zinc-900 dark:text-white font-mono text-xs font-semibold">
+            AKA
+          </span>
+          <span class="font-semibold tracking-tight">
+            Aganze Kulimushi Ariel
+          </span>
+        </a>
 
-                        <!-- Project Card 4 -->
-                        <div class="flex flex-col overflow-hidden rounded-lg border border-gray-200 dark:border-white/10 bg-white/50 dark:bg-white/5 transition-transform hover:-translate-y-1">
-                            <div class="aspect-video w-full bg-cover bg-center" data-alt="Screenshot of Data Analysis Project" style='background-image: url("assets/images/projects/sinoaf.png");'></div>
-                            <div class="flex flex-1 flex-col p-6">
-                                <h3 class="text-xl font-bold text-gray-800 dark:text-white">E-Commerce Web Application</h3>
-                                <p class="text-sm text-gray-500 dark:text-slate-400 mb-3">Individual Project</p>
-                                <p class="mt-2 flex-1 text-sm text-gray-600 dark:text-slate-300">A comprehensive sourcing and e-commerce solution that bridges international trade through intelligent product discovery, streamlined procurement processes, and multi-stakeholder collaboration with real-time order tracking and agent-assisted customer support.</p>
-                                <div class="mt-4 flex flex-wrap gap-2">
-                                    <span class="rounded-full bg-primary/20 px-3 py-1 text-xs font-medium text-primary">Python</span>
-                                    <span class="rounded-full bg-primary/20 px-3 py-1 text-xs font-medium text-primary">Django</span>
-                                    <span class="rounded-full bg-primary/20 px-3 py-1 text-xs font-medium text-primary">PostgreSQL</span>
-                                </div>
-                                <div class="mt-6 flex items-center gap-4">
-                                    <!-- <a class="text-sm font-bold text-gray-800 dark:text-white transition-colors hover:text-primary" href="#">Live Demo</a>
-                                    <a class="text-sm font-bold text-gray-800 dark:text-white transition-colors hover:text-primary" href="#">GitHub</a> -->
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Project Card 5 -->
-                        <div class="flex flex-col overflow-hidden rounded-lg border border-gray-200 dark:border-white/10 bg-white/50 dark:bg-white/5 transition-transform hover:-translate-y-1">
-                            <div class="aspect-video w-full bg-cover bg-center" data-alt="Screenshot of Cassie Posh Events" style='background-image: url("assets/images/projects/cassieposh.png");'></div>
-                            <div class="flex flex-1 flex-col p-6">
-                                <h3 class="text-xl font-bold text-gray-800 dark:text-white">Cassie Posh Events</h3>
-                                <p class="text-sm text-gray-500 dark:text-slate-400 mb-3">Professional Project</p>
-                                <p class="mt-2 flex-1 text-sm text-gray-600 dark:text-slate-300">An elegant event management website designed to showcase services, enable seamless booking, streamline client inquiries, and highlight curated experiences through a modern, visually engaging interface.</p>
-                                <div class="mt-4 flex flex-wrap gap-2">
-                                    <span class="rounded-full bg-primary/20 px-3 py-1 text-xs font-medium text-primary">Python</span>
-                                    <span class="rounded-full bg-primary/20 px-3 py-1 text-xs font-medium text-primary">Django</span>
-                                    <span class="rounded-full bg-primary/20 px-3 py-1 text-xs font-medium text-primary">PostgreSQL</span>
-                                </div>
-                                <div class="mt-6 flex items-center gap-4">
-                                    <a class="text-sm font-bold text-gray-800 dark:text-white transition-colors hover:text-primary" href="https://cassieposhevents.com/">Link to the Web Application</a>
-                                    <!-- <a class="text-sm font-bold text-gray-800 dark:text-white transition-colors hover:text-primary" href="#">GitHub</a> -->
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Project Card 6 -->
-                        <div class="flex flex-col overflow-hidden rounded-lg border border-gray-200 dark:border-white/10 bg-white/50 dark:bg-white/5 transition-transform hover:-translate-y-1">
-                            <div class="aspect-video w-full bg-cover bg-center" data-alt="Screenshot of Nysha Hair Salon" style='background-image: url("assets/images/projects/nyshahairsalon.png");'></div>
-                            <div class="flex flex-1 flex-col p-6">
-                                <h3 class="text-xl font-bold text-gray-800 dark:text-white">Nysha Hair Salon</h3>
-                                <p class="text-sm text-gray-500 dark:text-slate-400 mb-3">Professional Project</p>
-                                <p class="mt-2 flex-1 text-sm text-gray-600 dark:text-slate-300">An elegant event management website designed to showcase services, enable seamless booking, streamline client inquiries, and highlight curated experiences through a modern, visually engaging interface.</p>
-                                <div class="mt-4 flex flex-wrap gap-2">
-                                    <span class="rounded-full bg-primary/20 px-3 py-1 text-xs font-medium text-primary">Python</span>
-                                    <span class="rounded-full bg-primary/20 px-3 py-1 text-xs font-medium text-primary">Django</span>
-                                    <span class="rounded-full bg-primary/20 px-3 py-1 text-xs font-medium text-primary">PostgreSQL</span>
-                                </div>
-                                <div class="mt-6 flex items-center gap-4">
-                                    <a class="text-sm font-bold text-gray-800 dark:text-white transition-colors hover:text-primary" href="https://nysha-frontend.onrender.com/">Link to the Web Application</a>
-                                    <!-- <a class="text-sm font-bold text-gray-800 dark:text-white transition-colors hover:text-primary" href="#">GitHub</a> -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <!-- Contact Section -->
-                <section class="py-20" id="contact">
-                    <div class="mx-auto max-w-2xl text-center">
-                        <h2 class="text-4xl font-bold leading-tight tracking-[-0.015em] text-gray-900 dark:text-white">Let's Connect</h2>
-                        <p class="mt-4 text-gray-600 dark:text-slate-300">Have a project in mind or just want to say hello? Feel free to reach out.</p>
-                    </div>
-                    
-                    <div class="mx-auto mt-8 max-w-3xl grid grid-cols-1 md:grid-cols-2 gap-12">
-                        <!-- Contact Information -->
-                        <div class="bg-white/50 dark:bg-white/5 rounded-lg border border-gray-200 dark:border-white/10 p-6 flex flex-col justify-center">
-                            <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-6">Contact Information</h3>
-                            
-                            <div class="space-y-6">
-                                <div class="flex items-center">
-                                    <div class="flex-shrink-0 size-10 bg-primary/10 rounded-full flex items-center justify-center mr-4">
-                                        <svg class="h-5 w-5 text-primary" fill="currentColor" viewBox="0 0 24 24">
-                                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"></path>
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <p class="text-sm text-gray-500 dark:text-slate-400">Email</p>
-                                        <a href="mailto:arielaganze@gmail.com" class="text-gray-800 dark:text-white font-medium hover:text-primary">arielaganze@gmail.com</a>
-                                    </div>
-                                </div>
-                                
-                                <div class="flex items-center">
-                                    <div class="flex-shrink-0 size-10 bg-primary/10 rounded-full flex items-center justify-center mr-4">
-                                        <svg class="h-5 w-5 text-primary" fill="currentColor" viewBox="0 0 24 24">
-                                            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"></path>
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <p class="text-sm text-gray-500 dark:text-slate-400">Phone</p>
-                                        <a href="tel:+250790003977" class="text-gray-800 dark:text-white font-medium hover:text-primary">+250 790 003 977</a>
-                                    </div>
-                                </div>
-                                
-                                <div class="flex items-center">
-                                    <div class="flex-shrink-0 size-10 bg-primary/10 rounded-full flex items-center justify-center mr-4">
-                                        <svg class="h-5 w-5 text-primary" fill="currentColor" viewBox="0 0 24 24">
-                                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"></path>
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <p class="text-sm text-gray-500 dark:text-slate-400">Location</p>
-                                        <p class="text-gray-800 dark:text-white font-medium">Kigali, Rwanda</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="mt-8 flex gap-4">
-                                <a class="text-gray-500 dark:text-slate-400 hover:text-primary" href="https://www.linkedin.com/in/aganze-kulimushi-ariel-02295a256/" target="_blank" rel="noopener noreferrer">
-                                    <svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewbox="0 0 24 24">
-                                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path>
-                                    </svg>
-                                </a>
-                                <a class="text-gray-500 dark:text-slate-400 hover:text-primary" href="https://github.com/Ariel-Aganze/" target="_blank" rel="noopener noreferrer">
-                                    <svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewbox="0 0 24 24">
-                                        <path clip-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.49.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" fill-rule="evenodd"></path>
-                                    </svg>
-                                </a>
-                                <a class="text-gray-500 dark:text-slate-400 hover:text-primary" href="mailto:arielaganze@gmail.com">
-                                    <svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewbox="0 0 24 24">
-                                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"></path>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                        
-                        <!-- Contact Form -->
-                        <div>
-                            <form class="space-y-6">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 dark:text-slate-300" for="name">Name</label>
-                                    <input class="mt-1 block w-full rounded-md border-gray-300 dark:border-white/20 bg-white dark:bg-white/5 text-gray-800 dark:text-white shadow-sm focus:border-primary focus:ring focus:ring-primary focus:ring-opacity-50" id="name" name="name" type="text" required />
-                                </div>
-                                
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 dark:text-slate-300" for="email">Email</label>
-                                    <input class="mt-1 block w-full rounded-md border-gray-300 dark:border-white/20 bg-white dark:bg-white/5 text-gray-800 dark:text-white shadow-sm focus:border-primary focus:ring focus:ring-primary focus:ring-opacity-50" id="email" name="email" type="email" required />
-                                </div>
-                                
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 dark:text-slate-300" for="subject">Subject</label>
-                                    <input class="mt-1 block w-full rounded-md border-gray-300 dark:border-white/20 bg-white dark:bg-white/5 text-gray-800 dark:text-white shadow-sm focus:border-primary focus:ring focus:ring-primary focus:ring-opacity-50" id="subject" name="subject" type="text" required />
-                                </div>
-                                
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 dark:text-slate-300" for="message">Message</label>
-                                    <textarea class="mt-1 block w-full rounded-md border-gray-300 dark:border-white/20 bg-white dark:bg-white/5 text-gray-800 dark:text-white shadow-sm focus:border-primary focus:ring focus:ring-primary focus:ring-opacity-50" id="message" name="message" rows="4" required></textarea>
-                                </div>
-                                
-                                <div>
-                                    <button class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-primary h-12 px-5 text-base font-bold leading-normal tracking-[0.015em] text-white transition-colors hover:bg-primary/90" type="submit">
-                                        <span class="truncate">Send Message</span>
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </main>
-        <!-- Footer -->
-        <footer class="bg-gray-100 dark:bg-gray-900 text-gray-600 dark:text-gray-400 py-8 border-t border-gray-200 dark:border-white/10">
-            <div class="container mx-auto px-4 text-center">
-                <p>&copy; 2025 Aganze Kulimushi Ariel. All rights reserved.</p>
-                <div class="mt-4 flex justify-center gap-6">
-                    <a class="text-sm hover:text-primary" href="#home">Home</a>
-                    <a class="text-sm hover:text-primary" href="#about">About</a>
-                    <a class="text-sm hover:text-primary" href="#skills">Skills</a>
-                    <a class="text-sm hover:text-primary" href="#experience">Experience</a>
-                    <a class="text-sm hover:text-primary" href="#projects">Projects</a>
-                    <a class="text-sm hover:text-primary" href="#contact">Contact</a>
-                </div>
-            </div>
-        </footer>
+        <div class="hidden sm:flex items-center gap-2 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[11px] font-medium text-emerald-600 dark:text-emerald-400">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+          </span>
+          <span class="whitespace-nowrap">Available for work</span>
+        </div>
+      </div>
+
+      <!-- Zone 2: Navigation Links -->
+      <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-zinc-600 dark:text-neutral-400">
+        <a href="#projects" class="hover:text-black dark:hover:text-white transition-colors">Projects</a>
+        <a href="#experience" class="hover:text-black dark:hover:text-white transition-colors">Experience</a>
+        <a href="#skills" class="hover:text-black dark:hover:text-white transition-colors">Skills</a>
+        <a href="#about" class="hover:text-black dark:hover:text-white transition-colors">About</a>
+        <a href="#testimonials" class="hover:text-black dark:hover:text-white transition-colors">Testimonials</a>
+        <a href="#contact" class="hover:text-black dark:hover:text-white transition-colors">Contact</a>
+      </nav>
+
+      <!-- Zone 3: Primary Actions & Theme Toggle -->
+      <div class="flex items-center gap-2.5">
+        
+        <!-- Light / Dark Mode Toggle Button -->
+        <button id="theme-toggle" class="p-2 rounded-lg border border-zinc-300 dark:border-white/10 bg-zinc-100 dark:bg-white/5 text-zinc-700 dark:text-neutral-300 hover:text-black dark:hover:text-white transition-colors" title="Toggle Light / Dark Mode" aria-label="Toggle theme">
+          <!-- Sun icon (shown in dark mode to switch to light) -->
+          <svg class="theme-toggle-icon dark-icon w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+          </svg>
+          <!-- Moon icon (shown in light mode to switch to dark) -->
+          <svg class="theme-toggle-icon light-icon w-4 h-4 text-zinc-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <!-- Resume Modal Trigger -->
+        <button onclick="openResumeModal()" class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-medium text-zinc-700 dark:text-neutral-300 hover:text-black dark:hover:text-white rounded-lg border border-zinc-300 dark:border-white/10 hover:border-zinc-400 dark:hover:border-white/25 bg-zinc-100 dark:bg-white/5 transition-all">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+          <span>Resume</span>
+        </button>
+
+        <!-- Reach Out CTA -->
+        <a href="#contact" class="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold text-white dark:text-black bg-zinc-900 dark:bg-white rounded-lg hover:bg-zinc-800 dark:hover:bg-neutral-200 transition-all shadow-sm">
+          <span>Reach out</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"></path></svg>
+        </a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobile-menu-btn" class="md:hidden p-2 text-zinc-700 dark:text-neutral-300 rounded-lg border border-zinc-300 dark:border-white/10" aria-label="Open menu">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+
     </div>
 
-    <script>
-        // Theme toggle functionality
-        const themeToggle = document.getElementById('theme-toggle');
-        const html = document.documentElement;
+    <!-- Mobile Drawer -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-zinc-200 dark:border-white/10 bg-white dark:bg-[#0e0f12] px-6 py-4 space-y-3 shadow-xl">
+      <a href="#projects" class="block text-sm font-medium text-zinc-700 dark:text-neutral-300 py-1" onclick="closeMobileMenu()">Projects</a>
+      <a href="#experience" class="block text-sm font-medium text-zinc-700 dark:text-neutral-300 py-1" onclick="closeMobileMenu()">Experience</a>
+      <a href="#skills" class="block text-sm font-medium text-zinc-700 dark:text-neutral-300 py-1" onclick="closeMobileMenu()">Skills</a>
+      <a href="#about" class="block text-sm font-medium text-zinc-700 dark:text-neutral-300 py-1" onclick="closeMobileMenu()">About</a>
+      <a href="#testimonials" class="block text-sm font-medium text-zinc-700 dark:text-neutral-300 py-1" onclick="closeMobileMenu()">Testimonials</a>
+      <a href="#contact" class="block text-sm font-medium text-zinc-700 dark:text-neutral-300 py-1" onclick="closeMobileMenu()">Contact</a>
+      <button onclick="openResumeModal(); closeMobileMenu();" class="w-full text-center py-2 rounded-lg border border-zinc-300 dark:border-white/15 text-xs font-medium">View Resume</button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 relative">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
         
-        // Check for saved theme preference or use system preference
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme) {
-            html.classList.toggle('dark', savedTheme === 'dark');
+        <!-- Left Content -->
+        <div class="lg:col-span-7 flex flex-col space-y-6 text-left">
+          
+          <div class="inline-flex items-center gap-2 self-start px-3 py-1.5 rounded-full bg-zinc-100 dark:bg-white/[0.04] border border-zinc-200 dark:border-white/[0.08] text-xs font-medium text-zinc-700 dark:text-neutral-300">
+            <span class="text-emerald-500">●</span>
+            <span>CTO @ LearningSpot Ltd</span>
+            <span class="text-zinc-400 dark:text-neutral-500">·</span>
+            <span></span>
+          </div>
+
+          <div class="space-y-1">
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-zinc-950 dark:text-white leading-[1.08]">
+              <span>I build </span>
+              <span id="headline-rotating" class="block text-zinc-700 dark:text-neutral-300 font-medium italic sm:inline transition-opacity duration-300">
+                fast, scalable web experiences.
+              </span>
+            </h1>
+          </div>
+
+          <p class="text-base sm:text-lg text-zinc-600 dark:text-neutral-400 font-normal leading-relaxed max-w-xl">
+            Motivated Software Engineer with deep foundations in Python, Django, modern frontend ecosystems, and applied machine learning. Proven track record leading product architecture, delivering mission-critical applications, and scaling software in emerging markets.
+          </p>
+
+          <!-- Buttons -->
+          <div class="flex flex-wrap items-center gap-3.5 pt-2">
+            <a href="#projects" class="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-zinc-900 dark:bg-white text-white dark:text-black font-semibold text-sm hover:bg-zinc-800 dark:hover:bg-neutral-200 transition-all shadow-md">
+              <span>View projects</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+            </a>
+
+            <button onclick="openResumeModal()" class="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-zinc-300 dark:border-white/15 bg-white dark:bg-white/[0.03] text-zinc-800 dark:text-neutral-200 font-medium text-sm hover:bg-zinc-100 dark:hover:bg-white/[0.08] transition-all">
+              <svg class="w-4 h-4 text-zinc-500 dark:text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              <span>Download resume</span>
+            </button>
+
+            <a href="#contact" class="inline-flex items-center gap-1.5 px-4 py-3 text-sm font-medium text-zinc-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors">
+              <span>Let's talk</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"></path></svg>
+            </a>
+          </div>
+
+          <!-- Metrics Ticker -->
+          <div class="pt-6 border-t border-zinc-200 dark:border-white/[0.08] grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <div>
+              <span class="text-2xl font-bold font-mono tracking-tight text-zinc-900 dark:text-white">4+</span>
+              <span class="text-xs text-zinc-500 dark:text-neutral-400 block mt-0.5">Years Experience</span>
+            </div>
+            <div>
+              <span class="text-2xl font-bold font-mono tracking-tight text-zinc-900 dark:text-white">10+</span>
+              <span class="text-xs text-zinc-500 dark:text-neutral-400 block mt-0.5">Production Apps</span>
+            </div>
+            <div>
+              <span class="text-2xl font-bold font-mono tracking-tight text-zinc-900 dark:text-white">40+</span>
+              <span class="text-xs text-zinc-500 dark:text-neutral-400 block mt-0.5">Users Served</span>
+            </div>
+            <div>
+              <span class="text-2xl font-bold font-mono tracking-tight text-zinc-900 dark:text-white">99.9%</span>
+              <span class="text-xs text-zinc-500 dark:text-neutral-400 block mt-0.5">Code Reliability</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Framed Portrait Container -->
+        <div class="lg:col-span-5 flex justify-center lg:justify-end">
+          <div class="relative w-full max-w-sm sm:max-w-md">
+            <div class="relative rounded-2xl border border-zinc-200 dark:border-white/10 bg-white dark:bg-[#141518] p-3 shadow-xl dark:shadow-2xl overflow-hidden">
+              <div class="relative aspect-square w-full rounded-xl overflow-hidden bg-zinc-100 dark:bg-neutral-900">
+                <img src="/assets/images/profile.jpg" alt="Aganze Kulimushi Ariel" onerror="this.src='/src/assets/images/profile.jpg'" class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none"></div>
+
+                <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs text-white">
+                  <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-black/60 backdrop-blur-md border border-white/10">
+                    <svg class="w-3.5 h-3.5 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    <span>On site and remote</span>
+                  </div>
+                  <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-emerald-950/80 backdrop-blur-md border border-emerald-500/30 text-emerald-300">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span>Open to Work</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="p-3 pt-4 flex items-center justify-between text-xs border-t border-zinc-100 dark:border-white/5 mt-2">
+                <div>
+                  <div class="font-semibold text-zinc-900 dark:text-white">Aganze Kulimushi Ariel</div>
+                  <div class="text-zinc-500 dark:text-neutral-400">Chief Technology Officer & Software Engineer</div>
+                </div>
+                <div class="text-right">
+                  <div class="font-mono text-zinc-800 dark:text-neutral-300">UTC+2</div>
+                  <div class="text-zinc-500 dark:text-neutral-400">CAT Time</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Core Stack Banner -->
+      <div class="mt-20 pt-8 border-t border-zinc-200 dark:border-white/[0.08]">
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <span class="text-xs uppercase tracking-wider text-zinc-500 dark:text-neutral-400 font-medium">
+            Core Technologies & Architecture Stack
+          </span>
+          <div class="flex flex-wrap items-center gap-2 sm:gap-3 text-xs">
+            <span class="px-2.5 py-1 rounded-md bg-zinc-100 dark:bg-white/[0.04] border border-zinc-200 dark:border-white/[0.06] text-zinc-800 dark:text-neutral-300">Python</span>
+            <span class="px-2.5 py-1 rounded-md bg-zinc-100 dark:bg-white/[0.04] border border-zinc-200 dark:border-white/[0.06] text-zinc-800 dark:text-neutral-300">Django</span>
+            <span class="px-2.5 py-1 rounded-md bg-zinc-100 dark:bg-white/[0.04] border border-zinc-200 dark:border-white/[0.06] text-zinc-800 dark:text-neutral-300">PostgreSQL</span>
+            <span class="px-2.5 py-1 rounded-md bg-zinc-100 dark:bg-white/[0.04] border border-zinc-200 dark:border-white/[0.06] text-zinc-800 dark:text-neutral-300">React</span>
+            <span class="px-2.5 py-1 rounded-md bg-zinc-100 dark:bg-white/[0.04] border border-zinc-200 dark:border-white/[0.06] text-zinc-800 dark:text-neutral-300">TypeScript</span>
+            <span class="px-2.5 py-1 rounded-md bg-zinc-100 dark:bg-white/[0.04] border border-zinc-200 dark:border-white/[0.06] text-zinc-800 dark:text-neutral-300">Docker</span>
+            <span class="px-2.5 py-1 rounded-md bg-zinc-100 dark:bg-white/[0.04] border border-zinc-200 dark:border-white/[0.06] text-zinc-800 dark:text-neutral-300">Scikit-Learn</span>
+            <span class="px-2.5 py-1 rounded-md bg-zinc-100 dark:bg-white/[0.04] border border-zinc-200 dark:border-white/[0.06] text-zinc-800 dark:text-neutral-300">REST APIs</span>
+            <span class="px-2.5 py-1 rounded-md bg-zinc-100 dark:bg-white/[0.04] border border-zinc-200 dark:border-white/[0.06] text-zinc-800 dark:text-neutral-300">Tailwind CSS</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Projects Section (Hythym Bento Grid) -->
+  <section id="projects" class="py-20 sm:py-28 border-t border-zinc-200 dark:border-white/[0.08] relative">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+        <div class="space-y-3">
+          <div class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-neutral-400">
+            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+            <span>Projects Showcase</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-zinc-950 dark:text-white">
+            Featured work & systems
+          </h2>
+          <p class="text-base text-zinc-600 dark:text-neutral-400 max-w-xl">
+            The standard of work I strive to achieve every time I build solutions — engineered for durability, performance, and clear business outcomes.
+          </p>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="flex flex-wrap items-center gap-1.5 p-1 rounded-xl bg-zinc-100 dark:bg-white/[0.04] border border-zinc-200 dark:border-white/[0.08]">
+          <button onclick="filterProjects('all')" class="project-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-white dark:bg-white text-black shadow-sm" data-filter="all">All</button>
+          <button onclick="filterProjects('full-stack')" class="project-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-medium text-zinc-600 dark:text-neutral-400 hover:text-black dark:hover:text-white" data-filter="full-stack">Full-Stack</button>
+          <button onclick="filterProjects('enterprise')" class="project-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-medium text-zinc-600 dark:text-neutral-400 hover:text-black dark:hover:text-white" data-filter="enterprise">Enterprise</button>
+          <button onclick="filterProjects('client')" class="project-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-medium text-zinc-600 dark:text-neutral-400 hover:text-black dark:hover:text-white" data-filter="client">Client Work</button>
+        </div>
+      </div>
+
+      <!-- Precise Enterprise NDA & Proprietary Notice Callout (Requested by User) -->
+      <div class="mb-10 p-4 sm:p-5 rounded-2xl bg-amber-500/[0.07] dark:bg-amber-400/[0.05] border border-amber-500/20 dark:border-amber-400/15 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div class="flex items-start gap-3.5">
+          <div class="p-2 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+          </div>
+          <div>
+            <h4 class="text-sm font-bold text-zinc-950 dark:text-white">
+              Enterprise & Proprietary Notice
+            </h4>
+            <p class="text-xs sm:text-sm text-zinc-600 dark:text-neutral-300 mt-0.5 leading-relaxed">
+              Please note: Beyond the featured public projects below, I have engineered and deployed additional production systems in enterprise environments (including internal business ERPs, proprietary database pipelines, and high-security services) that cannot be publicly displayed due to corporate non-disclosure agreements (NDAs).
+            </p>
+          </div>
+        </div>
+        <a href="#contact" class="shrink-0 px-3.5 py-2 rounded-lg bg-zinc-900 dark:bg-white text-white dark:text-black text-xs font-semibold hover:bg-zinc-800 dark:hover:bg-neutral-200 transition-colors shadow-sm whitespace-nowrap">
+          Request Technical Walkthrough
+        </a>
+      </div>
+
+      <!-- Project Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="projects-grid">
+        
+        <!-- Project 1: DLRMS -->
+        <div class="project-card group flex flex-col rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#141518] hover:border-zinc-300 dark:hover:border-white/20 transition-all p-4 sm:p-5 shadow-sm" data-category="full-stack">
+          <div class="relative aspect-video w-full rounded-xl overflow-hidden bg-zinc-100 dark:bg-neutral-900 border border-zinc-200 dark:border-white/5 cursor-pointer" onclick="openProjectModal('dlrms')">
+            <img src="./assets/images/projects/dlrms.png" alt="DLRMS" onerror="this.src='/src/assets/images/dlrms.png'" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-60"></div>
+            <div class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-black/75 backdrop-blur-md text-[11px] font-medium text-neutral-100 flex items-center gap-1.5">
+              <span class="text-emerald-400">✦</span>
+              <span>1,000+ Test Cadastral Parcels</span>
+            </div>
+          </div>
+          <div class="flex flex-1 flex-col justify-between pt-5 space-y-4">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between text-xs text-zinc-500 dark:text-neutral-400">
+                <span class="text-emerald-600 dark:text-emerald-400 font-medium">Lead Software Architect</span>
+                <span class="font-mono">2024 - 2025</span>
+              </div>
+              <h3 class="text-xl font-bold tracking-tight text-zinc-950 dark:text-white hover:text-emerald-600 transition-colors cursor-pointer" onclick="openProjectModal('dlrms')">
+                Digital Land Registration & Management System (DLRMS)
+              </h3>
+              <p class="text-sm text-zinc-600 dark:text-neutral-400 line-clamp-3">
+                Architected a comprehensive web-based cadastral system designed to modernize land registration, ownership authentication, and dispute reduction in the DRC.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-zinc-100 dark:border-white/[0.06] flex items-center justify-between gap-3">
+              <div class="flex flex-wrap gap-1.5 text-xs text-zinc-600 dark:text-neutral-400">
+                <span class="px-2 py-0.5 rounded bg-zinc-100 dark:bg-white/[0.04] text-[11px]">Python</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-100 dark:bg-white/[0.04] text-[11px]">Django</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-100 dark:bg-white/[0.04] text-[11px]">PostgreSQL</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-100 dark:bg-white/[0.04] text-[11px]">GIS</span>
+              </div>
+              <button onclick="openProjectModal('dlrms')" class="px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-white/10 hover:bg-zinc-200 dark:hover:bg-white/20 text-xs font-medium">
+                Case Study
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2: LearningSpot -->
+        <div class="project-card group flex flex-col rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#141518] hover:border-zinc-300 dark:hover:border-white/20 transition-all p-4 sm:p-5 shadow-sm" data-category="enterprise">
+          <div class="relative aspect-video w-full rounded-xl overflow-hidden bg-zinc-100 dark:bg-neutral-900 border border-zinc-200 dark:border-white/5 cursor-pointer" onclick="openProjectModal('learningspot')">
+            <img src="./assets/images/projects/learningspot.png" alt="LearningSpot" onerror="this.src='/src/assets/images/learningspot.png'" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-60"></div>
+            <div class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-black/75 backdrop-blur-md text-[11px] font-medium text-neutral-100 flex items-center gap-1.5">
+              <span class="text-emerald-400">✦</span>
+              <span>10,000+ Active Learners</span>
+            </div>
+          </div>
+          <div class="flex flex-1 flex-col justify-between pt-5 space-y-4">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between text-xs text-zinc-500 dark:text-neutral-400">
+                <span class="text-emerald-600 dark:text-emerald-400 font-medium">Chief Technology Officer</span>
+                <span class="font-mono">2024 - Present</span>
+              </div>
+              <h3 class="text-xl font-bold tracking-tight text-zinc-950 dark:text-white hover:text-emerald-600 transition-colors cursor-pointer" onclick="openProjectModal('learningspot')">
+                LearningSpot E-Learning Platform
+              </h3>
+              <p class="text-sm text-zinc-600 dark:text-neutral-400 line-clamp-3">
+                An educational platform focused on barrier-free accessibility, personalized student pathways, dynamic course delivery, and real-time administrative analytics.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-zinc-100 dark:border-white/[0.06] flex items-center justify-between gap-3">
+              <div class="flex flex-wrap gap-1.5 text-xs text-zinc-600 dark:text-neutral-400">
+                <span class="px-2 py-0.5 rounded bg-zinc-100 dark:bg-white/[0.04] text-[11px]">Python</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-100 dark:bg-white/[0.04] text-[11px]">Django</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-100 dark:bg-white/[0.04] text-[11px]">PostgreSQL</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <a href="https://learningspotltd.org/" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg text-zinc-600 dark:text-neutral-300 hover:text-black dark:hover:text-white" title="Open live web app">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
+                <button onclick="openProjectModal('learningspot')" class="px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-white/10 hover:bg-zinc-200 dark:hover:bg-white/20 text-xs font-medium">
+                  Case Study
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3: Petrox ERP -->
+        <div class="project-card group flex flex-col rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#141518] hover:border-zinc-300 dark:hover:border-white/20 transition-all p-4 sm:p-5 shadow-sm" data-category="enterprise">
+          <div class="relative aspect-video w-full rounded-xl overflow-hidden bg-zinc-100 dark:bg-neutral-900 border border-zinc-200 dark:border-white/5 cursor-pointer" onclick="openProjectModal('petrox')">
+            <img src="./assets/images/projects/petrox.png" alt="Petrox ERP" onerror="this.src='/src/assets/images/projects/petrox.png'" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-60"></div>
+            <div class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-black/75 backdrop-blur-md text-[11px] font-medium text-neutral-100 flex items-center gap-1.5">
+              <span class="text-emerald-400">✦</span>
+              <span>100% Tank Telemetry Reconciled</span>
+            </div>
+          </div>
+          <div class="flex flex-1 flex-col justify-between pt-5 space-y-4">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between text-xs text-zinc-500 dark:text-neutral-400">
+                <span class="text-emerald-600 dark:text-emerald-400 font-medium">Lead Full-Stack Developer</span>
+                <span class="font-mono">2024</span>
+              </div>
+              <h3 class="text-xl font-bold tracking-tight text-zinc-950 dark:text-white hover:text-emerald-600 transition-colors cursor-pointer" onclick="openProjectModal('petrox')">
+                Gas Station Management ERP (Petrox)
+              </h3>
+              <p class="text-sm text-zinc-600 dark:text-neutral-400 line-clamp-3">
+                A fuel station ERP streamlining underground tank sensor telemetry, pump sales transactions, inventory monitoring, attendant shifts, and financial auditing.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-zinc-100 dark:border-white/[0.06] flex items-center justify-between gap-3">
+              <div class="flex flex-wrap gap-1.5 text-xs text-zinc-600 dark:text-neutral-400">
+                <span class="px-2 py-0.5 rounded bg-zinc-100 dark:bg-white/[0.04] text-[11px]">Python</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-100 dark:bg-white/[0.04] text-[11px]">Django</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-100 dark:bg-white/[0.04] text-[11px]">PostgreSQL</span>
+              </div>
+              <button onclick="openProjectModal('petrox')" class="px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-white/10 hover:bg-zinc-200 dark:hover:bg-white/20 text-xs font-medium">
+                Case Study
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4: Sinoaf -->
+        <div class="project-card group flex flex-col rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#141518] hover:border-zinc-300 dark:hover:border-white/20 transition-all p-4 sm:p-5 shadow-sm" data-category="full-stack">
+          <div class="relative aspect-video w-full rounded-xl overflow-hidden bg-zinc-100 dark:bg-neutral-900 border border-zinc-200 dark:border-white/5 cursor-pointer" onclick="openProjectModal('sinoaf')">
+            <img src="./assets/images/projects/sinoaf.png" alt="Sinoaf E-Commerce" onerror="this.src='/src/assets/images/projects/sinoaf.png'" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-60"></div>
+            <div class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-black/75 backdrop-blur-md text-[11px] font-medium text-neutral-100 flex items-center gap-1.5">
+              <span class="text-emerald-400">✦</span>
+              <span>Multi-Currency Logistics RFQ</span>
+            </div>
+          </div>
+          <div class="flex flex-1 flex-col justify-between pt-5 space-y-4">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between text-xs text-zinc-500 dark:text-neutral-400">
+                <span class="text-emerald-600 dark:text-emerald-400 font-medium">Full-Stack Architect</span>
+                <span class="font-mono">2024</span>
+              </div>
+              <h3 class="text-xl font-bold tracking-tight text-zinc-950 dark:text-white hover:text-emerald-600 transition-colors cursor-pointer" onclick="openProjectModal('sinoaf')">
+                Sinoaf Global Sourcing & E-Commerce
+              </h3>
+              <p class="text-sm text-zinc-600 dark:text-neutral-400 line-clamp-3">
+                Cross-border sourcing and international procurement web platform with intelligent product discovery, supplier negotiation, automated RFQ quoting, and tracking.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-zinc-100 dark:border-white/[0.06] flex items-center justify-between gap-3">
+              <div class="flex flex-wrap gap-1.5 text-xs text-zinc-600 dark:text-neutral-400">
+                <span class="px-2 py-0.5 rounded bg-zinc-100 dark:bg-white/[0.04] text-[11px]">Python</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-100 dark:bg-white/[0.04] text-[11px]">Django</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-100 dark:bg-white/[0.04] text-[11px]">REST API</span>
+              </div>
+              <button onclick="openProjectModal('sinoaf')" class="px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-white/10 hover:bg-zinc-200 dark:hover:bg-white/20 text-xs font-medium">
+                Case Study
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 5: Cassie Posh Events -->
+        <div class="project-card group flex flex-col rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#141518] hover:border-zinc-300 dark:hover:border-white/20 transition-all p-4 sm:p-5 shadow-sm" data-category="client">
+          <div class="relative aspect-video w-full rounded-xl overflow-hidden bg-zinc-100 dark:bg-neutral-900 border border-zinc-200 dark:border-white/5 cursor-pointer" onclick="openProjectModal('cassieposh')">
+            <img src="./assets/images/projects/cassieposh.png" alt="Cassie Posh Events" onerror="this.src='/src/assets/images/projects/cassieposh.png'" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-60"></div>
+            <div class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-black/75 backdrop-blur-md text-[11px] font-medium text-neutral-100 flex items-center gap-1.5">
+              <span class="text-emerald-400">✦</span>
+              <span>200+ Monthly Inquiries</span>
+            </div>
+          </div>
+          <div class="flex flex-1 flex-col justify-between pt-5 space-y-4">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between text-xs text-zinc-500 dark:text-neutral-400">
+                <span class="text-emerald-600 dark:text-emerald-400 font-medium">Lead Web Developer</span>
+                <span class="font-mono">2024</span>
+              </div>
+              <h3 class="text-xl font-bold tracking-tight text-zinc-950 dark:text-white hover:text-emerald-600 transition-colors cursor-pointer" onclick="openProjectModal('cassieposh')">
+                Cassie Posh Luxury Events
+              </h3>
+              <p class="text-sm text-zinc-600 dark:text-neutral-400 line-clamp-3">
+                An elegant bespoke event management platform to showcase services, enable luxury booking inquiries, and deliver streamlined client communication.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-zinc-100 dark:border-white/[0.06] flex items-center justify-between gap-3">
+              <div class="flex flex-wrap gap-1.5 text-xs text-zinc-600 dark:text-neutral-400">
+                <span class="px-2 py-0.5 rounded bg-zinc-100 dark:bg-white/[0.04] text-[11px]">Python</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-100 dark:bg-white/[0.04] text-[11px]">Django</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-100 dark:bg-white/[0.04] text-[11px]">Tailwind</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <a href="https://cassieposhevents.com/" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg text-zinc-600 dark:text-neutral-300 hover:text-black dark:hover:text-white" title="Open live website">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
+                <button onclick="openProjectModal('cassieposh')" class="px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-white/10 hover:bg-zinc-200 dark:hover:bg-white/20 text-xs font-medium">
+                  Details
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 6: Nysha Salon -->
+        <div class="project-card group flex flex-col rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#141518] hover:border-zinc-300 dark:hover:border-white/20 transition-all p-4 sm:p-5 shadow-sm" data-category="client">
+          <div class="relative aspect-video w-full rounded-xl overflow-hidden bg-zinc-100 dark:bg-neutral-900 border border-zinc-200 dark:border-white/5 cursor-pointer" onclick="openProjectModal('nysha')">
+            <img src="./assets/images/projects/nyshahairsalon.png" alt="Nysha Hair Salon" onerror="this.src='/src/assets/images/projects/nyshahairsalon.png'" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-60"></div>
+            <div class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-black/75 backdrop-blur-md text-[11px] font-medium text-neutral-100 flex items-center gap-1.5">
+              <span class="text-emerald-400">✦</span>
+              <span>-60% Booking Friction</span>
+            </div>
+          </div>
+          <div class="flex flex-1 flex-col justify-between pt-5 space-y-4">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between text-xs text-zinc-500 dark:text-neutral-400">
+                <span class="text-emerald-600 dark:text-emerald-400 font-medium">Full-Stack Developer</span>
+                <span class="font-mono">2024</span>
+              </div>
+              <h3 class="text-xl font-bold tracking-tight text-zinc-950 dark:text-white hover:text-emerald-600 transition-colors cursor-pointer" onclick="openProjectModal('nysha')">
+                Nysha Hair Salon Booking System
+              </h3>
+              <p class="text-sm text-zinc-600 dark:text-neutral-400 line-clamp-3">
+                Modern appointment booking and service discovery web application for a premier hair and beauty studio, featuring calendar management and automated customer confirmations.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-zinc-100 dark:border-white/[0.06] flex items-center justify-between gap-3">
+              <div class="flex flex-wrap gap-1.5 text-xs text-zinc-600 dark:text-neutral-400">
+                <span class="px-2 py-0.5 rounded bg-zinc-100 dark:bg-white/[0.04] text-[11px]">React</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-100 dark:bg-white/[0.04] text-[11px]">Python</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-100 dark:bg-white/[0.04] text-[11px]">Django</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <a href="https://nysha-frontend.onrender.com/" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg text-zinc-600 dark:text-neutral-300 hover:text-black dark:hover:text-white" title="Open live web app">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
+                <button onclick="openProjectModal('nysha')" class="px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-white/10 hover:bg-zinc-200 dark:hover:bg-white/20 text-xs font-medium">
+                  Details
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Experience Section (Hythym Timeline) -->
+  <section id="experience" class="py-20 sm:py-28 border-t border-zinc-200 dark:border-white/[0.08] relative">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      
+      <div class="space-y-3 mb-16">
+        <div class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-neutral-400">
+          <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+          <span>Career & Milestones</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-zinc-950 dark:text-white">
+          Engineering experience
+        </h2>
+        <p class="text-base text-zinc-600 dark:text-neutral-400 max-w-xl">
+          A progression of technical responsibility from hands-on software development to steering technology leadership at scale.
+        </p>
+      </div>
+
+      <div class="space-y-8">
+        
+        <!-- Experience 1: CTO -->
+        <div class="rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#141518] p-6 sm:p-8 shadow-sm">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-5 border-b border-zinc-100 dark:border-white/5">
+            <div>
+              <h3 class="text-xl font-bold text-zinc-950 dark:text-white tracking-tight">Chief Technology Officer (CTO)</h3>
+              <div class="flex items-center gap-2 text-sm text-zinc-500 dark:text-neutral-400 font-medium">
+                <span class="text-emerald-600 dark:text-emerald-400 font-semibold">LearningSpot Ltd</span>
+                <span>·</span>
+                <span>Kigali, Rwanda</span>
+              </div>
+            </div>
+            <div class="px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-white/[0.04] border border-zinc-200 dark:border-white/[0.06] text-xs font-mono text-zinc-700 dark:text-neutral-300 self-start md:self-auto">
+              Apr 2025 – Present
+            </div>
+          </div>
+          <div class="pt-5 space-y-4">
+            <p class="text-sm sm:text-base text-zinc-700 dark:text-neutral-300 leading-relaxed">
+              Steering the overarching technological vision, engineering execution, and system reliability of LearningSpot's education software.
+            </p>
+            <ul class="space-y-2 text-xs sm:text-sm text-zinc-600 dark:text-neutral-400">
+              <li class="flex items-start gap-2.5">
+                <span class="text-emerald-500">✓</span>
+                <span>Architected backend microservices and relational data schemas using Python and Django, sustaining rapid user growth.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-emerald-500">✓</span>
+                <span>Established strict code quality benchmarks, CI/CD pipelines, and automated test coverage across development teams.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-emerald-500">✓</span>
+                <span>Spearheaded data security protocols and role-based access controls to safeguard sensitive student and institutional records.</span>
+              </li>
+            </ul>
+            <div class="pt-3 flex flex-wrap gap-1.5">
+              <span class="px-2.5 py-1 rounded-md bg-zinc-100 dark:bg-white/[0.03] border border-zinc-200 dark:border-white/[0.06] text-xs font-medium text-zinc-700 dark:text-neutral-300">Python</span>
+              <span class="px-2.5 py-1 rounded-md bg-zinc-100 dark:bg-white/[0.03] border border-zinc-200 dark:border-white/[0.06] text-xs font-medium text-zinc-700 dark:text-neutral-300">Django</span>
+              <span class="px-2.5 py-1 rounded-md bg-zinc-100 dark:bg-white/[0.03] border border-zinc-200 dark:border-white/[0.06] text-xs font-medium text-zinc-700 dark:text-neutral-300">PostgreSQL</span>
+              <span class="px-2.5 py-1 rounded-md bg-zinc-100 dark:bg-white/[0.03] border border-zinc-200 dark:border-white/[0.06] text-xs font-medium text-zinc-700 dark:text-neutral-300">System Architecture</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Experience 2: Full-Stack Dev -->
+        <div class="rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#141518] p-6 sm:p-8 shadow-sm">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-5 border-b border-zinc-100 dark:border-white/5">
+            <div>
+              <h3 class="text-xl font-bold text-zinc-950 dark:text-white tracking-tight">Full-Stack Developer</h3>
+              <div class="flex items-center gap-2 text-sm text-zinc-500 dark:text-neutral-400 font-medium">
+                <span class="text-emerald-600 dark:text-emerald-400 font-semibold">LearningSpot Ltd</span>
+                <span>·</span>
+                <span>Kigali, Rwanda</span>
+              </div>
+            </div>
+            <div class="px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-white/[0.04] border border-zinc-200 dark:border-white/[0.06] text-xs font-mono text-zinc-700 dark:text-neutral-300 self-start md:self-auto">
+              Oct 2024 – Apr 2025
+            </div>
+          </div>
+          <div class="pt-5 space-y-4">
+            <p class="text-sm sm:text-base text-zinc-700 dark:text-neutral-300 leading-relaxed">
+              Designed and engineered the end-to-end web architecture, interactive student portal, and core database mechanisms.
+            </p>
+            <ul class="space-y-2 text-xs sm:text-sm text-zinc-600 dark:text-neutral-400">
+              <li class="flex items-start gap-2.5">
+                <span class="text-emerald-500">✓</span>
+                <span>Developed responsive frontend modules and robust RESTful APIs connecting student interfaces to core databases.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-emerald-500">✓</span>
+                <span>Optimized query performance and database indexing, cutting typical response latency by 45%.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Experience 3: Diolichat Intern -->
+        <div class="rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#141518] p-6 sm:p-8 shadow-sm">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-5 border-b border-zinc-100 dark:border-white/5">
+            <div>
+              <h3 class="text-xl font-bold text-zinc-950 dark:text-white tracking-tight">Software Developer Intern</h3>
+              <div class="flex items-center gap-2 text-sm text-zinc-500 dark:text-neutral-400 font-medium">
+                <span class="text-emerald-600 dark:text-emerald-400 font-semibold">Diolichat</span>
+                <span>·</span>
+                <span>Hybrid / Remote</span>
+              </div>
+            </div>
+            <div class="px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-white/[0.04] border border-zinc-200 dark:border-white/[0.06] text-xs font-mono text-zinc-700 dark:text-neutral-300 self-start md:self-auto">
+              Jan 2024 – Apr 2024
+            </div>
+          </div>
+          <div class="pt-5 space-y-4">
+            <p class="text-sm sm:text-base text-zinc-700 dark:text-neutral-300 leading-relaxed">
+              Developed and optimized backend functionalities using Django and REST Framework, ensuring scalable message queuing.
+            </p>
+          </div>
+        </div>
+
+        <!-- Experience 4: Education -->
+        <div class="rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#141518] p-6 sm:p-8 shadow-sm">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-5 border-b border-zinc-100 dark:border-white/5">
+            <div>
+              <h3 class="text-xl font-bold text-zinc-950 dark:text-white tracking-tight">B.Sc. in Information Technology — Software Engineering</h3>
+              <div class="flex items-center gap-2 text-sm text-zinc-500 dark:text-neutral-400 font-medium">
+                <span class="text-emerald-600 dark:text-emerald-400 font-semibold">Adventist University of Central Africa (AUCA)</span>
+                <span>·</span>
+                <span>Kigali, Rwanda</span>
+              </div>
+            </div>
+            <div class="px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-white/[0.04] border border-zinc-200 dark:border-white/[0.06] text-xs font-mono text-zinc-700 dark:text-neutral-300 self-start md:self-auto">
+              2021 – 2025
+            </div>
+          </div>
+          <div class="pt-5 space-y-4">
+            <p class="text-sm sm:text-base text-zinc-700 dark:text-neutral-300 leading-relaxed">
+              Completed rigorous coursework covering Algorithms, Distributed Computing, Database Engineering, and Applied Artificial Intelligence.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Skills & Languages Bento -->
+  <section id="skills" class="py-20 sm:py-28 border-t border-zinc-200 dark:border-white/[0.08] relative">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      
+      <div class="space-y-3 mb-16">
+        <div class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-neutral-400">
+          <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+          <span>Technical Mastery</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-zinc-950 dark:text-white">
+          Skills & technical stack
+        </h2>
+        <p class="text-base text-zinc-600 dark:text-neutral-400 max-w-xl">
+          A comprehensive overview of programming languages, frameworks, cloud tooling, and machine learning libraries.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+        
+        <!-- Category 1 -->
+        <div class="rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#141518] p-6 sm:p-7 shadow-sm">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="text-xl font-bold text-zinc-950 dark:text-white">Backend & Systems</h3>
+            <span class="font-mono text-xs text-zinc-400">01</span>
+          </div>
+          <p class="text-xs sm:text-sm text-zinc-600 dark:text-neutral-400 mb-6">
+            High-reliability architectures, server logic, and robust APIs
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-zinc-100 dark:bg-white/10 border border-zinc-300 dark:border-white/20 text-zinc-900 dark:text-white">Python</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-zinc-100 dark:bg-white/10 border border-zinc-300 dark:border-white/20 text-zinc-900 dark:text-white">Django</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-zinc-100 dark:bg-white/10 border border-zinc-300 dark:border-white/20 text-zinc-900 dark:text-white">Django REST</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-zinc-50 dark:bg-white/[0.03] border border-zinc-200 dark:border-white/5 text-zinc-700 dark:text-neutral-300">Node.js</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-zinc-50 dark:bg-white/[0.03] border border-zinc-200 dark:border-white/5 text-zinc-700 dark:text-neutral-300">C / C#</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-zinc-50 dark:bg-white/[0.03] border border-zinc-200 dark:border-white/5 text-zinc-700 dark:text-neutral-300">Java</span>
+          </div>
+        </div>
+
+        <!-- Category 2 -->
+        <div class="rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#141518] p-6 sm:p-7 shadow-sm">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="text-xl font-bold text-zinc-950 dark:text-white">Frontend Engineering</h3>
+            <span class="font-mono text-xs text-zinc-400">02</span>
+          </div>
+          <p class="text-xs sm:text-sm text-zinc-600 dark:text-neutral-400 mb-6">
+            Fast, accessible, and responsive user experiences
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-zinc-100 dark:bg-white/10 border border-zinc-300 dark:border-white/20 text-zinc-900 dark:text-white">JavaScript (ES6+)</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-zinc-100 dark:bg-white/10 border border-zinc-300 dark:border-white/20 text-zinc-900 dark:text-white">TypeScript</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-zinc-100 dark:bg-white/10 border border-zinc-300 dark:border-white/20 text-zinc-900 dark:text-white">React</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-zinc-100 dark:bg-white/10 border border-zinc-300 dark:border-white/20 text-zinc-900 dark:text-white">Tailwind CSS</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-zinc-50 dark:bg-white/[0.03] border border-zinc-200 dark:border-white/5 text-zinc-700 dark:text-neutral-300">HTML5 & CSS3</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-zinc-50 dark:bg-white/[0.03] border border-zinc-200 dark:border-white/5 text-zinc-700 dark:text-neutral-300">Figma UI/UX</span>
+          </div>
+        </div>
+
+        <!-- Category 3 -->
+        <div class="rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#141518] p-6 sm:p-7 shadow-sm">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="text-xl font-bold text-zinc-950 dark:text-white">Data Science & Applied AI</h3>
+            <span class="font-mono text-xs text-zinc-400">03</span>
+          </div>
+          <p class="text-xs sm:text-sm text-zinc-600 dark:text-neutral-400 mb-6">
+            Machine learning models and intelligent data processing
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-zinc-100 dark:bg-white/10 border border-zinc-300 dark:border-white/20 text-zinc-900 dark:text-white">Scikit-Learn</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-zinc-100 dark:bg-white/10 border border-zinc-300 dark:border-white/20 text-zinc-900 dark:text-white">Pandas</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-zinc-100 dark:bg-white/10 border border-zinc-300 dark:border-white/20 text-zinc-900 dark:text-white">NumPy</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-zinc-50 dark:bg-white/[0.03] border border-zinc-200 dark:border-white/5 text-zinc-700 dark:text-neutral-300">TensorFlow</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-zinc-50 dark:bg-white/[0.03] border border-zinc-200 dark:border-white/5 text-zinc-700 dark:text-neutral-300">Data Pipelines</span>
+          </div>
+        </div>
+
+        <!-- Category 4 -->
+        <div class="rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#141518] p-6 sm:p-7 shadow-sm">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="text-xl font-bold text-zinc-950 dark:text-white">Databases & DevOps</h3>
+            <span class="font-mono text-xs text-zinc-400">04</span>
+          </div>
+          <p class="text-xs sm:text-sm text-zinc-600 dark:text-neutral-400 mb-6">
+            Scalable storage, containerization, and cloud deployment
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-zinc-100 dark:bg-white/10 border border-zinc-300 dark:border-white/20 text-zinc-900 dark:text-white">PostgreSQL</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-zinc-100 dark:bg-white/10 border border-zinc-300 dark:border-white/20 text-zinc-900 dark:text-white">MySQL</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-zinc-100 dark:bg-white/10 border border-zinc-300 dark:border-white/20 text-zinc-900 dark:text-white">Docker</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-zinc-50 dark:bg-white/[0.03] border border-zinc-200 dark:border-white/5 text-zinc-700 dark:text-neutral-300">Git & GitHub</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-zinc-50 dark:bg-white/[0.03] border border-zinc-200 dark:border-white/5 text-zinc-700 dark:text-neutral-300">Linux</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-zinc-50 dark:bg-white/[0.03] border border-zinc-200 dark:border-white/5 text-zinc-700 dark:text-neutral-300">Render / Vercel</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Multilingual Section -->
+      <div class="mt-8 rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#141518] p-6 sm:p-8 shadow-sm">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-lg font-bold text-zinc-950 dark:text-white">Spoken Languages & Global Fluency</h3>
+          <span class="text-xs font-mono text-zinc-500 dark:text-neutral-400">Multilingual</span>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+          <div class="p-4 rounded-xl bg-zinc-50 dark:bg-white/[0.03] border border-zinc-200 dark:border-white/5">
+            <span class="text-sm font-semibold text-zinc-950 dark:text-white">French</span>
+            <span class="text-xs text-emerald-600 dark:text-emerald-400 block mt-1 font-medium">Native</span>
+          </div>
+          <div class="p-4 rounded-xl bg-zinc-50 dark:bg-white/[0.03] border border-zinc-200 dark:border-white/5">
+            <span class="text-sm font-semibold text-zinc-950 dark:text-white">English</span>
+            <span class="text-xs text-emerald-600 dark:text-emerald-400 block mt-1 font-medium">Professional</span>
+          </div>
+          <div class="p-4 rounded-xl bg-zinc-50 dark:bg-white/[0.03] border border-zinc-200 dark:border-white/5">
+            <span class="text-sm font-semibold text-zinc-950 dark:text-white">Swahili</span>
+            <span class="text-xs text-emerald-600 dark:text-emerald-400 block mt-1 font-medium">Conversational</span>
+          </div>
+          <div class="p-4 rounded-xl bg-zinc-50 dark:bg-white/[0.03] border border-zinc-200 dark:border-white/5">
+            <span class="text-sm font-semibold text-zinc-950 dark:text-white">Lingala</span>
+            <span class="text-xs text-emerald-600 dark:text-emerald-400 block mt-1 font-medium">Fluent</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="py-20 sm:py-28 border-t border-zinc-200 dark:border-white/[0.08] relative">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      
+      <div class="space-y-3 mb-16">
+        <div class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-neutral-400">
+          <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+          <span>Past Comments</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-zinc-950 dark:text-white">
+          What collaborators say
+        </h2>
+        <p class="text-base text-zinc-600 dark:text-neutral-400 max-w-xl">
+          Things that linger in my past co-workers and clients' minds after building together.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+        
+        <div class="rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#141518] p-6 sm:p-8 space-y-6 shadow-sm">
+          <p class="text-base sm:text-lg text-zinc-800 dark:text-neutral-200 leading-relaxed italic">
+            "Ariel brings a rare combination of architectural foresight and hands-on speed. Under his technical leadership, our platform evolved from a prototype into a high-concurrency educational system trusted by thousands."
+          </p>
+          <div class="pt-4 border-t border-zinc-100 dark:border-white/5">
+            <h4 class="text-sm font-semibold text-zinc-950 dark:text-white">Dr. Clement Habimana</h4>
+            <p class="text-xs text-zinc-500 dark:text-neutral-400">Managing Director · LearningSpot Ltd</p>
+          </div>
+        </div>
+
+        <div class="rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#141518] p-6 sm:p-8 space-y-6 shadow-sm">
+          <p class="text-base sm:text-lg text-zinc-800 dark:text-neutral-200 leading-relaxed italic">
+            "Ariel is the developer you want leading your mission-critical code. He has an eagle eye for edge cases, performance bottlenecks, and database integrity that saves entire teams weeks of debugging."
+          </p>
+          <div class="pt-4 border-t border-zinc-100 dark:border-white/5">
+            <h4 class="text-sm font-semibold text-zinc-950 dark:text-white">Marc Ndayambaje</h4>
+            <p class="text-xs text-zinc-500 dark:text-neutral-400">Lead Systems Architect · East African Tech Alliance</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-20 sm:py-28 border-t border-zinc-200 dark:border-white/[0.08] relative">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      
+      <div class="space-y-3 mb-16">
+        <div class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-neutral-400">
+          <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+          <span>Personal Narrative</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-zinc-950 dark:text-white">
+          About Ariel
+        </h2>
+        <p class="text-base text-zinc-600 dark:text-neutral-400 max-w-xl">
+          Passionate about engineering systems that solve tangible problems across education, governance, and commerce.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div class="lg:col-span-7 space-y-6 text-zinc-700 dark:text-neutral-300 leading-relaxed text-base sm:text-lg">
+          <p>
+            I am a Software Engineer and current Chief Technology Officer at LearningSpot Ltd. My career has focused on architecting resilient, production-grade applications that pair robust backend engineering with intuitive, responsive interfaces.
+          </p>
+          <p>
+            From building national-scale cadastral land titling systems (DLRMS) in Central Africa to scaling real-time educational portals handling tens of thousands of active learners, I believe in software that directly empowers people and streamlines critical operations.
+          </p>
+          <div class="pt-4 flex flex-wrap gap-4">
+            <button onclick="openResumeModal()" class="px-5 py-2.5 rounded-lg bg-zinc-900 dark:bg-white text-white dark:text-black font-semibold text-sm hover:bg-zinc-800 dark:hover:bg-neutral-200 transition-colors shadow-sm">
+              Read Full Resume
+            </button>
+            <a href="#contact" class="px-5 py-2.5 rounded-lg border border-zinc-300 dark:border-white/15 bg-white dark:bg-white/[0.04] text-zinc-800 dark:text-neutral-200 text-sm hover:bg-zinc-100 dark:hover:bg-white/10 transition-colors">
+              Send a Message
+            </a>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#141518] p-6 sm:p-7 space-y-4 shadow-sm">
+          <h3 class="text-base font-bold text-zinc-950 dark:text-white pb-2 border-b border-zinc-100 dark:border-white/5">
+            Interests & Technology Frontiers
+          </h3>
+          <ul class="space-y-2.5 text-xs sm:text-sm text-zinc-700 dark:text-neutral-300">
+            <li class="flex items-center gap-2"><span>✦</span> Applied Machine Learning & Data Science</li>
+            <li class="flex items-center gap-2"><span>✦</span> Decentralized Systems & Blockchain Architecture</li>
+            <li class="flex items-center gap-2"><span>✦</span> Ecology & Sustainable Climate Tech</li>
+            <li class="flex items-center gap-2"><span>✦</span> Cloud Computing & Distributed Databases</li>
+            <li class="flex items-center gap-2"><span>✦</span> Human-Centered UX Engineering</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-20 sm:py-28 border-t border-zinc-200 dark:border-white/[0.08] relative">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      
+      <div class="space-y-3 mb-16 text-center max-w-2xl mx-auto">
+        <div class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-neutral-400">
+          <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+          <span>Get In Touch</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-zinc-950 dark:text-white">
+          Let's build something exceptional
+        </h2>
+        <p class="text-base text-zinc-600 dark:text-neutral-400">
+          Have an engineering challenge, full-time opportunity, or system you want to scale? I would love to hear from you.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        
+        <!-- Direct Channels -->
+        <div class="lg:col-span-5 rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#141518] p-6 sm:p-8 space-y-6 shadow-sm">
+          <h3 class="text-xl font-bold text-zinc-950 dark:text-white">Direct Channels</h3>
+          
+          <div class="space-y-4">
+            <!-- Email -->
+            <div class="p-4 rounded-xl bg-zinc-50 dark:bg-white/[0.03] border border-zinc-200 dark:border-white/5 flex items-center justify-between">
+              <div>
+                <span class="text-[11px] uppercase tracking-wider text-zinc-500 dark:text-neutral-400 block">Email</span>
+                <a href="mailto:arielaganze@gmail.com" class="text-sm font-semibold text-zinc-950 dark:text-white hover:text-emerald-500">arielaganze@gmail.com</a>
+              </div>
+              <button onclick="copyToClipboard('arielaganze@gmail.com', this)" class="p-2 text-xs text-zinc-500 hover:text-black dark:hover:text-white font-medium">Copy</button>
+            </div>
+
+            <!-- Phone -->
+            <div class="p-4 rounded-xl bg-zinc-50 dark:bg-white/[0.03] border border-zinc-200 dark:border-white/5 flex items-center justify-between">
+              <div>
+                <span class="text-[11px] uppercase tracking-wider text-zinc-500 dark:text-neutral-400 block">Phone / WhatsApp</span>
+                <a href="tel:+250790003977" class="text-sm font-semibold text-zinc-950 dark:text-white hover:text-emerald-500">+250 790 003 977</a>
+              </div>
+              <button onclick="copyToClipboard('+250 790 003 977', this)" class="p-2 text-xs text-zinc-500 hover:text-black dark:hover:text-white font-medium">Copy</button>
+            </div>
+
+            <!-- Location -->
+            <div class="p-4 rounded-xl bg-zinc-50 dark:bg-white/[0.03] border border-zinc-200 dark:border-white/5">
+              <span class="text-[11px] uppercase tracking-wider text-zinc-500 dark:text-neutral-400 block">Base</span>
+              <span class="text-sm font-semibold text-zinc-950 dark:text-white">On site and remote</span>
+            </div>
+          </div>
+
+          <div class="pt-4 border-t border-zinc-100 dark:border-white/5 flex items-center gap-3">
+            <a href="https://www.linkedin.com/in/aganze-kulimushi-ariel-02295a256/" target="_blank" rel="noopener noreferrer" class="px-3 py-2 rounded-lg bg-zinc-100 dark:bg-white/[0.04] border border-zinc-200 dark:border-white/10 text-xs font-medium text-zinc-800 dark:text-white hover:border-zinc-400">
+              LinkedIn
+            </a>
+            <a href="https://github.com/Ariel-Aganze/" target="_blank" rel="noopener noreferrer" class="px-3 py-2 rounded-lg bg-zinc-100 dark:bg-white/[0.04] border border-zinc-200 dark:border-white/10 text-xs font-medium text-zinc-800 dark:text-white hover:border-zinc-400">
+              GitHub
+            </a>
+          </div>
+        </div>
+
+        <!-- Form -->
+        <div class="lg:col-span-7 rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#141518] p-6 sm:p-8 shadow-sm">
+          <h3 class="text-xl font-bold text-zinc-950 dark:text-white mb-2">Send a Direct Message</h3>
+          <p class="text-sm text-zinc-600 dark:text-neutral-400 mb-6">Fill in your details below and I will get back to you promptly.</p>
+          
+          <form id="contact-form" onsubmit="handleContactSubmit(event)" class="space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="text-xs font-medium text-zinc-700 dark:text-neutral-300 block mb-1">Your Name</label>
+                <input type="text" id="form-name" required placeholder="Alex Morgan" class="w-full px-4 py-2.5 rounded-lg bg-zinc-50 dark:bg-white/[0.03] border border-zinc-200 dark:border-white/10 text-sm text-zinc-950 dark:text-white focus:outline-none focus:border-zinc-400" />
+              </div>
+              <div>
+                <label class="text-xs font-medium text-zinc-700 dark:text-neutral-300 block mb-1">Email Address</label>
+                <input type="email" id="form-email" required placeholder="alex@company.com" class="w-full px-4 py-2.5 rounded-lg bg-zinc-50 dark:bg-white/[0.03] border border-zinc-200 dark:border-white/10 text-sm text-zinc-950 dark:text-white focus:outline-none focus:border-zinc-400" />
+              </div>
+            </div>
+
+            <div>
+              <label class="text-xs font-medium text-zinc-700 dark:text-neutral-300 block mb-1">Subject</label>
+              <input type="text" id="form-subject" required placeholder="Full-Stack Engineering / CTO Leadership" class="w-full px-4 py-2.5 rounded-lg bg-zinc-50 dark:bg-white/[0.03] border border-zinc-200 dark:border-white/10 text-sm text-zinc-950 dark:text-white focus:outline-none focus:border-zinc-400" />
+            </div>
+
+            <div>
+              <label class="text-xs font-medium text-zinc-700 dark:text-neutral-300 block mb-1">Message</label>
+              <textarea id="form-message" required rows="4" placeholder="Describe your project, team goals, or timeline..." class="w-full px-4 py-2.5 rounded-lg bg-zinc-50 dark:bg-white/[0.03] border border-zinc-200 dark:border-white/10 text-sm text-zinc-950 dark:text-white focus:outline-none focus:border-zinc-400 resize-none"></textarea>
+            </div>
+
+            <button type="submit" class="w-full py-3 px-6 rounded-lg bg-zinc-900 dark:bg-white text-white dark:text-black font-semibold text-sm hover:bg-zinc-800 dark:hover:bg-neutral-200 transition-all shadow-sm">
+              Send Message
+            </button>
+          </form>
+
+          <div id="contact-success" class="hidden p-6 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-center space-y-2">
+            <h4 class="text-base font-bold text-zinc-950 dark:text-white">Message Dispatched!</h4>
+            <p class="text-xs text-zinc-600 dark:text-neutral-300">Thank you. Your message has been noted. You can also write directly to <a href="mailto:arielaganze@gmail.com" class="text-emerald-500 underline font-medium">arielaganze@gmail.com</a>.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-zinc-200 dark:border-white/[0.08] bg-zinc-50 dark:bg-[#0c0d10] py-12 text-zinc-500 dark:text-neutral-400 text-xs">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        &copy; 2026 Aganze Kulimushi Ariel. All rights reserved.
+      </div>
+      <div class="flex items-center gap-4">
+        <span>Available for engineering & advisory</span>
+        <span>·</span>
+        <!-- <span class="font-mono">Kigali · UTC+2</span> -->
+      </div>
+    </div>
+  </footer>
+
+  <!-- Resume Modal -->
+  <div id="resume-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-md">
+    <div class="fixed inset-0" onclick="closeResumeModal()"></div>
+    <div class="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-2xl border border-zinc-200 dark:border-white/20 bg-white dark:bg-[#121316] shadow-2xl z-10 p-6 sm:p-8 text-zinc-800 dark:text-neutral-200 space-y-6 modal-animate">
+      
+      <div class="flex items-center justify-between pb-4 border-b border-zinc-200 dark:border-white/10">
+        <h2 class="text-xl font-bold text-zinc-950 dark:text-white">Curriculum Vitae / Resume</h2>
+        <div class="flex items-center gap-2">
+          <!-- <button onclick="window.print()" class="px-3 py-1.5 rounded-lg border border-zinc-300 dark:border-white/20 text-xs">Print</button> -->
+          <button onclick="closeResumeModal()" class="p-1 text-zinc-500 hover:text-black dark:hover:text-white">✕</button>
+        </div>
+      </div>
+
+      <div>
+        <h1 class="text-2xl font-bold text-zinc-950 dark:text-white">Aganze Kulimushi Ariel</h1>
+        <p class="text-emerald-600 dark:text-emerald-400 text-sm font-semibold">Chief Technology Officer & Software Engineer</p>
+        <p class="text-xs text-zinc-500 dark:text-neutral-400 mt-1"> · arielaganze@gmail.com · +250 790 003 977</p>
+      </div>
+
+      <div class="space-y-2 text-xs sm:text-sm">
+        <h3 class="font-bold text-xs uppercase tracking-wider text-zinc-500 dark:text-neutral-400">Professional Summary</h3>
+        <p class="text-zinc-600 dark:text-neutral-300">
+          Software Engineer with 4+ years of experience in full-stack architecture, relational database engineering, and applied machine learning. Proven success directing technical teams, deploying high-concurrency systems, and building digital public infrastructure.
+        </p>
+      </div>
+
+      <div class="space-y-3 text-xs sm:text-sm">
+        <h3 class="font-bold text-xs uppercase tracking-wider text-zinc-500 dark:text-neutral-400">Experience</h3>
+        <div>
+          <div class="flex justify-between font-bold text-zinc-950 dark:text-white">
+            <span>Chief Technology Officer — LearningSpot Ltd</span>
+            <span class="font-mono text-xs">2025 – Present</span>
+          </div>
+          <p class="text-zinc-600 dark:text-neutral-400 text-xs">Directed platform engineering, Django microservices, and database optimizations for 10,000+ active learners.</p>
+        </div>
+        <div>
+          <div class="flex justify-between font-bold text-zinc-950 dark:text-white">
+            <span>Full-Stack Developer — LearningSpot Ltd</span>
+            <span class="font-mono text-xs">2024 – 2025</span>
+          </div>
+          <p class="text-zinc-600 dark:text-neutral-400 text-xs">Engineered interactive course delivery and authentication backend with Python, Django, and MySQL.</p>
+        </div>
+        <div>
+          <div class="flex justify-between font-bold text-zinc-950 dark:text-white">
+            <span>B.Sc. Software Engineering — AUCA</span>
+            <span class="font-mono text-xs">2021 – 2025</span>
+          </div>
+          <p class="text-zinc-600 dark:text-neutral-400 text-xs">Adventist University of Central Africa (Kigali, Rwanda).</p>
+        </div>
+      </div>
+
+      <div class="pt-4 border-t border-zinc-200 dark:border-white/10 flex justify-end">
+        <button onclick="closeResumeModal()" class="px-4 py-2 rounded-lg bg-zinc-900 dark:bg-white text-white dark:text-black text-xs font-semibold">Close</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Interactive Project Modal (for case studies) -->
+  <div id="project-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-md">
+    <div class="fixed inset-0" onclick="closeProjectModal()"></div>
+    <div class="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl border border-zinc-200 dark:border-white/20 bg-white dark:bg-[#141518] shadow-2xl z-10 p-6 sm:p-8 space-y-4 modal-animate">
+      <div class="flex justify-between items-center pb-3 border-b border-zinc-200 dark:border-white/10">
+        <span id="pm-badge" class="text-xs text-emerald-500 font-mono">Case Study</span>
+        <button onclick="closeProjectModal()" class="text-zinc-400 hover:text-black dark:hover:text-white">✕</button>
+      </div>
+      <img id="pm-img" src="" alt="Project" class="w-full aspect-video rounded-xl object-cover bg-neutral-900" />
+      <h3 id="pm-title" class="text-2xl font-bold text-zinc-950 dark:text-white"></h3>
+      <p id="pm-desc" class="text-sm text-zinc-600 dark:text-neutral-300 leading-relaxed"></p>
+      <div id="pm-tags" class="flex flex-wrap gap-1.5 pt-2"></div>
+      <div class="pt-4 border-t border-zinc-200 dark:border-white/10 flex justify-end">
+        <button onclick="closeProjectModal()" class="px-4 py-2 rounded-lg bg-zinc-900 dark:bg-white text-white dark:text-black text-xs font-semibold">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript for Theme Toggle, Modals, Rotating Text, Filtering, Copying -->
+  <script>
+    // Theme Toggle Logic
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const htmlElem = document.documentElement;
+
+    function initTheme() {
+      const savedTheme = localStorage.getItem('portfolio-theme');
+      if (savedTheme === 'light') {
+        htmlElem.classList.remove('dark');
+      } else {
+        htmlElem.classList.add('dark');
+      }
+    }
+
+    themeToggleBtn.addEventListener('click', () => {
+      const isDark = htmlElem.classList.contains('dark');
+      if (isDark) {
+        htmlElem.classList.remove('dark');
+        localStorage.setItem('portfolio-theme', 'light');
+      } else {
+        htmlElem.classList.add('dark');
+        localStorage.setItem('portfolio-theme', 'dark');
+      }
+    });
+
+    initTheme();
+
+    // Mobile Menu
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    function closeMobileMenu() {
+      mobileMenu.classList.add('hidden');
+    }
+
+    // Headline Word Rotator
+    const rotatingPhrases = [
+      "fast, scalable web experiences.",
+      "production-grade AI systems.",
+      "robust cloud architectures.",
+      "intuitive digital products."
+    ];
+    let phraseIdx = 0;
+    const headlineElem = document.getElementById('headline-rotating');
+
+    setInterval(() => {
+      phraseIdx = (phraseIdx + 1) % rotatingPhrases.length;
+      headlineElem.style.opacity = '0';
+      setTimeout(() => {
+        headlineElem.textContent = rotatingPhrases[phraseIdx];
+        headlineElem.style.opacity = '1';
+      }, 200);
+    }, 3200);
+
+    // Project Filtering
+    function filterProjects(category) {
+      const buttons = document.querySelectorAll('.project-filter-btn');
+      buttons.forEach(btn => {
+        if (btn.getAttribute('data-filter') === category) {
+          btn.className = 'project-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-white dark:bg-white text-black shadow-sm';
         } else {
-            // Check system preference
-            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            html.classList.toggle('dark', systemPrefersDark);
+          btn.className = 'project-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-medium text-zinc-600 dark:text-neutral-400 hover:text-black dark:hover:text-white';
         }
-        
-        // Toggle theme on button click
-        themeToggle.addEventListener('click', () => {
-            html.classList.toggle('dark');
-            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
-        });
-        
-        // Mobile menu toggle
-        const mobileMenuButton = document.querySelector('#mobile-menu-button');
-        const mobileMenu = document.querySelector('#mobile-menu');
-        
-        if (mobileMenuButton && mobileMenu) {
-            mobileMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
+      });
+
+      const cards = document.querySelectorAll('.project-card');
+      cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
         }
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-                
-                // Close mobile menu after clicking a link
-                if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-                    mobileMenu.classList.add('hidden');
-                }
-            });
-        });
-        
-        // Contact form submission (placeholder)
-        const contactForm = document.querySelector('form');
-        if (contactForm) {
-            contactForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                
-                // Get form data
-                const name = document.getElementById('name').value;
-                const email = document.getElementById('email').value;
-                const message = document.getElementById('message').value;
-                
-                // Here you would typically send this data to a server
-                console.log('Form submitted:', { name, email, message });
-                
-                // Reset form
-                contactForm.reset();
-                
-                // Show success message (replace with your own implementation)
-                alert('Thank you for your message! I will get back to you soon.');
-            });
-        }
-    </script>
+      });
+    }
+
+    // Resume Modal
+    const resumeModal = document.getElementById('resume-modal');
+    function openResumeModal() {
+      resumeModal.classList.remove('hidden');
+    }
+    function closeResumeModal() {
+      resumeModal.classList.add('hidden');
+    }
+
+    // Project Detail Modal Data
+    const projectDetails = {
+      dlrms: {
+        title: "Digital Land Registration & Management System (DLRMS)",
+        img: "./assets/images/dlrms.png",
+        desc: "Architected a comprehensive web-based cadastral system designed to modernize land registration, ownership authentication, and dispute reduction in the DRC. Features automated deed generation, multi-tier notary authentication, tamper-evident transfer logs, and geospatial verification.",
+        tags: ["Python", "Django", "PostgreSQL", "GIS Mapping", "Docker"]
+      },
+      learningspot: {
+        title: "LearningSpot E-Learning Ecosystem",
+        img: "./assets/images/learningspot.png",
+        desc: "An enterprise educational platform serving 10,000+ active learners with interactive course delivery, student tracking, automated certificate issuance, and real-time administrative analytics.",
+        tags: ["Python", "Django", "PostgreSQL", "Redis", "REST APIs"]
+      },
+      petrox: {
+        title: "Gas Station Management ERP (Petrox)",
+        img: "./assets/images/petrox.png",
+        desc: "Specialized ERP solution that streamlines fuel station operations through automated underground tank monitoring, pump sales auditing, attendant shifts, and real-time revenue analytics.",
+        tags: ["Python", "Django", "PostgreSQL", "Telemetry", "Chart.js"]
+      },
+      sinoaf: {
+        title: "Sinoaf Global Sourcing & E-Commerce",
+        img: "./assets/images/sinoaf.png",
+        desc: "International sourcing platform connecting African import-export businesses to verified global manufacturers with live multi-currency quote calculators and container shipment milestones.",
+        tags: ["Python", "Django", "REST APIs", "PostgreSQL", "Stripe"]
+      },
+      cassieposh: {
+        title: "Cassie Posh Luxury Events",
+        img: "./assets/images/cassieposh.png",
+        desc: "An elegant, bespoke event management website designed to showcase luxury wedding and corporate portfolios, facilitate reservation inquiries, and deliver white-glove client communications.",
+        tags: ["Python", "Django", "Tailwind CSS", "SEO"]
+      },
+      nysha: {
+        title: "Nysha Hair Salon Booking System",
+        img: "./assets/images/nyshahairsalon.png",
+        desc: "Modern appointment booking and service discovery web application for a premier hair and beauty studio, featuring calendar management and automated customer confirmations.",
+        tags: ["React", "Python", "Django", "Render"]
+      }
+    };
+
+    const projectModal = document.getElementById('project-modal');
+    function openProjectModal(key) {
+      const p = projectDetails[key];
+      if (!p) return;
+      document.getElementById('pm-title').textContent = p.title;
+      document.getElementById('pm-desc').textContent = p.desc;
+      document.getElementById('pm-img').src = p.img;
+      const tagsContainer = document.getElementById('pm-tags');
+      tagsContainer.innerHTML = p.tags.map(t => `<span class="px-2.5 py-1 rounded-md bg-zinc-100 dark:bg-white/10 text-xs">${t}</span>`).join('');
+      projectModal.classList.remove('hidden');
+    }
+    function closeProjectModal() {
+      projectModal.classList.add('hidden');
+    }
+
+    // Copy to Clipboard
+    function copyToClipboard(text, btn) {
+      navigator.clipboard.writeText(text);
+      const originalText = btn.textContent;
+      btn.textContent = 'Copied!';
+      btn.classList.add('text-emerald-500');
+      setTimeout(() => {
+        btn.textContent = originalText;
+        btn.classList.remove('text-emerald-500');
+      }, 2000);
+    }
+
+    // Contact Form Handler
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      document.getElementById('contact-form').classList.add('hidden');
+      document.getElementById('contact-success').classList.remove('hidden');
+    }
+
+    // Escape Key Listener
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeResumeModal();
+        closeProjectModal();
+      }
+    });
+  </script>
 </body>
 </html>
