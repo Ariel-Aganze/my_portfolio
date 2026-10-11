@@ -45,7 +45,6 @@
     body {
       transition: background-color 0.25s ease, color 0.25s ease;
     }
-    /* Custom scrollbar */
     ::-webkit-scrollbar {
       width: 8px;
     }
@@ -83,7 +82,7 @@
 </head>
 <body class="bg-[#f8f9fb] text-[#18181b] dark:bg-[#0d0e11] dark:text-[#f4f4f5] antialiased selection:bg-neutral-900 selection:text-white dark:selection:bg-white dark:selection:text-black min-h-screen">
 
-  <!-- Top Navigation Bar (Hythym 3-Zone Contract) -->
+  <!-- Top Navigation Bar -->
   <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/85 dark:bg-[#0d0e11]/85 backdrop-blur-md border-b border-zinc-200 dark:border-white/[0.08] py-3.5">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between">
       
@@ -94,7 +93,7 @@
             AKA
           </span>
           <span class="font-semibold tracking-tight">
-            Aganze Kulimushi Ariel
+            <!-- Aganze Kulimushi Ariel -->
           </span>
         </a>
 
@@ -103,31 +102,40 @@
             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
             <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
           </span>
-          <span class="whitespace-nowrap">Available for work</span>
+          <span id="nav-availability" class="whitespace-nowrap">Available for work</span>
         </div>
       </div>
 
       <!-- Zone 2: Navigation Links -->
       <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-zinc-600 dark:text-neutral-400">
-        <a href="#projects" class="hover:text-black dark:hover:text-white transition-colors">Projects</a>
-        <a href="#experience" class="hover:text-black dark:hover:text-white transition-colors">Experience</a>
-        <a href="#skills" class="hover:text-black dark:hover:text-white transition-colors">Skills</a>
-        <a href="#about" class="hover:text-black dark:hover:text-white transition-colors">About</a>
-        <a href="#testimonials" class="hover:text-black dark:hover:text-white transition-colors">Testimonials</a>
-        <a href="#contact" class="hover:text-black dark:hover:text-white transition-colors">Contact</a>
+        <a href="#projects" id="nav-projects" class="hover:text-black dark:hover:text-white transition-colors">Projects</a>
+        <a href="#experience" id="nav-experience" class="hover:text-black dark:hover:text-white transition-colors">Experience</a>
+        <a href="#skills" id="nav-skills" class="hover:text-black dark:hover:text-white transition-colors">Skills</a>
+        <a href="#about" id="nav-about" class="hover:text-black dark:hover:text-white transition-colors">About</a>
+        <a href="#testimonials" id="nav-testimonials" class="hover:text-black dark:hover:text-white transition-colors">Testimonials</a>
+        <a href="#contact" id="nav-contact" class="hover:text-black dark:hover:text-white transition-colors">Contact</a>
       </nav>
 
-      <!-- Zone 3: Primary Actions & Theme Toggle -->
-      <div class="flex items-center gap-2.5">
+      <!-- Zone 3: Language Toggle, Theme Toggle, Resume & Reach Out -->
+      <div class="flex items-center gap-2 sm:gap-2.5">
         
+        <!-- French / English Language Toggle -->
+        <div class="flex items-center p-0.5 rounded-lg border border-zinc-300 dark:border-white/10 bg-zinc-100 dark:bg-white/5 text-xs font-semibold" role="group" aria-label="Language selector">
+          <button id="lang-btn-en" onclick="setLanguage('en')" class="px-2.5 py-1 rounded-md transition-all bg-white dark:bg-white text-zinc-950 dark:text-black shadow-sm font-bold" title="Switch to English">
+            EN
+          </button>
+          <button id="lang-btn-fr" onclick="setLanguage('fr')" class="flex items-center gap-1 px-2.5 py-1 rounded-md transition-all text-zinc-600 dark:text-neutral-400 hover:text-black dark:hover:text-white" title="Passer en Français">
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+            <span>FR</span>
+          </button>
+        </div>
+
         <!-- Light / Dark Mode Toggle Button -->
         <button id="theme-toggle" class="p-2 rounded-lg border border-zinc-300 dark:border-white/10 bg-zinc-100 dark:bg-white/5 text-zinc-700 dark:text-neutral-300 hover:text-black dark:hover:text-white transition-colors" title="Toggle Light / Dark Mode" aria-label="Toggle theme">
-          <!-- Sun icon (shown in dark mode to switch to light) -->
           <svg class="theme-toggle-icon dark-icon w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
             <circle cx="12" cy="12" r="5"></circle>
             <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
           </svg>
-          <!-- Moon icon (shown in light mode to switch to dark) -->
           <svg class="theme-toggle-icon light-icon w-4 h-4 text-zinc-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
           </svg>
@@ -136,12 +144,12 @@
         <!-- Resume Modal Trigger -->
         <button onclick="openResumeModal()" class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-medium text-zinc-700 dark:text-neutral-300 hover:text-black dark:hover:text-white rounded-lg border border-zinc-300 dark:border-white/10 hover:border-zinc-400 dark:hover:border-white/25 bg-zinc-100 dark:bg-white/5 transition-all">
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
-          <span>Resume</span>
+          <span id="nav-resume-btn">Resume</span>
         </button>
 
         <!-- Reach Out CTA -->
         <a href="#contact" class="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold text-white dark:text-black bg-zinc-900 dark:bg-white rounded-lg hover:bg-zinc-800 dark:hover:bg-neutral-200 transition-all shadow-sm">
-          <span>Reach out</span>
+          <span id="nav-reachout-btn">Reach out</span>
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"></path></svg>
         </a>
 
@@ -155,13 +163,20 @@
 
     <!-- Mobile Drawer -->
     <div id="mobile-menu" class="hidden md:hidden border-t border-zinc-200 dark:border-white/10 bg-white dark:bg-[#0e0f12] px-6 py-4 space-y-3 shadow-xl">
-      <a href="#projects" class="block text-sm font-medium text-zinc-700 dark:text-neutral-300 py-1" onclick="closeMobileMenu()">Projects</a>
-      <a href="#experience" class="block text-sm font-medium text-zinc-700 dark:text-neutral-300 py-1" onclick="closeMobileMenu()">Experience</a>
-      <a href="#skills" class="block text-sm font-medium text-zinc-700 dark:text-neutral-300 py-1" onclick="closeMobileMenu()">Skills</a>
-      <a href="#about" class="block text-sm font-medium text-zinc-700 dark:text-neutral-300 py-1" onclick="closeMobileMenu()">About</a>
-      <a href="#testimonials" class="block text-sm font-medium text-zinc-700 dark:text-neutral-300 py-1" onclick="closeMobileMenu()">Testimonials</a>
-      <a href="#contact" class="block text-sm font-medium text-zinc-700 dark:text-neutral-300 py-1" onclick="closeMobileMenu()">Contact</a>
-      <button onclick="openResumeModal(); closeMobileMenu();" class="w-full text-center py-2 rounded-lg border border-zinc-300 dark:border-white/15 text-xs font-medium">View Resume</button>
+      <div class="flex items-center justify-between pb-2 border-b border-zinc-200 dark:border-white/10">
+        <span class="text-xs text-zinc-500 dark:text-neutral-400 font-medium" id="mobile-lang-label">Language:</span>
+        <div class="flex gap-2">
+          <button onclick="setLanguage('en'); closeMobileMenu();" class="px-3 py-1 rounded text-xs font-semibold bg-zinc-100 dark:bg-white/10">EN</button>
+          <button onclick="setLanguage('fr'); closeMobileMenu();" class="px-3 py-1 rounded text-xs font-semibold bg-emerald-600 text-white">FR</button>
+        </div>
+      </div>
+      <a href="#projects" class="block text-sm font-medium text-zinc-700 dark:text-neutral-300 py-1" onclick="closeMobileMenu()" id="mob-projects">Projects</a>
+      <a href="#experience" class="block text-sm font-medium text-zinc-700 dark:text-neutral-300 py-1" onclick="closeMobileMenu()" id="mob-experience">Experience</a>
+      <a href="#skills" class="block text-sm font-medium text-zinc-700 dark:text-neutral-300 py-1" onclick="closeMobileMenu()" id="mob-skills">Skills</a>
+      <a href="#about" class="block text-sm font-medium text-zinc-700 dark:text-neutral-300 py-1" onclick="closeMobileMenu()" id="mob-about">About</a>
+      <a href="#testimonials" class="block text-sm font-medium text-zinc-700 dark:text-neutral-300 py-1" onclick="closeMobileMenu()" id="mob-testimonials">Testimonials</a>
+      <a href="#contact" class="block text-sm font-medium text-zinc-700 dark:text-neutral-300 py-1" onclick="closeMobileMenu()" id="mob-contact">Contact</a>
+      <button onclick="openResumeModal(); closeMobileMenu();" class="w-full text-center py-2 rounded-lg border border-zinc-300 dark:border-white/15 text-xs font-medium" id="mob-resume">View Resume</button>
     </div>
   </header>
 
@@ -177,36 +192,36 @@
             <span class="text-emerald-500">●</span>
             <span>CTO @ LearningSpot Ltd</span>
             <span class="text-zinc-400 dark:text-neutral-500">·</span>
-            <span></span>
+            <span id="hero-badge-role">Software & AI Engineer</span>
           </div>
 
           <div class="space-y-1">
             <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-zinc-950 dark:text-white leading-[1.08]">
-              <span>I build </span>
+              <span id="hero-title-prefix">I build </span>
               <span id="headline-rotating" class="block text-zinc-700 dark:text-neutral-300 font-medium italic sm:inline transition-opacity duration-300">
                 fast, scalable web experiences.
               </span>
             </h1>
           </div>
 
-          <p class="text-base sm:text-lg text-zinc-600 dark:text-neutral-400 font-normal leading-relaxed max-w-xl">
+          <p id="hero-bio" class="text-base sm:text-lg text-zinc-600 dark:text-neutral-400 font-normal leading-relaxed max-w-xl">
             Motivated Software Engineer with deep foundations in Python, Django, modern frontend ecosystems, and applied machine learning. Proven track record leading product architecture, delivering mission-critical applications, and scaling software in emerging markets.
           </p>
 
           <!-- Buttons -->
           <div class="flex flex-wrap items-center gap-3.5 pt-2">
             <a href="#projects" class="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-zinc-900 dark:bg-white text-white dark:text-black font-semibold text-sm hover:bg-zinc-800 dark:hover:bg-neutral-200 transition-all shadow-md">
-              <span>View projects</span>
+              <span id="hero-view-projects">View projects</span>
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
             </a>
 
             <button onclick="openResumeModal()" class="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-zinc-300 dark:border-white/15 bg-white dark:bg-white/[0.03] text-zinc-800 dark:text-neutral-200 font-medium text-sm hover:bg-zinc-100 dark:hover:bg-white/[0.08] transition-all">
               <svg class="w-4 h-4 text-zinc-500 dark:text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-              <span>Download resume</span>
+              <span id="hero-download-resume">Download resume</span>
             </button>
 
             <a href="#contact" class="inline-flex items-center gap-1.5 px-4 py-3 text-sm font-medium text-zinc-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors">
-              <span>Let's talk</span>
+              <span id="hero-lets-talk">Let's talk</span>
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"></path></svg>
             </a>
           </div>
@@ -215,19 +230,19 @@
           <div class="pt-6 border-t border-zinc-200 dark:border-white/[0.08] grid grid-cols-2 sm:grid-cols-4 gap-4">
             <div>
               <span class="text-2xl font-bold font-mono tracking-tight text-zinc-900 dark:text-white">4+</span>
-              <span class="text-xs text-zinc-500 dark:text-neutral-400 block mt-0.5">Years Experience</span>
+              <span id="metric-years" class="text-xs text-zinc-500 dark:text-neutral-400 block mt-0.5">Years Experience</span>
             </div>
             <div>
               <span class="text-2xl font-bold font-mono tracking-tight text-zinc-900 dark:text-white">10+</span>
-              <span class="text-xs text-zinc-500 dark:text-neutral-400 block mt-0.5">Production Apps</span>
+              <span id="metric-apps" class="text-xs text-zinc-500 dark:text-neutral-400 block mt-0.5">Production Apps</span>
             </div>
             <div>
-              <span class="text-2xl font-bold font-mono tracking-tight text-zinc-900 dark:text-white">40+</span>
-              <span class="text-xs text-zinc-500 dark:text-neutral-400 block mt-0.5">Users Served</span>
+              <span class="text-2xl font-bold font-mono tracking-tight text-zinc-900 dark:text-white">10k+</span>
+              <span id="metric-users" class="text-xs text-zinc-500 dark:text-neutral-400 block mt-0.5">Users Served</span>
             </div>
             <div>
               <span class="text-2xl font-bold font-mono tracking-tight text-zinc-900 dark:text-white">99.9%</span>
-              <span class="text-xs text-zinc-500 dark:text-neutral-400 block mt-0.5">Code Reliability</span>
+              <span id="metric-reliability" class="text-xs text-zinc-500 dark:text-neutral-400 block mt-0.5">Code Reliability</span>
             </div>
           </div>
 
@@ -238,17 +253,17 @@
           <div class="relative w-full max-w-sm sm:max-w-md">
             <div class="relative rounded-2xl border border-zinc-200 dark:border-white/10 bg-white dark:bg-[#141518] p-3 shadow-xl dark:shadow-2xl overflow-hidden">
               <div class="relative aspect-square w-full rounded-xl overflow-hidden bg-zinc-100 dark:bg-neutral-900">
-                <img src="/assets/images/profile.jpg" alt="Aganze Kulimushi Ariel" onerror="this.src='/src/assets/images/profile.jpg'" class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700" />
+                <img src="/assets/images/profile.jpg" alt="Aganze Kulimushi Ariel" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80'" class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700" />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none"></div>
 
                 <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs text-white">
                   <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-black/60 backdrop-blur-md border border-white/10">
                     <svg class="w-3.5 h-3.5 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                    <span>On site and remote</span>
+                    <span id="hero-workmode">On site and remote</span>
                   </div>
                   <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-emerald-950/80 backdrop-blur-md border border-emerald-500/30 text-emerald-300">
                     <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                    <span>Open to Work</span>
+                    <span id="hero-open-status">Open to Work</span>
                   </div>
                 </div>
               </div>
@@ -256,11 +271,11 @@
               <div class="p-3 pt-4 flex items-center justify-between text-xs border-t border-zinc-100 dark:border-white/5 mt-2">
                 <div>
                   <div class="font-semibold text-zinc-900 dark:text-white">Aganze Kulimushi Ariel</div>
-                  <div class="text-zinc-500 dark:text-neutral-400">Chief Technology Officer & Software Engineer</div>
+                  <div id="hero-card-role" class="text-zinc-500 dark:text-neutral-400">Chief Technology Officer & Software Engineer</div>
                 </div>
                 <div class="text-right">
                   <div class="font-mono text-zinc-800 dark:text-neutral-300">UTC+2</div>
-                  <div class="text-zinc-500 dark:text-neutral-400">CAT Time</div>
+                  <div id="hero-card-tz" class="text-zinc-500 dark:text-neutral-400">CAT Time</div>
                 </div>
               </div>
             </div>
@@ -272,10 +287,10 @@
       <!-- Core Stack Banner -->
       <div class="mt-20 pt-8 border-t border-zinc-200 dark:border-white/[0.08]">
         <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-          <span class="text-xs uppercase tracking-wider text-zinc-500 dark:text-neutral-400 font-medium">
+          <span id="stack-banner-title" class="text-xs uppercase tracking-wider text-zinc-500 dark:text-neutral-400 font-medium">
             Core Technologies & Architecture Stack
           </span>
-          <div class="flex flex-wrap items-center gap-2 sm:gap-3 text-xs">
+          <div class="flex flex-wrap items-center gap-2 sm:gap-3 text-xs font-mono">
             <span class="px-2.5 py-1 rounded-md bg-zinc-100 dark:bg-white/[0.04] border border-zinc-200 dark:border-white/[0.06] text-zinc-800 dark:text-neutral-300">Python</span>
             <span class="px-2.5 py-1 rounded-md bg-zinc-100 dark:bg-white/[0.04] border border-zinc-200 dark:border-white/[0.06] text-zinc-800 dark:text-neutral-300">Django</span>
             <span class="px-2.5 py-1 rounded-md bg-zinc-100 dark:bg-white/[0.04] border border-zinc-200 dark:border-white/[0.06] text-zinc-800 dark:text-neutral-300">PostgreSQL</span>
@@ -292,7 +307,7 @@
     </div>
   </section>
 
-  <!-- Projects Section (Hythym Bento Grid) -->
+  <!-- Projects Section -->
   <section id="projects" class="py-20 sm:py-28 border-t border-zinc-200 dark:border-white/[0.08] relative">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
       
@@ -300,26 +315,26 @@
         <div class="space-y-3">
           <div class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-neutral-400">
             <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-            <span>Projects Showcase</span>
+            <span id="projects-tag">Projects Showcase</span>
           </div>
-          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-zinc-950 dark:text-white">
+          <h2 id="projects-heading" class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-zinc-950 dark:text-white">
             Featured work & systems
           </h2>
-          <p class="text-base text-zinc-600 dark:text-neutral-400 max-w-xl">
+          <p id="projects-subheading" class="text-base text-zinc-600 dark:text-neutral-400 max-w-xl">
             The standard of work I strive to achieve every time I build solutions — engineered for durability, performance, and clear business outcomes.
           </p>
         </div>
 
         <!-- Filter Buttons -->
         <div class="flex flex-wrap items-center gap-1.5 p-1 rounded-xl bg-zinc-100 dark:bg-white/[0.04] border border-zinc-200 dark:border-white/[0.08]">
-          <button onclick="filterProjects('all')" class="project-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-white dark:bg-white text-black shadow-sm" data-filter="all">All</button>
-          <button onclick="filterProjects('full-stack')" class="project-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-medium text-zinc-600 dark:text-neutral-400 hover:text-black dark:hover:text-white" data-filter="full-stack">Full-Stack</button>
-          <button onclick="filterProjects('enterprise')" class="project-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-medium text-zinc-600 dark:text-neutral-400 hover:text-black dark:hover:text-white" data-filter="enterprise">Enterprise</button>
-          <button onclick="filterProjects('client')" class="project-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-medium text-zinc-600 dark:text-neutral-400 hover:text-black dark:hover:text-white" data-filter="client">Client Work</button>
+          <button onclick="filterProjects('all')" id="filter-all" class="project-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-white dark:bg-white text-black shadow-sm" data-filter="all">All</button>
+          <button onclick="filterProjects('full-stack')" id="filter-fullstack" class="project-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-medium text-zinc-600 dark:text-neutral-400 hover:text-black dark:hover:text-white" data-filter="full-stack">Full-Stack</button>
+          <button onclick="filterProjects('enterprise')" id="filter-enterprise" class="project-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-medium text-zinc-600 dark:text-neutral-400 hover:text-black dark:hover:text-white" data-filter="enterprise">Enterprise</button>
+          <button onclick="filterProjects('client')" id="filter-client" class="project-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-medium text-zinc-600 dark:text-neutral-400 hover:text-black dark:hover:text-white" data-filter="client">Client Work</button>
         </div>
       </div>
 
-      <!-- Precise Enterprise NDA & Proprietary Notice Callout (Requested by User) -->
+      <!-- Enterprise NDA Notice -->
       <div class="mb-10 p-4 sm:p-5 rounded-2xl bg-amber-500/[0.07] dark:bg-amber-400/[0.05] border border-amber-500/20 dark:border-amber-400/15 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div class="flex items-start gap-3.5">
           <div class="p-2 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5">
@@ -329,15 +344,15 @@
             </svg>
           </div>
           <div>
-            <h4 class="text-sm font-bold text-zinc-950 dark:text-white">
+            <h4 id="nda-title" class="text-sm font-bold text-zinc-950 dark:text-white">
               Enterprise & Proprietary Notice
             </h4>
-            <p class="text-xs sm:text-sm text-zinc-600 dark:text-neutral-300 mt-0.5 leading-relaxed">
+            <p id="nda-desc" class="text-xs sm:text-sm text-zinc-600 dark:text-neutral-300 mt-0.5 leading-relaxed">
               Please note: Beyond the featured public projects below, I have engineered and deployed additional production systems in enterprise environments (including internal business ERPs, proprietary database pipelines, and high-security services) that cannot be publicly displayed due to corporate non-disclosure agreements (NDAs).
             </p>
           </div>
         </div>
-        <a href="#contact" class="shrink-0 px-3.5 py-2 rounded-lg bg-zinc-900 dark:bg-white text-white dark:text-black text-xs font-semibold hover:bg-zinc-800 dark:hover:bg-neutral-200 transition-colors shadow-sm whitespace-nowrap">
+        <a href="#contact" id="nda-action" class="shrink-0 px-3.5 py-2 rounded-lg bg-zinc-900 dark:bg-white text-white dark:text-black text-xs font-semibold hover:bg-zinc-800 dark:hover:bg-neutral-200 transition-colors shadow-sm whitespace-nowrap">
           Request Technical Walkthrough
         </a>
       </div>
@@ -348,34 +363,34 @@
         <!-- Project 1: DLRMS -->
         <div class="project-card group flex flex-col rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#141518] hover:border-zinc-300 dark:hover:border-white/20 transition-all p-4 sm:p-5 shadow-sm" data-category="full-stack">
           <div class="relative aspect-video w-full rounded-xl overflow-hidden bg-zinc-100 dark:bg-neutral-900 border border-zinc-200 dark:border-white/5 cursor-pointer" onclick="openProjectModal('dlrms')">
-            <img src="./assets/images/projects/dlrms.png" alt="DLRMS" onerror="this.src='/src/assets/images/dlrms.png'" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <img src="./assets/images/projects/dlrms.png" alt="DLRMS" onerror="this.src='https://images.unsplash.com/photo-1524813686514-a57563d77d66?auto=format&fit=crop&w=800&q=80'" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
             <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-60"></div>
             <div class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-black/75 backdrop-blur-md text-[11px] font-medium text-neutral-100 flex items-center gap-1.5">
               <span class="text-emerald-400">✦</span>
-              <span>1,000+ Test Cadastral Parcels</span>
+              <span id="proj1-badge">1,000+ Test Cadastral Parcels</span>
             </div>
           </div>
           <div class="flex flex-1 flex-col justify-between pt-5 space-y-4">
             <div class="space-y-2">
               <div class="flex items-center justify-between text-xs text-zinc-500 dark:text-neutral-400">
-                <span class="text-emerald-600 dark:text-emerald-400 font-medium">Lead Software Architect</span>
+                <span id="proj1-role" class="text-emerald-600 dark:text-emerald-400 font-medium">Lead Software Architect</span>
                 <span class="font-mono">2024 - 2025</span>
               </div>
-              <h3 class="text-xl font-bold tracking-tight text-zinc-950 dark:text-white hover:text-emerald-600 transition-colors cursor-pointer" onclick="openProjectModal('dlrms')">
+              <h3 id="proj1-title" class="text-xl font-bold tracking-tight text-zinc-950 dark:text-white hover:text-emerald-600 transition-colors cursor-pointer" onclick="openProjectModal('dlrms')">
                 Digital Land Registration & Management System (DLRMS)
               </h3>
-              <p class="text-sm text-zinc-600 dark:text-neutral-400 line-clamp-3">
+              <p id="proj1-desc" class="text-sm text-zinc-600 dark:text-neutral-400 line-clamp-3">
                 Architected a comprehensive web-based cadastral system designed to modernize land registration, ownership authentication, and dispute reduction in the DRC.
               </p>
             </div>
             <div class="pt-3 border-t border-zinc-100 dark:border-white/[0.06] flex items-center justify-between gap-3">
-              <div class="flex flex-wrap gap-1.5 text-xs text-zinc-600 dark:text-neutral-400">
+              <div class="flex flex-wrap gap-1.5 text-xs text-zinc-600 dark:text-neutral-400 font-mono">
                 <span class="px-2 py-0.5 rounded bg-zinc-100 dark:bg-white/[0.04] text-[11px]">Python</span>
                 <span class="px-2 py-0.5 rounded bg-zinc-100 dark:bg-white/[0.04] text-[11px]">Django</span>
                 <span class="px-2 py-0.5 rounded bg-zinc-100 dark:bg-white/[0.04] text-[11px]">PostgreSQL</span>
                 <span class="px-2 py-0.5 rounded bg-zinc-100 dark:bg-white/[0.04] text-[11px]">GIS</span>
               </div>
-              <button onclick="openProjectModal('dlrms')" class="px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-white/10 hover:bg-zinc-200 dark:hover:bg-white/20 text-xs font-medium">
+              <button onclick="openProjectModal('dlrms')" class="proj-case-btn px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-white/10 hover:bg-zinc-200 dark:hover:bg-white/20 text-xs font-medium">
                 Case Study
               </button>
             </div>
@@ -385,28 +400,28 @@
         <!-- Project 2: LearningSpot -->
         <div class="project-card group flex flex-col rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#141518] hover:border-zinc-300 dark:hover:border-white/20 transition-all p-4 sm:p-5 shadow-sm" data-category="enterprise">
           <div class="relative aspect-video w-full rounded-xl overflow-hidden bg-zinc-100 dark:bg-neutral-900 border border-zinc-200 dark:border-white/5 cursor-pointer" onclick="openProjectModal('learningspot')">
-            <img src="./assets/images/projects/learningspot.png" alt="LearningSpot" onerror="this.src='/src/assets/images/learningspot.png'" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <img src="./assets/images/projects/learningspot.png" alt="LearningSpot" onerror="this.src='https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&w=800&q=80'" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
             <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-60"></div>
             <div class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-black/75 backdrop-blur-md text-[11px] font-medium text-neutral-100 flex items-center gap-1.5">
               <span class="text-emerald-400">✦</span>
-              <span>10,000+ Active Learners</span>
+              <span id="proj2-badge">10,000+ Active Learners</span>
             </div>
           </div>
           <div class="flex flex-1 flex-col justify-between pt-5 space-y-4">
             <div class="space-y-2">
               <div class="flex items-center justify-between text-xs text-zinc-500 dark:text-neutral-400">
-                <span class="text-emerald-600 dark:text-emerald-400 font-medium">Chief Technology Officer</span>
-                <span class="font-mono">2024 - Present</span>
+                <span id="proj2-role" class="text-emerald-600 dark:text-emerald-400 font-medium">Chief Technology Officer</span>
+                <span class="font-mono" id="proj2-period">2024 - Present</span>
               </div>
-              <h3 class="text-xl font-bold tracking-tight text-zinc-950 dark:text-white hover:text-emerald-600 transition-colors cursor-pointer" onclick="openProjectModal('learningspot')">
+              <h3 id="proj2-title" class="text-xl font-bold tracking-tight text-zinc-950 dark:text-white hover:text-emerald-600 transition-colors cursor-pointer" onclick="openProjectModal('learningspot')">
                 LearningSpot E-Learning Platform
               </h3>
-              <p class="text-sm text-zinc-600 dark:text-neutral-400 line-clamp-3">
+              <p id="proj2-desc" class="text-sm text-zinc-600 dark:text-neutral-400 line-clamp-3">
                 An educational platform focused on barrier-free accessibility, personalized student pathways, dynamic course delivery, and real-time administrative analytics.
               </p>
             </div>
             <div class="pt-3 border-t border-zinc-100 dark:border-white/[0.06] flex items-center justify-between gap-3">
-              <div class="flex flex-wrap gap-1.5 text-xs text-zinc-600 dark:text-neutral-400">
+              <div class="flex flex-wrap gap-1.5 text-xs text-zinc-600 dark:text-neutral-400 font-mono">
                 <span class="px-2 py-0.5 rounded bg-zinc-100 dark:bg-white/[0.04] text-[11px]">Python</span>
                 <span class="px-2 py-0.5 rounded bg-zinc-100 dark:bg-white/[0.04] text-[11px]">Django</span>
                 <span class="px-2 py-0.5 rounded bg-zinc-100 dark:bg-white/[0.04] text-[11px]">PostgreSQL</span>
@@ -415,7 +430,7 @@
                 <a href="https://learningspotltd.org/" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg text-zinc-600 dark:text-neutral-300 hover:text-black dark:hover:text-white" title="Open live web app">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
                 </a>
-                <button onclick="openProjectModal('learningspot')" class="px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-white/10 hover:bg-zinc-200 dark:hover:bg-white/20 text-xs font-medium">
+                <button onclick="openProjectModal('learningspot')" class="proj-case-btn px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-white/10 hover:bg-zinc-200 dark:hover:bg-white/20 text-xs font-medium">
                   Case Study
                 </button>
               </div>
@@ -426,33 +441,33 @@
         <!-- Project 3: Petrox ERP -->
         <div class="project-card group flex flex-col rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#141518] hover:border-zinc-300 dark:hover:border-white/20 transition-all p-4 sm:p-5 shadow-sm" data-category="enterprise">
           <div class="relative aspect-video w-full rounded-xl overflow-hidden bg-zinc-100 dark:bg-neutral-900 border border-zinc-200 dark:border-white/5 cursor-pointer" onclick="openProjectModal('petrox')">
-            <img src="./assets/images/projects/petrox.png" alt="Petrox ERP" onerror="this.src='/src/assets/images/projects/petrox.png'" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <img src="./assets/images/projects/petrox.png" alt="Petrox ERP" onerror="this.src='https://images.unsplash.com/photo-1545239351-ef35f43d514b?auto=format&fit=crop&w=800&q=80'" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
             <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-60"></div>
             <div class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-black/75 backdrop-blur-md text-[11px] font-medium text-neutral-100 flex items-center gap-1.5">
               <span class="text-emerald-400">✦</span>
-              <span>100% Tank Telemetry Reconciled</span>
+              <span id="proj3-badge">100% Tank Telemetry Reconciled</span>
             </div>
           </div>
           <div class="flex flex-1 flex-col justify-between pt-5 space-y-4">
             <div class="space-y-2">
               <div class="flex items-center justify-between text-xs text-zinc-500 dark:text-neutral-400">
-                <span class="text-emerald-600 dark:text-emerald-400 font-medium">Lead Full-Stack Developer</span>
+                <span id="proj3-role" class="text-emerald-600 dark:text-emerald-400 font-medium">Lead Full-Stack Developer</span>
                 <span class="font-mono">2024</span>
               </div>
-              <h3 class="text-xl font-bold tracking-tight text-zinc-950 dark:text-white hover:text-emerald-600 transition-colors cursor-pointer" onclick="openProjectModal('petrox')">
+              <h3 id="proj3-title" class="text-xl font-bold tracking-tight text-zinc-950 dark:text-white hover:text-emerald-600 transition-colors cursor-pointer" onclick="openProjectModal('petrox')">
                 Gas Station Management ERP (Petrox)
               </h3>
-              <p class="text-sm text-zinc-600 dark:text-neutral-400 line-clamp-3">
+              <p id="proj3-desc" class="text-sm text-zinc-600 dark:text-neutral-400 line-clamp-3">
                 A fuel station ERP streamlining underground tank sensor telemetry, pump sales transactions, inventory monitoring, attendant shifts, and financial auditing.
               </p>
             </div>
             <div class="pt-3 border-t border-zinc-100 dark:border-white/[0.06] flex items-center justify-between gap-3">
-              <div class="flex flex-wrap gap-1.5 text-xs text-zinc-600 dark:text-neutral-400">
+              <div class="flex flex-wrap gap-1.5 text-xs text-zinc-600 dark:text-neutral-400 font-mono">
                 <span class="px-2 py-0.5 rounded bg-zinc-100 dark:bg-white/[0.04] text-[11px]">Python</span>
                 <span class="px-2 py-0.5 rounded bg-zinc-100 dark:bg-white/[0.04] text-[11px]">Django</span>
                 <span class="px-2 py-0.5 rounded bg-zinc-100 dark:bg-white/[0.04] text-[11px]">PostgreSQL</span>
               </div>
-              <button onclick="openProjectModal('petrox')" class="px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-white/10 hover:bg-zinc-200 dark:hover:bg-white/20 text-xs font-medium">
+              <button onclick="openProjectModal('petrox')" class="proj-case-btn px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-white/10 hover:bg-zinc-200 dark:hover:bg-white/20 text-xs font-medium">
                 Case Study
               </button>
             </div>
@@ -462,33 +477,33 @@
         <!-- Project 4: Sinoaf -->
         <div class="project-card group flex flex-col rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#141518] hover:border-zinc-300 dark:hover:border-white/20 transition-all p-4 sm:p-5 shadow-sm" data-category="full-stack">
           <div class="relative aspect-video w-full rounded-xl overflow-hidden bg-zinc-100 dark:bg-neutral-900 border border-zinc-200 dark:border-white/5 cursor-pointer" onclick="openProjectModal('sinoaf')">
-            <img src="./assets/images/projects/sinoaf.png" alt="Sinoaf E-Commerce" onerror="this.src='/src/assets/images/projects/sinoaf.png'" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <img src="./assets/images/projects/sinoaf.png" alt="Sinoaf E-Commerce" onerror="this.src='https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=800&q=80'" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
             <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-60"></div>
             <div class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-black/75 backdrop-blur-md text-[11px] font-medium text-neutral-100 flex items-center gap-1.5">
               <span class="text-emerald-400">✦</span>
-              <span>Multi-Currency Logistics RFQ</span>
+              <span id="proj4-badge">Multi-Currency Logistics RFQ</span>
             </div>
           </div>
           <div class="flex flex-1 flex-col justify-between pt-5 space-y-4">
             <div class="space-y-2">
               <div class="flex items-center justify-between text-xs text-zinc-500 dark:text-neutral-400">
-                <span class="text-emerald-600 dark:text-emerald-400 font-medium">Full-Stack Architect</span>
+                <span id="proj4-role" class="text-emerald-600 dark:text-emerald-400 font-medium">Full-Stack Architect</span>
                 <span class="font-mono">2024</span>
               </div>
-              <h3 class="text-xl font-bold tracking-tight text-zinc-950 dark:text-white hover:text-emerald-600 transition-colors cursor-pointer" onclick="openProjectModal('sinoaf')">
+              <h3 id="proj4-title" class="text-xl font-bold tracking-tight text-zinc-950 dark:text-white hover:text-emerald-600 transition-colors cursor-pointer" onclick="openProjectModal('sinoaf')">
                 Sinoaf Global Sourcing & E-Commerce
               </h3>
-              <p class="text-sm text-zinc-600 dark:text-neutral-400 line-clamp-3">
+              <p id="proj4-desc" class="text-sm text-zinc-600 dark:text-neutral-400 line-clamp-3">
                 Cross-border sourcing and international procurement web platform with intelligent product discovery, supplier negotiation, automated RFQ quoting, and tracking.
               </p>
             </div>
             <div class="pt-3 border-t border-zinc-100 dark:border-white/[0.06] flex items-center justify-between gap-3">
-              <div class="flex flex-wrap gap-1.5 text-xs text-zinc-600 dark:text-neutral-400">
+              <div class="flex flex-wrap gap-1.5 text-xs text-zinc-600 dark:text-neutral-400 font-mono">
                 <span class="px-2 py-0.5 rounded bg-zinc-100 dark:bg-white/[0.04] text-[11px]">Python</span>
                 <span class="px-2 py-0.5 rounded bg-zinc-100 dark:bg-white/[0.04] text-[11px]">Django</span>
                 <span class="px-2 py-0.5 rounded bg-zinc-100 dark:bg-white/[0.04] text-[11px]">REST API</span>
               </div>
-              <button onclick="openProjectModal('sinoaf')" class="px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-white/10 hover:bg-zinc-200 dark:hover:bg-white/20 text-xs font-medium">
+              <button onclick="openProjectModal('sinoaf')" class="proj-case-btn px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-white/10 hover:bg-zinc-200 dark:hover:bg-white/20 text-xs font-medium">
                 Case Study
               </button>
             </div>
@@ -498,28 +513,28 @@
         <!-- Project 5: Cassie Posh Events -->
         <div class="project-card group flex flex-col rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#141518] hover:border-zinc-300 dark:hover:border-white/20 transition-all p-4 sm:p-5 shadow-sm" data-category="client">
           <div class="relative aspect-video w-full rounded-xl overflow-hidden bg-zinc-100 dark:bg-neutral-900 border border-zinc-200 dark:border-white/5 cursor-pointer" onclick="openProjectModal('cassieposh')">
-            <img src="./assets/images/projects/cassieposh.png" alt="Cassie Posh Events" onerror="this.src='/src/assets/images/projects/cassieposh.png'" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <img src="./assets/images/projects/cassieposh.png" alt="Cassie Posh Events" onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80'" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
             <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-60"></div>
             <div class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-black/75 backdrop-blur-md text-[11px] font-medium text-neutral-100 flex items-center gap-1.5">
               <span class="text-emerald-400">✦</span>
-              <span>200+ Monthly Inquiries</span>
+              <span id="proj5-badge">200+ Monthly Inquiries</span>
             </div>
           </div>
           <div class="flex flex-1 flex-col justify-between pt-5 space-y-4">
             <div class="space-y-2">
               <div class="flex items-center justify-between text-xs text-zinc-500 dark:text-neutral-400">
-                <span class="text-emerald-600 dark:text-emerald-400 font-medium">Lead Web Developer</span>
+                <span id="proj5-role" class="text-emerald-600 dark:text-emerald-400 font-medium">Lead Web Developer</span>
                 <span class="font-mono">2024</span>
               </div>
-              <h3 class="text-xl font-bold tracking-tight text-zinc-950 dark:text-white hover:text-emerald-600 transition-colors cursor-pointer" onclick="openProjectModal('cassieposh')">
+              <h3 id="proj5-title" class="text-xl font-bold tracking-tight text-zinc-950 dark:text-white hover:text-emerald-600 transition-colors cursor-pointer" onclick="openProjectModal('cassieposh')">
                 Cassie Posh Luxury Events
               </h3>
-              <p class="text-sm text-zinc-600 dark:text-neutral-400 line-clamp-3">
+              <p id="proj5-desc" class="text-sm text-zinc-600 dark:text-neutral-400 line-clamp-3">
                 An elegant bespoke event management platform to showcase services, enable luxury booking inquiries, and deliver streamlined client communication.
               </p>
             </div>
             <div class="pt-3 border-t border-zinc-100 dark:border-white/[0.06] flex items-center justify-between gap-3">
-              <div class="flex flex-wrap gap-1.5 text-xs text-zinc-600 dark:text-neutral-400">
+              <div class="flex flex-wrap gap-1.5 text-xs text-zinc-600 dark:text-neutral-400 font-mono">
                 <span class="px-2 py-0.5 rounded bg-zinc-100 dark:bg-white/[0.04] text-[11px]">Python</span>
                 <span class="px-2 py-0.5 rounded bg-zinc-100 dark:bg-white/[0.04] text-[11px]">Django</span>
                 <span class="px-2 py-0.5 rounded bg-zinc-100 dark:bg-white/[0.04] text-[11px]">Tailwind</span>
@@ -528,7 +543,7 @@
                 <a href="https://cassieposhevents.com/" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg text-zinc-600 dark:text-neutral-300 hover:text-black dark:hover:text-white" title="Open live website">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
                 </a>
-                <button onclick="openProjectModal('cassieposh')" class="px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-white/10 hover:bg-zinc-200 dark:hover:bg-white/20 text-xs font-medium">
+                <button onclick="openProjectModal('cassieposh')" class="proj-case-btn px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-white/10 hover:bg-zinc-200 dark:hover:bg-white/20 text-xs font-medium">
                   Details
                 </button>
               </div>
@@ -539,28 +554,28 @@
         <!-- Project 6: Nysha Salon -->
         <div class="project-card group flex flex-col rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#141518] hover:border-zinc-300 dark:hover:border-white/20 transition-all p-4 sm:p-5 shadow-sm" data-category="client">
           <div class="relative aspect-video w-full rounded-xl overflow-hidden bg-zinc-100 dark:bg-neutral-900 border border-zinc-200 dark:border-white/5 cursor-pointer" onclick="openProjectModal('nysha')">
-            <img src="./assets/images/projects/nyshahairsalon.png" alt="Nysha Hair Salon" onerror="this.src='/src/assets/images/projects/nyshahairsalon.png'" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <img src="./assets/images/projects/nyshahairsalon.png" alt="Nysha Hair Salon" onerror="this.src='https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=800&q=80'" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
             <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-60"></div>
             <div class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-black/75 backdrop-blur-md text-[11px] font-medium text-neutral-100 flex items-center gap-1.5">
               <span class="text-emerald-400">✦</span>
-              <span>-60% Booking Friction</span>
+              <span id="proj6-badge">-60% Booking Friction</span>
             </div>
           </div>
           <div class="flex flex-1 flex-col justify-between pt-5 space-y-4">
             <div class="space-y-2">
               <div class="flex items-center justify-between text-xs text-zinc-500 dark:text-neutral-400">
-                <span class="text-emerald-600 dark:text-emerald-400 font-medium">Full-Stack Developer</span>
+                <span id="proj6-role" class="text-emerald-600 dark:text-emerald-400 font-medium">Full-Stack Developer</span>
                 <span class="font-mono">2024</span>
               </div>
-              <h3 class="text-xl font-bold tracking-tight text-zinc-950 dark:text-white hover:text-emerald-600 transition-colors cursor-pointer" onclick="openProjectModal('nysha')">
+              <h3 id="proj6-title" class="text-xl font-bold tracking-tight text-zinc-950 dark:text-white hover:text-emerald-600 transition-colors cursor-pointer" onclick="openProjectModal('nysha')">
                 Nysha Hair Salon Booking System
               </h3>
-              <p class="text-sm text-zinc-600 dark:text-neutral-400 line-clamp-3">
+              <p id="proj6-desc" class="text-sm text-zinc-600 dark:text-neutral-400 line-clamp-3">
                 Modern appointment booking and service discovery web application for a premier hair and beauty studio, featuring calendar management and automated customer confirmations.
               </p>
             </div>
             <div class="pt-3 border-t border-zinc-100 dark:border-white/[0.06] flex items-center justify-between gap-3">
-              <div class="flex flex-wrap gap-1.5 text-xs text-zinc-600 dark:text-neutral-400">
+              <div class="flex flex-wrap gap-1.5 text-xs text-zinc-600 dark:text-neutral-400 font-mono">
                 <span class="px-2 py-0.5 rounded bg-zinc-100 dark:bg-white/[0.04] text-[11px]">React</span>
                 <span class="px-2 py-0.5 rounded bg-zinc-100 dark:bg-white/[0.04] text-[11px]">Python</span>
                 <span class="px-2 py-0.5 rounded bg-zinc-100 dark:bg-white/[0.04] text-[11px]">Django</span>
@@ -569,7 +584,7 @@
                 <a href="https://nysha-frontend.onrender.com/" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg text-zinc-600 dark:text-neutral-300 hover:text-black dark:hover:text-white" title="Open live web app">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
                 </a>
-                <button onclick="openProjectModal('nysha')" class="px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-white/10 hover:bg-zinc-200 dark:hover:bg-white/20 text-xs font-medium">
+                <button onclick="openProjectModal('nysha')" class="proj-case-btn px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-white/10 hover:bg-zinc-200 dark:hover:bg-white/20 text-xs font-medium">
                   Details
                 </button>
               </div>
@@ -582,19 +597,19 @@
     </div>
   </section>
 
-  <!-- Experience Section (Hythym Timeline) -->
+  <!-- Experience Section -->
   <section id="experience" class="py-20 sm:py-28 border-t border-zinc-200 dark:border-white/[0.08] relative">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
       
       <div class="space-y-3 mb-16">
         <div class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-neutral-400">
           <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-          <span>Career & Milestones</span>
+          <span id="exp-badge">Career & Milestones</span>
         </div>
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-zinc-950 dark:text-white">
+        <h2 id="exp-heading" class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-zinc-950 dark:text-white">
           Engineering experience
         </h2>
-        <p class="text-base text-zinc-600 dark:text-neutral-400 max-w-xl">
+        <p id="exp-subheading" class="text-base text-zinc-600 dark:text-neutral-400 max-w-xl">
           A progression of technical responsibility from hands-on software development to steering technology leadership at scale.
         </p>
       </div>
@@ -605,41 +620,35 @@
         <div class="rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#141518] p-6 sm:p-8 shadow-sm">
           <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-5 border-b border-zinc-100 dark:border-white/5">
             <div>
-              <h3 class="text-xl font-bold text-zinc-950 dark:text-white tracking-tight">Chief Technology Officer (CTO)</h3>
+              <h3 id="exp1-role" class="text-xl font-bold text-zinc-950 dark:text-white tracking-tight">Chief Technology Officer (CTO)</h3>
               <div class="flex items-center gap-2 text-sm text-zinc-500 dark:text-neutral-400 font-medium">
                 <span class="text-emerald-600 dark:text-emerald-400 font-semibold">LearningSpot Ltd</span>
                 <span>·</span>
                 <span>Kigali, Rwanda</span>
               </div>
             </div>
-            <div class="px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-white/[0.04] border border-zinc-200 dark:border-white/[0.06] text-xs font-mono text-zinc-700 dark:text-neutral-300 self-start md:self-auto">
+            <div id="exp1-period" class="px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-white/[0.04] border border-zinc-200 dark:border-white/[0.06] text-xs font-mono text-zinc-700 dark:text-neutral-300 self-start md:self-auto">
               Apr 2025 – Present
             </div>
           </div>
           <div class="pt-5 space-y-4">
-            <p class="text-sm sm:text-base text-zinc-700 dark:text-neutral-300 leading-relaxed">
+            <p id="exp1-summary" class="text-sm sm:text-base text-zinc-700 dark:text-neutral-300 leading-relaxed">
               Steering the overarching technological vision, engineering execution, and system reliability of LearningSpot's education software.
             </p>
             <ul class="space-y-2 text-xs sm:text-sm text-zinc-600 dark:text-neutral-400">
               <li class="flex items-start gap-2.5">
                 <span class="text-emerald-500">✓</span>
-                <span>Architected backend microservices and relational data schemas using Python and Django, sustaining rapid user growth.</span>
+                <span id="exp1-p1">Architected backend microservices and relational data schemas using Python and Django, sustaining rapid user growth.</span>
               </li>
               <li class="flex items-start gap-2.5">
                 <span class="text-emerald-500">✓</span>
-                <span>Established strict code quality benchmarks, CI/CD pipelines, and automated test coverage across development teams.</span>
+                <span id="exp1-p2">Established strict code quality benchmarks, CI/CD pipelines, and automated test coverage across development teams.</span>
               </li>
               <li class="flex items-start gap-2.5">
                 <span class="text-emerald-500">✓</span>
-                <span>Spearheaded data security protocols and role-based access controls to safeguard sensitive student and institutional records.</span>
+                <span id="exp1-p3">Spearheaded data security protocols and role-based access controls to safeguard sensitive student and institutional records.</span>
               </li>
             </ul>
-            <div class="pt-3 flex flex-wrap gap-1.5">
-              <span class="px-2.5 py-1 rounded-md bg-zinc-100 dark:bg-white/[0.03] border border-zinc-200 dark:border-white/[0.06] text-xs font-medium text-zinc-700 dark:text-neutral-300">Python</span>
-              <span class="px-2.5 py-1 rounded-md bg-zinc-100 dark:bg-white/[0.03] border border-zinc-200 dark:border-white/[0.06] text-xs font-medium text-zinc-700 dark:text-neutral-300">Django</span>
-              <span class="px-2.5 py-1 rounded-md bg-zinc-100 dark:bg-white/[0.03] border border-zinc-200 dark:border-white/[0.06] text-xs font-medium text-zinc-700 dark:text-neutral-300">PostgreSQL</span>
-              <span class="px-2.5 py-1 rounded-md bg-zinc-100 dark:bg-white/[0.03] border border-zinc-200 dark:border-white/[0.06] text-xs font-medium text-zinc-700 dark:text-neutral-300">System Architecture</span>
-            </div>
           </div>
         </div>
 
@@ -647,29 +656,29 @@
         <div class="rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#141518] p-6 sm:p-8 shadow-sm">
           <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-5 border-b border-zinc-100 dark:border-white/5">
             <div>
-              <h3 class="text-xl font-bold text-zinc-950 dark:text-white tracking-tight">Full-Stack Developer</h3>
+              <h3 id="exp2-role" class="text-xl font-bold text-zinc-950 dark:text-white tracking-tight">Full-Stack Developer</h3>
               <div class="flex items-center gap-2 text-sm text-zinc-500 dark:text-neutral-400 font-medium">
                 <span class="text-emerald-600 dark:text-emerald-400 font-semibold">LearningSpot Ltd</span>
                 <span>·</span>
                 <span>Kigali, Rwanda</span>
               </div>
             </div>
-            <div class="px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-white/[0.04] border border-zinc-200 dark:border-white/[0.06] text-xs font-mono text-zinc-700 dark:text-neutral-300 self-start md:self-auto">
+            <div id="exp2-period" class="px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-white/[0.04] border border-zinc-200 dark:border-white/[0.06] text-xs font-mono text-zinc-700 dark:text-neutral-300 self-start md:self-auto">
               Oct 2024 – Apr 2025
             </div>
           </div>
           <div class="pt-5 space-y-4">
-            <p class="text-sm sm:text-base text-zinc-700 dark:text-neutral-300 leading-relaxed">
+            <p id="exp2-summary" class="text-sm sm:text-base text-zinc-700 dark:text-neutral-300 leading-relaxed">
               Designed and engineered the end-to-end web architecture, interactive student portal, and core database mechanisms.
             </p>
             <ul class="space-y-2 text-xs sm:text-sm text-zinc-600 dark:text-neutral-400">
               <li class="flex items-start gap-2.5">
                 <span class="text-emerald-500">✓</span>
-                <span>Developed responsive frontend modules and robust RESTful APIs connecting student interfaces to core databases.</span>
+                <span id="exp2-p1">Developed responsive frontend modules and robust RESTful APIs connecting student interfaces to core databases.</span>
               </li>
               <li class="flex items-start gap-2.5">
                 <span class="text-emerald-500">✓</span>
-                <span>Optimized query performance and database indexing, cutting typical response latency by 45%.</span>
+                <span id="exp2-p2">Optimized query performance and database indexing, cutting typical response latency by 45%.</span>
               </li>
             </ul>
           </div>
@@ -679,19 +688,19 @@
         <div class="rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#141518] p-6 sm:p-8 shadow-sm">
           <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-5 border-b border-zinc-100 dark:border-white/5">
             <div>
-              <h3 class="text-xl font-bold text-zinc-950 dark:text-white tracking-tight">Software Developer Intern</h3>
+              <h3 id="exp3-role" class="text-xl font-bold text-zinc-950 dark:text-white tracking-tight">Software Developer Intern</h3>
               <div class="flex items-center gap-2 text-sm text-zinc-500 dark:text-neutral-400 font-medium">
                 <span class="text-emerald-600 dark:text-emerald-400 font-semibold">Diolichat</span>
                 <span>·</span>
-                <span>Hybrid / Remote</span>
+                <span id="exp3-loc">Hybrid / Remote</span>
               </div>
             </div>
-            <div class="px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-white/[0.04] border border-zinc-200 dark:border-white/[0.06] text-xs font-mono text-zinc-700 dark:text-neutral-300 self-start md:self-auto">
+            <div id="exp3-period" class="px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-white/[0.04] border border-zinc-200 dark:border-white/[0.06] text-xs font-mono text-zinc-700 dark:text-neutral-300 self-start md:self-auto">
               Jan 2024 – Apr 2024
             </div>
           </div>
           <div class="pt-5 space-y-4">
-            <p class="text-sm sm:text-base text-zinc-700 dark:text-neutral-300 leading-relaxed">
+            <p id="exp3-summary" class="text-sm sm:text-base text-zinc-700 dark:text-neutral-300 leading-relaxed">
               Developed and optimized backend functionalities using Django and REST Framework, ensuring scalable message queuing.
             </p>
           </div>
@@ -701,7 +710,7 @@
         <div class="rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#141518] p-6 sm:p-8 shadow-sm">
           <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-5 border-b border-zinc-100 dark:border-white/5">
             <div>
-              <h3 class="text-xl font-bold text-zinc-950 dark:text-white tracking-tight">B.Sc. in Information Technology — Software Engineering</h3>
+              <h3 id="exp4-degree" class="text-xl font-bold text-zinc-950 dark:text-white tracking-tight">B.Sc. in Information Technology — Software Engineering</h3>
               <div class="flex items-center gap-2 text-sm text-zinc-500 dark:text-neutral-400 font-medium">
                 <span class="text-emerald-600 dark:text-emerald-400 font-semibold">Adventist University of Central Africa (AUCA)</span>
                 <span>·</span>
@@ -713,7 +722,7 @@
             </div>
           </div>
           <div class="pt-5 space-y-4">
-            <p class="text-sm sm:text-base text-zinc-700 dark:text-neutral-300 leading-relaxed">
+            <p id="exp4-summary" class="text-sm sm:text-base text-zinc-700 dark:text-neutral-300 leading-relaxed">
               Completed rigorous coursework covering Algorithms, Distributed Computing, Database Engineering, and Applied Artificial Intelligence.
             </p>
           </div>
@@ -724,19 +733,19 @@
     </div>
   </section>
 
-  <!-- Skills & Languages Bento -->
+  <!-- Skills Section -->
   <section id="skills" class="py-20 sm:py-28 border-t border-zinc-200 dark:border-white/[0.08] relative">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
       
       <div class="space-y-3 mb-16">
         <div class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-neutral-400">
           <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-          <span>Technical Mastery</span>
+          <span id="skills-badge">Technical Mastery</span>
         </div>
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-zinc-950 dark:text-white">
+        <h2 id="skills-heading" class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-zinc-950 dark:text-white">
           Skills & technical stack
         </h2>
-        <p class="text-base text-zinc-600 dark:text-neutral-400 max-w-xl">
+        <p id="skills-subheading" class="text-base text-zinc-600 dark:text-neutral-400 max-w-xl">
           A comprehensive overview of programming languages, frameworks, cloud tooling, and machine learning libraries.
         </p>
       </div>
@@ -746,13 +755,13 @@
         <!-- Category 1 -->
         <div class="rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#141518] p-6 sm:p-7 shadow-sm">
           <div class="flex items-center justify-between mb-2">
-            <h3 class="text-xl font-bold text-zinc-950 dark:text-white">Backend & Systems</h3>
+            <h3 id="skill1-title" class="text-xl font-bold text-zinc-950 dark:text-white">Backend & Systems</h3>
             <span class="font-mono text-xs text-zinc-400">01</span>
           </div>
-          <p class="text-xs sm:text-sm text-zinc-600 dark:text-neutral-400 mb-6">
+          <p id="skill1-desc" class="text-xs sm:text-sm text-zinc-600 dark:text-neutral-400 mb-6">
             High-reliability architectures, server logic, and robust APIs
           </p>
-          <div class="flex flex-wrap gap-2">
+          <div class="flex flex-wrap gap-2 font-mono">
             <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-zinc-100 dark:bg-white/10 border border-zinc-300 dark:border-white/20 text-zinc-900 dark:text-white">Python</span>
             <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-zinc-100 dark:bg-white/10 border border-zinc-300 dark:border-white/20 text-zinc-900 dark:text-white">Django</span>
             <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-zinc-100 dark:bg-white/10 border border-zinc-300 dark:border-white/20 text-zinc-900 dark:text-white">Django REST</span>
@@ -765,13 +774,13 @@
         <!-- Category 2 -->
         <div class="rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#141518] p-6 sm:p-7 shadow-sm">
           <div class="flex items-center justify-between mb-2">
-            <h3 class="text-xl font-bold text-zinc-950 dark:text-white">Frontend Engineering</h3>
+            <h3 id="skill2-title" class="text-xl font-bold text-zinc-950 dark:text-white">Frontend Engineering</h3>
             <span class="font-mono text-xs text-zinc-400">02</span>
           </div>
-          <p class="text-xs sm:text-sm text-zinc-600 dark:text-neutral-400 mb-6">
+          <p id="skill2-desc" class="text-xs sm:text-sm text-zinc-600 dark:text-neutral-400 mb-6">
             Fast, accessible, and responsive user experiences
           </p>
-          <div class="flex flex-wrap gap-2">
+          <div class="flex flex-wrap gap-2 font-mono">
             <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-zinc-100 dark:bg-white/10 border border-zinc-300 dark:border-white/20 text-zinc-900 dark:text-white">JavaScript (ES6+)</span>
             <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-zinc-100 dark:bg-white/10 border border-zinc-300 dark:border-white/20 text-zinc-900 dark:text-white">TypeScript</span>
             <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-zinc-100 dark:bg-white/10 border border-zinc-300 dark:border-white/20 text-zinc-900 dark:text-white">React</span>
@@ -784,13 +793,13 @@
         <!-- Category 3 -->
         <div class="rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#141518] p-6 sm:p-7 shadow-sm">
           <div class="flex items-center justify-between mb-2">
-            <h3 class="text-xl font-bold text-zinc-950 dark:text-white">Data Science & Applied AI</h3>
+            <h3 id="skill3-title" class="text-xl font-bold text-zinc-950 dark:text-white">Data Science & Applied AI</h3>
             <span class="font-mono text-xs text-zinc-400">03</span>
           </div>
-          <p class="text-xs sm:text-sm text-zinc-600 dark:text-neutral-400 mb-6">
+          <p id="skill3-desc" class="text-xs sm:text-sm text-zinc-600 dark:text-neutral-400 mb-6">
             Machine learning models and intelligent data processing
           </p>
-          <div class="flex flex-wrap gap-2">
+          <div class="flex flex-wrap gap-2 font-mono">
             <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-zinc-100 dark:bg-white/10 border border-zinc-300 dark:border-white/20 text-zinc-900 dark:text-white">Scikit-Learn</span>
             <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-zinc-100 dark:bg-white/10 border border-zinc-300 dark:border-white/20 text-zinc-900 dark:text-white">Pandas</span>
             <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-zinc-100 dark:bg-white/10 border border-zinc-300 dark:border-white/20 text-zinc-900 dark:text-white">NumPy</span>
@@ -802,13 +811,13 @@
         <!-- Category 4 -->
         <div class="rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#141518] p-6 sm:p-7 shadow-sm">
           <div class="flex items-center justify-between mb-2">
-            <h3 class="text-xl font-bold text-zinc-950 dark:text-white">Databases & DevOps</h3>
+            <h3 id="skill4-title" class="text-xl font-bold text-zinc-950 dark:text-white">Databases & DevOps</h3>
             <span class="font-mono text-xs text-zinc-400">04</span>
           </div>
-          <p class="text-xs sm:text-sm text-zinc-600 dark:text-neutral-400 mb-6">
+          <p id="skill4-desc" class="text-xs sm:text-sm text-zinc-600 dark:text-neutral-400 mb-6">
             Scalable storage, containerization, and cloud deployment
           </p>
-          <div class="flex flex-wrap gap-2">
+          <div class="flex flex-wrap gap-2 font-mono">
             <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-zinc-100 dark:bg-white/10 border border-zinc-300 dark:border-white/20 text-zinc-900 dark:text-white">PostgreSQL</span>
             <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-zinc-100 dark:bg-white/10 border border-zinc-300 dark:border-white/20 text-zinc-900 dark:text-white">MySQL</span>
             <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-zinc-100 dark:bg-white/10 border border-zinc-300 dark:border-white/20 text-zinc-900 dark:text-white">Docker</span>
@@ -823,25 +832,25 @@
       <!-- Multilingual Section -->
       <div class="mt-8 rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#141518] p-6 sm:p-8 shadow-sm">
         <div class="flex items-center justify-between mb-4">
-          <h3 class="text-lg font-bold text-zinc-950 dark:text-white">Spoken Languages & Global Fluency</h3>
+          <h3 id="languages-title" class="text-lg font-bold text-zinc-950 dark:text-white">Spoken Languages & Global Fluency</h3>
           <span class="text-xs font-mono text-zinc-500 dark:text-neutral-400">Multilingual</span>
         </div>
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
           <div class="p-4 rounded-xl bg-zinc-50 dark:bg-white/[0.03] border border-zinc-200 dark:border-white/5">
-            <span class="text-sm font-semibold text-zinc-950 dark:text-white">French</span>
-            <span class="text-xs text-emerald-600 dark:text-emerald-400 block mt-1 font-medium">Native</span>
+            <span id="lang1-name" class="text-sm font-semibold text-zinc-950 dark:text-white">French</span>
+            <span id="lang1-fluency" class="text-xs text-emerald-600 dark:text-emerald-400 block mt-1 font-medium">Native</span>
           </div>
           <div class="p-4 rounded-xl bg-zinc-50 dark:bg-white/[0.03] border border-zinc-200 dark:border-white/5">
-            <span class="text-sm font-semibold text-zinc-950 dark:text-white">English</span>
-            <span class="text-xs text-emerald-600 dark:text-emerald-400 block mt-1 font-medium">Professional</span>
+            <span id="lang2-name" class="text-sm font-semibold text-zinc-950 dark:text-white">English</span>
+            <span id="lang2-fluency" class="text-xs text-emerald-600 dark:text-emerald-400 block mt-1 font-medium">Professional</span>
           </div>
           <div class="p-4 rounded-xl bg-zinc-50 dark:bg-white/[0.03] border border-zinc-200 dark:border-white/5">
             <span class="text-sm font-semibold text-zinc-950 dark:text-white">Swahili</span>
-            <span class="text-xs text-emerald-600 dark:text-emerald-400 block mt-1 font-medium">Conversational</span>
+            <span id="lang3-fluency" class="text-xs text-emerald-600 dark:text-emerald-400 block mt-1 font-medium">Conversational</span>
           </div>
           <div class="p-4 rounded-xl bg-zinc-50 dark:bg-white/[0.03] border border-zinc-200 dark:border-white/5">
             <span class="text-sm font-semibold text-zinc-950 dark:text-white">Lingala</span>
-            <span class="text-xs text-emerald-600 dark:text-emerald-400 block mt-1 font-medium">Fluent</span>
+            <span id="lang4-fluency" class="text-xs text-emerald-600 dark:text-emerald-400 block mt-1 font-medium">Fluent</span>
           </div>
         </div>
       </div>
@@ -856,12 +865,12 @@
       <div class="space-y-3 mb-16">
         <div class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-neutral-400">
           <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-          <span>Past Comments</span>
+          <span id="testim-tag">Past Comments</span>
         </div>
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-zinc-950 dark:text-white">
+        <h2 id="testim-heading" class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-zinc-950 dark:text-white">
           What collaborators say
         </h2>
-        <p class="text-base text-zinc-600 dark:text-neutral-400 max-w-xl">
+        <p id="testim-subheading" class="text-base text-zinc-600 dark:text-neutral-400 max-w-xl">
           Things that linger in my past co-workers and clients' minds after building together.
         </p>
       </div>
@@ -869,22 +878,22 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
         
         <div class="rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#141518] p-6 sm:p-8 space-y-6 shadow-sm">
-          <p class="text-base sm:text-lg text-zinc-800 dark:text-neutral-200 leading-relaxed italic">
+          <p id="testim1-text" class="text-base sm:text-lg text-zinc-800 dark:text-neutral-200 leading-relaxed italic">
             "Ariel brings a rare combination of architectural foresight and hands-on speed. Under his technical leadership, our platform evolved from a prototype into a high-concurrency educational system trusted by thousands."
           </p>
           <div class="pt-4 border-t border-zinc-100 dark:border-white/5">
             <h4 class="text-sm font-semibold text-zinc-950 dark:text-white">Dr. Clement Habimana</h4>
-            <p class="text-xs text-zinc-500 dark:text-neutral-400">Managing Director · LearningSpot Ltd</p>
+            <p id="testim1-role" class="text-xs text-zinc-500 dark:text-neutral-400">Managing Director · LearningSpot Ltd</p>
           </div>
         </div>
 
         <div class="rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#141518] p-6 sm:p-8 space-y-6 shadow-sm">
-          <p class="text-base sm:text-lg text-zinc-800 dark:text-neutral-200 leading-relaxed italic">
+          <p id="testim2-text" class="text-base sm:text-lg text-zinc-800 dark:text-neutral-200 leading-relaxed italic">
             "Ariel is the developer you want leading your mission-critical code. He has an eagle eye for edge cases, performance bottlenecks, and database integrity that saves entire teams weeks of debugging."
           </p>
           <div class="pt-4 border-t border-zinc-100 dark:border-white/5">
             <h4 class="text-sm font-semibold text-zinc-950 dark:text-white">Marc Ndayambaje</h4>
-            <p class="text-xs text-zinc-500 dark:text-neutral-400">Lead Systems Architect · East African Tech Alliance</p>
+            <p id="testim2-role" class="text-xs text-zinc-500 dark:text-neutral-400">Lead Systems Architect · East African Tech Alliance</p>
           </div>
         </div>
 
@@ -900,44 +909,44 @@
       <div class="space-y-3 mb-16">
         <div class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-neutral-400">
           <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-          <span>Personal Narrative</span>
+          <span id="about-tag">Personal Narrative</span>
         </div>
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-zinc-950 dark:text-white">
+        <h2 id="about-heading" class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-zinc-950 dark:text-white">
           About Ariel
         </h2>
-        <p class="text-base text-zinc-600 dark:text-neutral-400 max-w-xl">
+        <p id="about-subheading" class="text-base text-zinc-600 dark:text-neutral-400 max-w-xl">
           Passionate about engineering systems that solve tangible problems across education, governance, and commerce.
         </p>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
         <div class="lg:col-span-7 space-y-6 text-zinc-700 dark:text-neutral-300 leading-relaxed text-base sm:text-lg">
-          <p>
+          <p id="about-p1">
             I am a Software Engineer and current Chief Technology Officer at LearningSpot Ltd. My career has focused on architecting resilient, production-grade applications that pair robust backend engineering with intuitive, responsive interfaces.
           </p>
-          <p>
+          <p id="about-p2">
             From building national-scale cadastral land titling systems (DLRMS) in Central Africa to scaling real-time educational portals handling tens of thousands of active learners, I believe in software that directly empowers people and streamlines critical operations.
           </p>
           <div class="pt-4 flex flex-wrap gap-4">
             <button onclick="openResumeModal()" class="px-5 py-2.5 rounded-lg bg-zinc-900 dark:bg-white text-white dark:text-black font-semibold text-sm hover:bg-zinc-800 dark:hover:bg-neutral-200 transition-colors shadow-sm">
-              Read Full Resume
+              <span id="about-resume-btn">Read Full Resume</span>
             </button>
             <a href="#contact" class="px-5 py-2.5 rounded-lg border border-zinc-300 dark:border-white/15 bg-white dark:bg-white/[0.04] text-zinc-800 dark:text-neutral-200 text-sm hover:bg-zinc-100 dark:hover:bg-white/10 transition-colors">
-              Send a Message
+              <span id="about-msg-btn">Send a Message</span>
             </a>
           </div>
         </div>
 
         <div class="lg:col-span-5 rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#141518] p-6 sm:p-7 space-y-4 shadow-sm">
-          <h3 class="text-base font-bold text-zinc-950 dark:text-white pb-2 border-b border-zinc-100 dark:border-white/5">
+          <h3 id="about-interests-title" class="text-base font-bold text-zinc-950 dark:text-white pb-2 border-b border-zinc-100 dark:border-white/5">
             Interests & Technology Frontiers
           </h3>
           <ul class="space-y-2.5 text-xs sm:text-sm text-zinc-700 dark:text-neutral-300">
-            <li class="flex items-center gap-2"><span>✦</span> Applied Machine Learning & Data Science</li>
-            <li class="flex items-center gap-2"><span>✦</span> Decentralized Systems & Blockchain Architecture</li>
-            <li class="flex items-center gap-2"><span>✦</span> Ecology & Sustainable Climate Tech</li>
-            <li class="flex items-center gap-2"><span>✦</span> Cloud Computing & Distributed Databases</li>
-            <li class="flex items-center gap-2"><span>✦</span> Human-Centered UX Engineering</li>
+            <li class="flex items-center gap-2"><span class="text-emerald-500">✦</span> <span id="interest-1">Applied Machine Learning & Data Science</span></li>
+            <li class="flex items-center gap-2"><span class="text-emerald-500">✦</span> <span id="interest-2">Decentralized Systems & Blockchain Architecture</span></li>
+            <li class="flex items-center gap-2"><span class="text-emerald-500">✦</span> <span id="interest-3">Ecology & Sustainable Climate Tech</span></li>
+            <li class="flex items-center gap-2"><span class="text-emerald-500">✦</span> <span id="interest-4">Cloud Computing & Distributed Databases</span></li>
+            <li class="flex items-center gap-2"><span class="text-emerald-500">✦</span> <span id="interest-5">Human-Centered UX Engineering</span></li>
           </ul>
         </div>
       </div>
@@ -952,12 +961,12 @@
       <div class="space-y-3 mb-16 text-center max-w-2xl mx-auto">
         <div class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-neutral-400">
           <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-          <span>Get In Touch</span>
+          <span id="contact-tag">Get In Touch</span>
         </div>
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-zinc-950 dark:text-white">
+        <h2 id="contact-heading" class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-zinc-950 dark:text-white">
           Let's build something exceptional
         </h2>
-        <p class="text-base text-zinc-600 dark:text-neutral-400">
+        <p id="contact-subheading" class="text-base text-zinc-600 dark:text-neutral-400">
           Have an engineering challenge, full-time opportunity, or system you want to scale? I would love to hear from you.
         </p>
       </div>
@@ -966,31 +975,31 @@
         
         <!-- Direct Channels -->
         <div class="lg:col-span-5 rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#141518] p-6 sm:p-8 space-y-6 shadow-sm">
-          <h3 class="text-xl font-bold text-zinc-950 dark:text-white">Direct Channels</h3>
+          <h3 id="direct-channels-title" class="text-xl font-bold text-zinc-950 dark:text-white">Direct Channels</h3>
           
           <div class="space-y-4">
             <!-- Email -->
             <div class="p-4 rounded-xl bg-zinc-50 dark:bg-white/[0.03] border border-zinc-200 dark:border-white/5 flex items-center justify-between">
               <div>
-                <span class="text-[11px] uppercase tracking-wider text-zinc-500 dark:text-neutral-400 block">Email</span>
+                <span class="text-[11px] uppercase tracking-wider text-zinc-500 dark:text-neutral-400 block font-medium">Email</span>
                 <a href="mailto:arielaganze@gmail.com" class="text-sm font-semibold text-zinc-950 dark:text-white hover:text-emerald-500">arielaganze@gmail.com</a>
               </div>
-              <button onclick="copyToClipboard('arielaganze@gmail.com', this)" class="p-2 text-xs text-zinc-500 hover:text-black dark:hover:text-white font-medium">Copy</button>
+              <button onclick="copyToClipboard('arielaganze@gmail.com', this)" class="p-2 text-xs text-zinc-500 hover:text-black dark:hover:text-white font-medium copy-btn">Copy</button>
             </div>
 
             <!-- Phone -->
             <div class="p-4 rounded-xl bg-zinc-50 dark:bg-white/[0.03] border border-zinc-200 dark:border-white/5 flex items-center justify-between">
               <div>
-                <span class="text-[11px] uppercase tracking-wider text-zinc-500 dark:text-neutral-400 block">Phone / WhatsApp</span>
+                <span class="text-[11px] uppercase tracking-wider text-zinc-500 dark:text-neutral-400 block font-medium">Phone / WhatsApp</span>
                 <a href="tel:+250790003977" class="text-sm font-semibold text-zinc-950 dark:text-white hover:text-emerald-500">+250 790 003 977</a>
               </div>
-              <button onclick="copyToClipboard('+250 790 003 977', this)" class="p-2 text-xs text-zinc-500 hover:text-black dark:hover:text-white font-medium">Copy</button>
+              <button onclick="copyToClipboard('+250 790 003 977', this)" class="p-2 text-xs text-zinc-500 hover:text-black dark:hover:text-white font-medium copy-btn">Copy</button>
             </div>
 
             <!-- Location -->
             <div class="p-4 rounded-xl bg-zinc-50 dark:bg-white/[0.03] border border-zinc-200 dark:border-white/5">
-              <span class="text-[11px] uppercase tracking-wider text-zinc-500 dark:text-neutral-400 block">Base</span>
-              <span class="text-sm font-semibold text-zinc-950 dark:text-white">On site and remote</span>
+              <span id="contact-base-label" class="text-[11px] uppercase tracking-wider text-zinc-500 dark:text-neutral-400 block font-medium">Base</span>
+              <span id="contact-base-val" class="text-sm font-semibold text-zinc-950 dark:text-white">On site and remote</span>
             </div>
           </div>
 
@@ -1006,39 +1015,39 @@
 
         <!-- Form -->
         <div class="lg:col-span-7 rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#141518] p-6 sm:p-8 shadow-sm">
-          <h3 class="text-xl font-bold text-zinc-950 dark:text-white mb-2">Send a Direct Message</h3>
-          <p class="text-sm text-zinc-600 dark:text-neutral-400 mb-6">Fill in your details below and I will get back to you promptly.</p>
+          <h3 id="form-heading" class="text-xl font-bold text-zinc-950 dark:text-white mb-2">Send a Direct Message</h3>
+          <p id="form-subheading" class="text-sm text-zinc-600 dark:text-neutral-400 mb-6">Fill in your details below and I will get back to you promptly.</p>
           
           <form id="contact-form" onsubmit="handleContactSubmit(event)" class="space-y-4">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label class="text-xs font-medium text-zinc-700 dark:text-neutral-300 block mb-1">Your Name</label>
+                <label id="form-label-name" class="text-xs font-medium text-zinc-700 dark:text-neutral-300 block mb-1">Your Name</label>
                 <input type="text" id="form-name" required placeholder="Alex Morgan" class="w-full px-4 py-2.5 rounded-lg bg-zinc-50 dark:bg-white/[0.03] border border-zinc-200 dark:border-white/10 text-sm text-zinc-950 dark:text-white focus:outline-none focus:border-zinc-400" />
               </div>
               <div>
-                <label class="text-xs font-medium text-zinc-700 dark:text-neutral-300 block mb-1">Email Address</label>
+                <label id="form-label-email" class="text-xs font-medium text-zinc-700 dark:text-neutral-300 block mb-1">Email Address</label>
                 <input type="email" id="form-email" required placeholder="alex@company.com" class="w-full px-4 py-2.5 rounded-lg bg-zinc-50 dark:bg-white/[0.03] border border-zinc-200 dark:border-white/10 text-sm text-zinc-950 dark:text-white focus:outline-none focus:border-zinc-400" />
               </div>
             </div>
 
             <div>
-              <label class="text-xs font-medium text-zinc-700 dark:text-neutral-300 block mb-1">Subject</label>
+              <label id="form-label-subject" class="text-xs font-medium text-zinc-700 dark:text-neutral-300 block mb-1">Subject</label>
               <input type="text" id="form-subject" required placeholder="Full-Stack Engineering / CTO Leadership" class="w-full px-4 py-2.5 rounded-lg bg-zinc-50 dark:bg-white/[0.03] border border-zinc-200 dark:border-white/10 text-sm text-zinc-950 dark:text-white focus:outline-none focus:border-zinc-400" />
             </div>
 
             <div>
-              <label class="text-xs font-medium text-zinc-700 dark:text-neutral-300 block mb-1">Message</label>
+              <label id="form-label-message" class="text-xs font-medium text-zinc-700 dark:text-neutral-300 block mb-1">Message</label>
               <textarea id="form-message" required rows="4" placeholder="Describe your project, team goals, or timeline..." class="w-full px-4 py-2.5 rounded-lg bg-zinc-50 dark:bg-white/[0.03] border border-zinc-200 dark:border-white/10 text-sm text-zinc-950 dark:text-white focus:outline-none focus:border-zinc-400 resize-none"></textarea>
             </div>
 
-            <button type="submit" class="w-full py-3 px-6 rounded-lg bg-zinc-900 dark:bg-white text-white dark:text-black font-semibold text-sm hover:bg-zinc-800 dark:hover:bg-neutral-200 transition-all shadow-sm">
+            <button type="submit" id="form-submit-btn" class="w-full py-3 px-6 rounded-lg bg-zinc-900 dark:bg-white text-white dark:text-black font-semibold text-sm hover:bg-zinc-800 dark:hover:bg-neutral-200 transition-all shadow-sm">
               Send Message
             </button>
           </form>
 
           <div id="contact-success" class="hidden p-6 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-center space-y-2">
-            <h4 class="text-base font-bold text-zinc-950 dark:text-white">Message Dispatched!</h4>
-            <p class="text-xs text-zinc-600 dark:text-neutral-300">Thank you. Your message has been noted. You can also write directly to <a href="mailto:arielaganze@gmail.com" class="text-emerald-500 underline font-medium">arielaganze@gmail.com</a>.</p>
+            <h4 id="contact-success-title" class="text-base font-bold text-zinc-950 dark:text-white">Message Dispatched!</h4>
+            <p id="contact-success-desc" class="text-xs text-zinc-600 dark:text-neutral-300">Thank you. Your message has been noted. You can also write directly to <a href="mailto:arielaganze@gmail.com" class="text-emerald-500 underline font-medium">arielaganze@gmail.com</a>.</p>
           </div>
         </div>
 
@@ -1050,13 +1059,13 @@
   <!-- Footer -->
   <footer class="border-t border-zinc-200 dark:border-white/[0.08] bg-zinc-50 dark:bg-[#0c0d10] py-12 text-zinc-500 dark:text-neutral-400 text-xs">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div>
+      <div id="footer-copy">
         &copy; 2026 Aganze Kulimushi Ariel. All rights reserved.
       </div>
       <div class="flex items-center gap-4">
-        <span>Available for engineering & advisory</span>
+        <span id="footer-availability">Available for engineering & advisory</span>
         <span>·</span>
-        <!-- <span class="font-mono">Kigali · UTC+2</span> -->
+        <span class="font-mono">Kigali · UTC+2</span>
       </div>
     </div>
   </footer>
@@ -1067,59 +1076,56 @@
     <div class="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-2xl border border-zinc-200 dark:border-white/20 bg-white dark:bg-[#121316] shadow-2xl z-10 p-6 sm:p-8 text-zinc-800 dark:text-neutral-200 space-y-6 modal-animate">
       
       <div class="flex items-center justify-between pb-4 border-b border-zinc-200 dark:border-white/10">
-        <h2 class="text-xl font-bold text-zinc-950 dark:text-white">Curriculum Vitae / Resume</h2>
-        <div class="flex items-center gap-2">
-          <!-- <button onclick="window.print()" class="px-3 py-1.5 rounded-lg border border-zinc-300 dark:border-white/20 text-xs">Print</button> -->
-          <button onclick="closeResumeModal()" class="p-1 text-zinc-500 hover:text-black dark:hover:text-white">✕</button>
-        </div>
+        <h2 id="modal-resume-title" class="text-xl font-bold text-zinc-950 dark:text-white">Curriculum Vitae / Resume</h2>
+        <button onclick="closeResumeModal()" class="p-1 text-zinc-500 hover:text-black dark:hover:text-white">✕</button>
       </div>
 
       <div>
         <h1 class="text-2xl font-bold text-zinc-950 dark:text-white">Aganze Kulimushi Ariel</h1>
-        <p class="text-emerald-600 dark:text-emerald-400 text-sm font-semibold">Chief Technology Officer & Software Engineer</p>
-        <p class="text-xs text-zinc-500 dark:text-neutral-400 mt-1"> · arielaganze@gmail.com · +250 790 003 977</p>
+        <p id="modal-resume-role" class="text-emerald-600 dark:text-emerald-400 text-sm font-semibold">Chief Technology Officer & Software Engineer</p>
+        <p class="text-xs text-zinc-500 dark:text-neutral-400 mt-1">arielaganze@gmail.com · +250 790 003 977</p>
       </div>
 
       <div class="space-y-2 text-xs sm:text-sm">
-        <h3 class="font-bold text-xs uppercase tracking-wider text-zinc-500 dark:text-neutral-400">Professional Summary</h3>
-        <p class="text-zinc-600 dark:text-neutral-300">
+        <h3 id="modal-resume-summary-title" class="font-bold text-xs uppercase tracking-wider text-zinc-500 dark:text-neutral-400">Professional Summary</h3>
+        <p id="modal-resume-summary-desc" class="text-zinc-600 dark:text-neutral-300">
           Software Engineer with 4+ years of experience in full-stack architecture, relational database engineering, and applied machine learning. Proven success directing technical teams, deploying high-concurrency systems, and building digital public infrastructure.
         </p>
       </div>
 
       <div class="space-y-3 text-xs sm:text-sm">
-        <h3 class="font-bold text-xs uppercase tracking-wider text-zinc-500 dark:text-neutral-400">Experience</h3>
+        <h3 id="modal-resume-exp-title" class="font-bold text-xs uppercase tracking-wider text-zinc-500 dark:text-neutral-400">Experience</h3>
         <div>
           <div class="flex justify-between font-bold text-zinc-950 dark:text-white">
-            <span>Chief Technology Officer — LearningSpot Ltd</span>
-            <span class="font-mono text-xs">2025 – Present</span>
+            <span id="modal-resume-role1">Chief Technology Officer — LearningSpot Ltd</span>
+            <span class="font-mono text-xs" id="modal-resume-p1">2025 – Present</span>
           </div>
-          <p class="text-zinc-600 dark:text-neutral-400 text-xs">Directed platform engineering, Django microservices, and database optimizations for 10,000+ active learners.</p>
+          <p id="modal-resume-desc1" class="text-zinc-600 dark:text-neutral-400 text-xs">Directed platform engineering, Django microservices, and database optimizations for 10,000+ active learners.</p>
         </div>
         <div>
           <div class="flex justify-between font-bold text-zinc-950 dark:text-white">
-            <span>Full-Stack Developer — LearningSpot Ltd</span>
+            <span id="modal-resume-role2">Full-Stack Developer — LearningSpot Ltd</span>
             <span class="font-mono text-xs">2024 – 2025</span>
           </div>
-          <p class="text-zinc-600 dark:text-neutral-400 text-xs">Engineered interactive course delivery and authentication backend with Python, Django, and MySQL.</p>
+          <p id="modal-resume-desc2" class="text-zinc-600 dark:text-neutral-400 text-xs">Engineered interactive course delivery and authentication backend with Python, Django, and MySQL.</p>
         </div>
         <div>
           <div class="flex justify-between font-bold text-zinc-950 dark:text-white">
-            <span>B.Sc. Software Engineering — AUCA</span>
+            <span id="modal-resume-role3">B.Sc. Software Engineering — AUCA</span>
             <span class="font-mono text-xs">2021 – 2025</span>
           </div>
-          <p class="text-zinc-600 dark:text-neutral-400 text-xs">Adventist University of Central Africa (Kigali, Rwanda).</p>
+          <p id="modal-resume-desc3" class="text-zinc-600 dark:text-neutral-400 text-xs">Adventist University of Central Africa (Kigali, Rwanda).</p>
         </div>
       </div>
 
       <div class="pt-4 border-t border-zinc-200 dark:border-white/10 flex justify-end">
-        <button onclick="closeResumeModal()" class="px-4 py-2 rounded-lg bg-zinc-900 dark:bg-white text-white dark:text-black text-xs font-semibold">Close</button>
+        <button onclick="closeResumeModal()" id="modal-resume-close" class="px-4 py-2 rounded-lg bg-zinc-900 dark:bg-white text-white dark:text-black text-xs font-semibold">Close</button>
       </div>
 
     </div>
   </div>
 
-  <!-- Interactive Project Modal (for case studies) -->
+  <!-- Interactive Project Modal -->
   <div id="project-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-md">
     <div class="fixed inset-0" onclick="closeProjectModal()"></div>
     <div class="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl border border-zinc-200 dark:border-white/20 bg-white dark:bg-[#141518] shadow-2xl z-10 p-6 sm:p-8 space-y-4 modal-animate">
@@ -1132,14 +1138,602 @@
       <p id="pm-desc" class="text-sm text-zinc-600 dark:text-neutral-300 leading-relaxed"></p>
       <div id="pm-tags" class="flex flex-wrap gap-1.5 pt-2"></div>
       <div class="pt-4 border-t border-zinc-200 dark:border-white/10 flex justify-end">
-        <button onclick="closeProjectModal()" class="px-4 py-2 rounded-lg bg-zinc-900 dark:bg-white text-white dark:text-black text-xs font-semibold">Close</button>
+        <button onclick="closeProjectModal()" id="pm-close" class="px-4 py-2 rounded-lg bg-zinc-900 dark:bg-white text-white dark:text-black text-xs font-semibold">Close</button>
       </div>
     </div>
   </div>
 
-  <!-- JavaScript for Theme Toggle, Modals, Rotating Text, Filtering, Copying -->
+  <!-- Language Translations & Application Engine -->
   <script>
+    // -------------------------------------------------------------
+    // Full Bilingual Dictionary
+    // -------------------------------------------------------------
+    const translations = {
+      en: {
+        availability: "Available for work",
+        navProjects: "Projects",
+        navExperience: "Experience",
+        navSkills: "Skills",
+        navAbout: "About",
+        navTestimonials: "Testimonials",
+        navContact: "Contact",
+        navResume: "Resume",
+        navReachout: "Reach out",
+        heroRole: "Software & AI Engineer",
+        heroPrefix: "I build ",
+        heroPhrases: [
+          "fast, scalable web experiences.",
+          "production-grade AI systems.",
+          "robust cloud architectures.",
+          "intuitive digital products."
+        ],
+        heroBio: "Motivated Software Engineer with deep foundations in Python, Django, modern frontend ecosystems, and applied machine learning. Proven track record leading product architecture, delivering mission-critical applications, and scaling software in emerging markets.",
+        heroViewProjects: "View projects",
+        heroDownloadResume: "Download resume",
+        heroLetsTalk: "Let's talk",
+        metricYears: "Years Experience",
+        metricApps: "Production Apps",
+        metricUsers: "Users Served",
+        metricReliability: "Code Reliability",
+        heroWorkMode: "On site and remote",
+        heroOpenStatus: "Open to Work",
+        heroCardRole: "Chief Technology Officer & Software Engineer",
+        heroCardTz: "CAT Time",
+        stackBanner: "Core Technologies & Architecture Stack",
+        projectsTag: "Projects Showcase",
+        projectsHeading: "Featured work & systems",
+        projectsSubheading: "The standard of work I strive to achieve every time I build solutions — engineered for durability, performance, and clear business outcomes.",
+        filterAll: "All",
+        filterFullstack: "Full-Stack",
+        filterEnterprise: "Enterprise",
+        filterClient: "Client Work",
+        ndaTitle: "Enterprise & Proprietary Notice",
+        ndaDesc: "Please note: Beyond the featured public projects below, I have engineered and deployed additional production systems in enterprise environments (including internal business ERPs, proprietary database pipelines, and high-security services) that cannot be publicly displayed due to corporate non-disclosure agreements (NDAs).",
+        ndaAction: "Request Technical Walkthrough",
+        proj1Badge: "1,000+ Test Cadastral Parcels",
+        proj1Role: "Lead Software Architect",
+        proj1Title: "Digital Land Registration & Management System (DLRMS)",
+        proj1Desc: "Architected a comprehensive web-based cadastral system designed to modernize land registration, ownership authentication, and dispute reduction in the DRC.",
+        proj2Badge: "10,000+ Active Learners",
+        proj2Role: "Chief Technology Officer",
+        proj2Period: "2024 - Present",
+        proj2Title: "LearningSpot E-Learning Platform",
+        proj2Desc: "An educational platform focused on barrier-free accessibility, personalized student pathways, dynamic course delivery, and real-time administrative analytics.",
+        proj3Badge: "100% Tank Telemetry Reconciled",
+        proj3Role: "Lead Full-Stack Developer",
+        proj3Title: "Gas Station Management ERP (Petrox)",
+        proj3Desc: "A fuel station ERP streamlining underground tank sensor telemetry, pump sales transactions, inventory monitoring, attendant shifts, and financial auditing.",
+        proj4Badge: "Multi-Currency Logistics RFQ",
+        proj4Role: "Full-Stack Architect",
+        proj4Title: "Sinoaf Global Sourcing & E-Commerce",
+        proj4Desc: "Cross-border sourcing and international procurement web platform with intelligent product discovery, supplier negotiation, automated RFQ quoting, and tracking.",
+        proj5Badge: "200+ Monthly Inquiries",
+        proj5Role: "Lead Web Developer",
+        proj5Title: "Cassie Posh Luxury Events",
+        proj5Desc: "An elegant bespoke event management platform to showcase services, enable luxury booking inquiries, and deliver streamlined client communication.",
+        proj6Badge: "-60% Booking Friction",
+        proj6Role: "Full-Stack Developer",
+        proj6Title: "Nysha Hair Salon Booking System",
+        proj6Desc: "Modern appointment booking and service discovery web application for a premier hair and beauty studio, featuring calendar management and automated customer confirmations.",
+        caseStudyBtn: "Case Study",
+        detailsBtn: "Details",
+        expBadge: "Career & Milestones",
+        expHeading: "Engineering experience",
+        expSubheading: "A progression of technical responsibility from hands-on software development to steering technology leadership at scale.",
+        exp1Role: "Chief Technology Officer (CTO)",
+        exp1Period: "Apr 2025 – Present",
+        exp1Summary: "Steering the overarching technological vision, engineering execution, and system reliability of LearningSpot's education software.",
+        exp1P1: "Architected backend microservices and relational data schemas using Python and Django, sustaining rapid user growth.",
+        exp1P2: "Established strict code quality benchmarks, CI/CD pipelines, and automated test coverage across development teams.",
+        exp1P3: "Spearheaded data security protocols and role-based access controls to safeguard sensitive student and institutional records.",
+        exp2Role: "Full-Stack Developer",
+        exp2Period: "Oct 2024 – Apr 2025",
+        exp2Summary: "Designed and engineered the end-to-end web architecture, interactive student portal, and core database mechanisms.",
+        exp2P1: "Developed responsive frontend modules and robust RESTful APIs connecting student interfaces to core databases.",
+        exp2P2: "Optimized query performance and database indexing, cutting typical response latency by 45%.",
+        exp3Role: "Software Developer Intern",
+        exp3Loc: "Hybrid / Remote",
+        exp3Period: "Jan 2024 – Apr 2024",
+        exp3Summary: "Developed and optimized backend functionalities using Django and REST Framework, ensuring scalable message queuing.",
+        exp4Degree: "B.Sc. in Information Technology — Software Engineering",
+        exp4Summary: "Completed rigorous coursework covering Algorithms, Distributed Computing, Database Engineering, and Applied Artificial Intelligence.",
+        skillsBadge: "Technical Mastery",
+        skillsHeading: "Skills & technical stack",
+        skillsSubheading: "A comprehensive overview of programming languages, frameworks, cloud tooling, and machine learning libraries.",
+        skill1Title: "Backend & Systems",
+        skill1Desc: "High-reliability architectures, server logic, and robust APIs",
+        skill2Title: "Frontend Engineering",
+        skill2Desc: "Fast, accessible, and responsive user experiences",
+        skill3Title: "Data Science & Applied AI",
+        skill3Desc: "Machine learning models and intelligent data processing",
+        skill4Title: "Databases & DevOps",
+        skill4Desc: "Scalable storage, containerization, and cloud deployment",
+        languagesTitle: "Spoken Languages & Global Fluency",
+        lang1Name: "French",
+        lang1Fluency: "Native",
+        lang2Name: "English",
+        lang2Fluency: "Professional",
+        lang3Fluency: "Conversational",
+        lang4Fluency: "Fluent",
+        testimTag: "Past Comments",
+        testimHeading: "What collaborators say",
+        testimSubheading: "Things that linger in my past co-workers and clients' minds after building together.",
+        testim1Text: "\"Ariel brings a rare combination of architectural foresight and hands-on speed. Under his technical leadership, our platform evolved from a prototype into a high-concurrency educational system trusted by thousands.\"",
+        testim1Role: "Managing Director · LearningSpot Ltd",
+        testim2Text: "\"Ariel is the developer you want leading your mission-critical code. He has an eagle eye for edge cases, performance bottlenecks, and database integrity that saves entire teams weeks of debugging.\"",
+        testim2Role: "Lead Systems Architect · East African Tech Alliance",
+        aboutTag: "Personal Narrative",
+        aboutHeading: "About Ariel",
+        aboutSubheading: "Passionate about engineering systems that solve tangible problems across education, governance, and commerce.",
+        aboutP1: "I am a Software Engineer and current Chief Technology Officer at LearningSpot Ltd. My career has focused on architecting resilient, production-grade applications that pair robust backend engineering with intuitive, responsive interfaces.",
+        aboutP2: "From building national-scale cadastral land titling systems (DLRMS) in Central Africa to scaling real-time educational portals handling tens of thousands of active learners, I believe in software that directly empowers people and streamlines critical operations.",
+        aboutResumeBtn: "Read Full Resume",
+        aboutMsgBtn: "Send a Message",
+        aboutInterestsTitle: "Interests & Technology Frontiers",
+        interest1: "Applied Machine Learning & Data Science",
+        interest2: "Decentralized Systems & Blockchain Architecture",
+        interest3: "Ecology & Sustainable Climate Tech",
+        interest4: "Cloud Computing & Distributed Databases",
+        interest5: "Human-Centered UX Engineering",
+        contactTag: "Get In Touch",
+        contactHeading: "Let's build something exceptional",
+        contactSubheading: "Have an engineering challenge, full-time opportunity, or system you want to scale? I would love to hear from you.",
+        directChannelsTitle: "Direct Channels",
+        contactBaseLabel: "Location & Work Mode",
+        contactBaseVal: "On site and remote (Global)",
+        copyBtnText: "Copy",
+        copiedBtnText: "Copied!",
+        formHeading: "Send a Direct Message",
+        formSubheading: "Fill in your details below and I will get back to you promptly.",
+        formLabelName: "Your Name",
+        formLabelEmail: "Email Address",
+        formLabelSubject: "Subject",
+        formLabelMessage: "Message",
+        formPlaceholderName: "Alex Morgan",
+        formPlaceholderEmail: "alex@company.com",
+        formPlaceholderSubject: "Full-Stack Engineering / CTO Leadership",
+        formPlaceholderMessage: "Describe your project, team goals, or timeline...",
+        formSubmitBtn: "Send Message",
+        contactSuccessTitle: "Message Dispatched!",
+        contactSuccessDesc: "Thank you. Your message has been noted. You can also write directly to ",
+        footerCopy: "© 2026 Aganze Kulimushi Ariel. All rights reserved.",
+        footerAvailability: "Available for engineering & advisory",
+        modalResumeTitle: "Curriculum Vitae / Resume",
+        modalResumeRole: "Chief Technology Officer & Software Engineer",
+        modalResumeSummaryTitle: "Professional Summary",
+        modalResumeSummaryDesc: "Software Engineer with 4+ years of experience in full-stack architecture, relational database engineering, and applied machine learning. Proven success directing technical teams, deploying high-concurrency systems, and building digital public infrastructure.",
+        modalResumeExpTitle: "Experience",
+        modalResumeRole1: "Chief Technology Officer — LearningSpot Ltd",
+        modalResumeP1: "2025 – Present",
+        modalResumeDesc1: "Directed platform engineering, Django microservices, and database optimizations for 10,000+ active learners.",
+        modalResumeRole2: "Full-Stack Developer — LearningSpot Ltd",
+        modalResumeDesc2: "Engineered interactive course delivery and authentication backend with Python, Django, and MySQL.",
+        modalResumeRole3: "B.Sc. Software Engineering — AUCA",
+        modalResumeDesc3: "Adventist University of Central Africa (Kigali, Rwanda).",
+        modalClose: "Close"
+      },
+
+      fr: {
+        availability: "Disponible pour de nouveaux projets",
+        navProjects: "Projets",
+        navExperience: "Expérience",
+        navSkills: "Compétences",
+        navAbout: "À propos",
+        navTestimonials: "Témoignages",
+        navContact: "Contact",
+        navResume: "CV",
+        navReachout: "Me contacter",
+        heroRole: "Ingénieur Logiciel & IA",
+        heroPrefix: "Je conçois ",
+        heroPhrases: [
+          "des expériences web rapides et évolutives.",
+          "des systèmes IA de niveau production.",
+          "des architectures cloud robustes.",
+          "des produits numériques intuitifs."
+        ],
+        heroBio: "Ingénieur logiciel chevronné avec de solides fondations en Python, Django, les écosystèmes frontend modernes et l'apprentissage automatique appliqué. Expérience avérée dans la conception d'architectures produit, la livraison d'applications critiques et le déploiement de solutions logicielles à grande échelle dans les marchés émergents.",
+        heroViewProjects: "Voir les projets",
+        heroDownloadResume: "Télécharger le CV",
+        heroLetsTalk: "Discutons",
+        metricYears: "Années d'expérience",
+        metricApps: "Apps en production",
+        metricUsers: "Utilisateurs servis",
+        metricReliability: "Fiabilité du code",
+        heroWorkMode: "Sur site et à distance",
+        heroOpenStatus: "Ouvert aux opportunités",
+        heroCardRole: "Directeur Technique (CTO) & Ingénieur Logiciel",
+        heroCardTz: "Heure CAT",
+        stackBanner: "Technologies Clés & Architecture",
+        projectsTag: "Vitrine de projets",
+        projectsHeading: "Projets phares & réalisations",
+        projectsSubheading: "Le niveau d'exigence auquel j'aspire à chaque solution : conçu pour la durabilité, la haute performance et des résultats concrets.",
+        filterAll: "Tous",
+        filterFullstack: "Full-Stack",
+        filterEnterprise: "Entreprise",
+        filterClient: "Projets Clients",
+        ndaTitle: "Avis sur les Projets d'Entreprise & Propriétaires",
+        ndaDesc: "Veuillez noter : au-delà des projets publics présentés ci-dessous, j'ai conçu et déployé d'autres systèmes en production pour des organisations d'envergure (ERP internes, pipelines de données confidentiels, architectures sécurisées) qui ne peuvent être affichés publiquement en raison d'accords de non-divulgation (NDA).",
+        ndaAction: "Demander une présentation technique",
+        proj1Badge: "1 000+ Parcelles Cadastrales Testées",
+        proj1Role: "Architecte Logiciel Principal",
+        proj1Title: "Système Numérique d'Enregistrement Foncier (DLRMS)",
+        proj1Desc: "Conception d'un système cadastral web complet modernisant l'enregistrement foncier, l'authentification des titres de propriété et la réduction des litiges fonciers en RDC.",
+        proj2Badge: "10 000+ Apprenants Actifs",
+        proj2Role: "Directeur Technique (CTO)",
+        proj2Period: "2024 - Présent",
+        proj2Title: "Plateforme E-Learning LearningSpot",
+        proj2Desc: "Plateforme éducative axée sur l'accessibilité sans barrières, les parcours d'apprentissage personnalisés, la diffusion de cours interactifs et l'analytique en temps réel.",
+        proj3Badge: "100% Télémétrie Cuves Réconciliée",
+        proj3Role: "Développeur Full-Stack Principal",
+        proj3Title: "ERP de Gestion de Stations-Service (Petrox)",
+        proj3Desc: "Un ERP pétrolier automatisant la télémétrie des cuves souterraines, les transactions aux pompes, le suivi des stocks, les quarts de travail et les audits comptables.",
+        proj4Badge: "Devis Logistiques Multi-Devises",
+        proj4Role: "Architecte Full-Stack",
+        proj4Title: "Sinoaf Approvisionnement Mondial & E-Commerce",
+        proj4Desc: "Plateforme web d'approvisionnement transfrontalier et d'import-export avec découverte intelligente de produits, négociation fournisseurs et cotations RFQ automatiques.",
+        proj5Badge: "200+ Demandes Mensuelles",
+        proj5Role: "Développeur Web Principal",
+        proj5Title: "Cassie Posh Événements Haut de Gamme",
+        proj5Desc: "Plateforme événementielle de prestige présentant les prestations, facilitant les réservations haut de gamme et fluidifiant les échanges avec les clients.",
+        proj6Badge: "-60% Friction de Réservation",
+        proj6Role: "Développeur Full-Stack",
+        proj6Title: "Système de Réservation Salon Nysha",
+        proj6Desc: "Application web moderne de prise de rendez-vous et de découverte des soins pour un institut de beauté, avec gestion de planning et rappels automatisés.",
+        caseStudyBtn: "Étude de cas",
+        detailsBtn: "Détails",
+        expBadge: "Parcours & Jalons",
+        expHeading: "Expérience professionnelle",
+        expSubheading: "Une progression constante des responsabilités techniques, du développement opérationnel au pilotage technologique à grande échelle.",
+        exp1Role: "Directeur Technique (CTO)",
+        exp1Period: "Avr 2025 – Présent",
+        exp1Summary: "Direction de la vision technologique globale, de l'exécution logicielle et de la résilience opérationnelle de la plateforme d'éducation LearningSpot.",
+        exp1P1: "Architecture des microservices backend et schémas relationnels sous Python et Django, absorbant la croissance continue des apprenants.",
+        exp1P2: "Mise en place de standards rigoureux de qualité de code, de pipelines CI/CD automatisés et d'une couverture de tests étendue.",
+        exp1P3: "Déploiement de protocoles de sécurité avancés et de contrôles d'accès basés sur les rôles (RBAC) protégeant les données étudiantes.",
+        exp2Role: "Développeur Full-Stack",
+        exp2Period: "Oct 2024 – Avr 2025",
+        exp2Summary: "Conception et développement de l'architecture web de bout en bout, du portail interactif pour étudiants et des mécanismes de base de données.",
+        exp2P1: "Développement d'interfaces réactives et d'API RESTful robustes reliant le portail aux bases de données centrales.",
+        exp2P2: "Optimisation des requêtes SQL et indexation de données, réduisant la latence moyenne de réponse de 45%.",
+        exp3Role: "Stagiaire Développeur Logiciel",
+        exp3Loc: "Hybride / À distance",
+        exp3Period: "Jan 2024 – Avr 2024",
+        exp3Summary: "Développement et optimisation des fonctionnalités backend avec Django et Django REST Framework pour des files d'attente évolutives.",
+        exp4Degree: "Licence (B.Sc.) en Informatique — Génie Logiciel",
+        exp4Summary: "Formation universitaire approfondie couvrant les algorithmes, les systèmes distribués, l'ingénierie des bases de données et l'intelligence artificielle appliquée.",
+        skillsBadge: "Expertise technique",
+        skillsHeading: "Compétences & boîte à outils",
+        skillsSubheading: "Vue d'ensemble de mon stack technique : langages de programmation, frameworks backend et frontend, bases de données et machine learning.",
+        skill1Title: "Backend & Systèmes",
+        skill1Desc: "Architectures haute fiabilité, logique serveur et API robustes",
+        skill2Title: "Ingénierie Frontend",
+        skill2Desc: "Interfaces modernes, rapides, accessibles et réactives",
+        skill3Title: "Data Science & IA Appliquée",
+        skill3Desc: "Modèles de machine learning et traitement intelligent des données",
+        skill4Title: "Bases de Données & DevOps",
+        skill4Desc: "Stockage évolutif, conteneurisation et déploiement cloud",
+        languagesTitle: "Langues parlées & Maîtrise globale",
+        lang1Name: "Français",
+        lang1Fluency: "Maternelle",
+        lang2Name: "Anglais",
+        lang2Fluency: "Professionnelle",
+        lang3Fluency: "Conversationnelle",
+        lang4Fluency: "Courante",
+        testimTag: "Témoignages",
+        testimHeading: "Ce que disent mes collaborateurs",
+        testimSubheading: "Les retours de mes collègues et clients après nos collaborations techniques.",
+        testim1Text: "« Ariel allie une vision architecturale rare et une vitesse d'exécution remarquable. Sous son leadership technique, notre plateforme est passée d'un prototype à un écosystème éducatif à haute concurrence utilisé par des milliers d'apprenants. »",
+        testim1Role: "Directeur Général · LearningSpot Ltd",
+        testim2Text: "« Ariel est l'ingénieur que vous voulez pour diriger votre code le plus critique. Il possède un œil d'aigle pour détecter les cas limites, les goulots d'étranglement de performance et l'intégrité des bases de données. »",
+        testim2Role: "Architecte Systèmes Principal · East African Tech Alliance",
+        aboutTag: "Parcours personnel",
+        aboutHeading: "À propos d'Ariel",
+        aboutSubheading: "Passionné par l'ingénierie de solutions qui résolvent des problématiques concrètes dans l'éducation, la gouvernance et le commerce.",
+        aboutP1: "Je suis ingénieur logiciel et actuellement Directeur Technique (CTO) chez LearningSpot Ltd. Mon travail est guidé par la conception d'applications résilientes et prêtes pour la production, associant une ingénierie backend rigoureuse à des interfaces utilisateurs réactives et intuitives.",
+        aboutP2: "De la conception de systèmes cadastraux numériques (DLRMS) en Afrique centrale au déploiement de portails éducatifs en temps réel accueillant des dizaines de milliers d'apprenants, je crois fermement au pouvoir de solutions logicielles qui autonomisent directement les utilisateurs.",
+        aboutResumeBtn: "Lire le CV complet",
+        aboutMsgBtn: "Envoyer un message",
+        aboutInterestsTitle: "Centres d'Intérêt & Frontières Technologiques",
+        interest1: "Apprentissage Automatique Appliqué & Data Science",
+        interest2: "Systèmes Décentralisés & Architectures Résilientes",
+        interest3: "Technologies Climatiques & Écologie Numérique",
+        interest4: "Bases de Données Distribuées & Cloud Computing",
+        interest5: "Ingénierie UX Centrée sur l'Humain",
+        contactTag: "Me contacter",
+        contactHeading: "Construisons quelque chose d'exceptionnel",
+        contactSubheading: "Vous avez un défi d'ingénierie, une opportunité ou un système à mettre à l'échelle ? Discutons-en.",
+        directChannelsTitle: "Canaux Directs",
+        contactBaseLabel: "Disponibilité Géographique",
+        contactBaseVal: "Sur site et à distance mondiale",
+        copyBtnText: "Copier",
+        copiedBtnText: "Copié !",
+        formHeading: "Envoyer un Message Direct",
+        formSubheading: "Remplissez le formulaire ci-dessous et je vous répondrai dans les plus brefs délais.",
+        formLabelName: "Votre Nom",
+        formLabelEmail: "Adresse E-mail",
+        formLabelSubject: "Sujet",
+        formLabelMessage: "Message",
+        formPlaceholderName: "Alexandre Morgan",
+        formPlaceholderEmail: "alex@company.com",
+        formPlaceholderSubject: "Ingénierie Full-Stack / Direction Technique",
+        formPlaceholderMessage: "Décrivez votre projet, vos objectifs ou vos délais...",
+        formSubmitBtn: "Envoyer le Message",
+        contactSuccessTitle: "Message Envoyé avec Succès !",
+        contactSuccessDesc: "Merci pour votre message. Il a bien été enregistré. Vous pouvez également écrire directement à ",
+        footerCopy: "© 2026 Aganze Kulimushi Ariel. Tous droits réservés.",
+        footerAvailability: "Disponible pour missions d'ingénierie & conseil",
+        modalResumeTitle: "Curriculum Vitae / CV",
+        modalResumeRole: "Directeur Technique (CTO) & Ingénieur Logiciel",
+        modalResumeSummaryTitle: "Profil Professionnel",
+        modalResumeSummaryDesc: "Ingénieur logiciel fort de plus de 4 ans d'expérience dans l'architecture full-stack, l'ingénierie des bases de données relationnelles et l'apprentissage automatique appliqué. Succès avéré dans la direction d'équipes techniques, le déploiement de systèmes à haute concurrence et le développement d'infrastructures publiques numériques.",
+        modalResumeExpTitle: "Expérience",
+        modalResumeRole1: "Directeur Technique (CTO) — LearningSpot Ltd",
+        modalResumeP1: "2025 – Présent",
+        modalResumeDesc1: "Direction de l'ingénierie de la plateforme, des microservices Django et des optimisations de données pour plus de 10 000 apprenants.",
+        modalResumeRole2: "Développeur Full-Stack — LearningSpot Ltd",
+        modalResumeDesc2: "Conception de la diffusion interactive des cours et du backend d'authentification sous Python, Django et MySQL.",
+        modalResumeRole3: "Licence en Génie Logiciel — AUCA",
+        modalResumeDesc3: "Adventist University of Central Africa (Kigali, Rwanda).",
+        modalClose: "Fermer"
+      }
+    };
+
+    // Current language state
+    let currentLang = 'en';
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('portfolio_lang', lang);
+      document.documentElement.lang = lang;
+
+      const t = translations[lang];
+
+      // Update Toggle Buttons Styling
+      const btnEn = document.getElementById('lang-btn-en');
+      const btnFr = document.getElementById('lang-btn-fr');
+      if (lang === 'fr') {
+        btnFr.className = 'flex items-center gap-1 px-2.5 py-1 rounded-md transition-all bg-emerald-600 text-white shadow-sm font-bold';
+        btnEn.className = 'px-2.5 py-1 rounded-md transition-all text-zinc-600 dark:text-neutral-400 hover:text-black dark:hover:text-white';
+      } else {
+        btnEn.className = 'px-2.5 py-1 rounded-md transition-all bg-white dark:bg-white text-zinc-950 dark:text-black shadow-sm font-bold';
+        btnFr.className = 'flex items-center gap-1 px-2.5 py-1 rounded-md transition-all text-zinc-600 dark:text-neutral-400 hover:text-black dark:hover:text-white';
+      }
+
+      // Top Nav
+      document.getElementById('nav-availability').textContent = t.availability;
+      document.getElementById('nav-projects').textContent = t.navProjects;
+      document.getElementById('nav-experience').textContent = t.navExperience;
+      document.getElementById('nav-skills').textContent = t.navSkills;
+      document.getElementById('nav-about').textContent = t.navAbout;
+      document.getElementById('nav-testimonials').textContent = t.navTestimonials;
+      document.getElementById('nav-contact').textContent = t.navContact;
+      document.getElementById('nav-resume-btn').textContent = t.navResume;
+      document.getElementById('nav-reachout-btn').textContent = t.navReachout;
+
+      // Mobile Menu
+      document.getElementById('mob-projects').textContent = t.navProjects;
+      document.getElementById('mob-experience').textContent = t.navExperience;
+      document.getElementById('mob-skills').textContent = t.navSkills;
+      document.getElementById('mob-about').textContent = t.navAbout;
+      document.getElementById('mob-testimonials').textContent = t.navTestimonials;
+      document.getElementById('mob-contact').textContent = t.navContact;
+      document.getElementById('mob-resume').textContent = t.modalResumeTitle;
+
+      // Hero
+      document.getElementById('hero-badge-role').textContent = t.heroRole;
+      document.getElementById('hero-title-prefix').textContent = t.heroPrefix;
+      document.getElementById('hero-bio').textContent = t.heroBio;
+      document.getElementById('hero-view-projects').textContent = t.heroViewProjects;
+      document.getElementById('hero-download-resume').textContent = t.heroDownloadResume;
+      document.getElementById('hero-lets-talk').textContent = t.heroLetsTalk;
+
+      // Metrics
+      document.getElementById('metric-years').textContent = t.metricYears;
+      document.getElementById('metric-apps').textContent = t.metricApps;
+      document.getElementById('metric-users').textContent = t.metricUsers;
+      document.getElementById('metric-reliability').textContent = t.metricReliability;
+
+      // Portrait card
+      document.getElementById('hero-workmode').textContent = t.heroWorkMode;
+      document.getElementById('hero-open-status').textContent = t.heroOpenStatus;
+      document.getElementById('hero-card-role').textContent = t.heroCardRole;
+      document.getElementById('hero-card-tz').textContent = t.heroCardTz;
+      document.getElementById('stack-banner-title').textContent = t.stackBanner;
+
+      // Projects
+      document.getElementById('projects-tag').textContent = t.projectsTag;
+      document.getElementById('projects-heading').textContent = t.projectsHeading;
+      document.getElementById('projects-subheading').textContent = t.projectsSubheading;
+      document.getElementById('filter-all').textContent = t.filterAll;
+      document.getElementById('filter-fullstack').textContent = t.filterFullstack;
+      document.getElementById('filter-enterprise').textContent = t.filterEnterprise;
+      document.getElementById('filter-client').textContent = t.filterClient;
+
+      // NDA notice
+      document.getElementById('nda-title').textContent = t.ndaTitle;
+      document.getElementById('nda-desc').textContent = t.ndaDesc;
+      document.getElementById('nda-action').textContent = t.ndaAction;
+
+      // Project Cards
+      document.getElementById('proj1-badge').textContent = t.proj1Badge;
+      document.getElementById('proj1-role').textContent = t.proj1Role;
+      document.getElementById('proj1-title').textContent = t.proj1Title;
+      document.getElementById('proj1-desc').textContent = t.proj1Desc;
+
+      document.getElementById('proj2-badge').textContent = t.proj2Badge;
+      document.getElementById('proj2-role').textContent = t.proj2Role;
+      document.getElementById('proj2-period').textContent = t.proj2Period;
+      document.getElementById('proj2-title').textContent = t.proj2Title;
+      document.getElementById('proj2-desc').textContent = t.proj2Desc;
+
+      document.getElementById('proj3-badge').textContent = t.proj3Badge;
+      document.getElementById('proj3-role').textContent = t.proj3Role;
+      document.getElementById('proj3-title').textContent = t.proj3Title;
+      document.getElementById('proj3-desc').textContent = t.proj3Desc;
+
+      document.getElementById('proj4-badge').textContent = t.proj4Badge;
+      document.getElementById('proj4-role').textContent = t.proj4Role;
+      document.getElementById('proj4-title').textContent = t.proj4Title;
+      document.getElementById('proj4-desc').textContent = t.proj4Desc;
+
+      document.getElementById('proj5-badge').textContent = t.proj5Badge;
+      document.getElementById('proj5-role').textContent = t.proj5Role;
+      document.getElementById('proj5-title').textContent = t.proj5Title;
+      document.getElementById('proj5-desc').textContent = t.proj5Desc;
+
+      document.getElementById('proj6-badge').textContent = t.proj6Badge;
+      document.getElementById('proj6-role').textContent = t.proj6Role;
+      document.getElementById('proj6-title').textContent = t.proj6Title;
+      document.getElementById('proj6-desc').textContent = t.proj6Desc;
+
+      // Case study buttons
+      document.querySelectorAll('.proj-case-btn').forEach((btn, idx) => {
+        btn.textContent = (idx >= 4) ? t.detailsBtn : t.caseStudyBtn;
+      });
+
+      // Experience
+      document.getElementById('exp-badge').textContent = t.expBadge;
+      document.getElementById('exp-heading').textContent = t.expHeading;
+      document.getElementById('exp-subheading').textContent = t.expSubheading;
+      document.getElementById('exp1-role').textContent = t.exp1Role;
+      document.getElementById('exp1-period').textContent = t.exp1Period;
+      document.getElementById('exp1-summary').textContent = t.exp1Summary;
+      document.getElementById('exp1-p1').textContent = t.exp1P1;
+      document.getElementById('exp1-p2').textContent = t.exp1P2;
+      document.getElementById('exp1-p3').textContent = t.exp1P3;
+
+      document.getElementById('exp2-role').textContent = t.exp2Role;
+      document.getElementById('exp2-period').textContent = t.exp2Period;
+      document.getElementById('exp2-summary').textContent = t.exp2Summary;
+      document.getElementById('exp2-p1').textContent = t.exp2P1;
+      document.getElementById('exp2-p2').textContent = t.exp2P2;
+
+      document.getElementById('exp3-role').textContent = t.exp3Role;
+      document.getElementById('exp3-loc').textContent = t.exp3Loc;
+      document.getElementById('exp3-period').textContent = t.exp3Period;
+      document.getElementById('exp3-summary').textContent = t.exp3Summary;
+
+      document.getElementById('exp4-degree').textContent = t.exp4Degree;
+      document.getElementById('exp4-summary').textContent = t.exp4Summary;
+
+      // Skills
+      document.getElementById('skills-badge').textContent = t.skillsBadge;
+      document.getElementById('skills-heading').textContent = t.skillsHeading;
+      document.getElementById('skills-subheading').textContent = t.skillsSubheading;
+      document.getElementById('skill1-title').textContent = t.skill1Title;
+      document.getElementById('skill1-desc').textContent = t.skill1Desc;
+      document.getElementById('skill2-title').textContent = t.skill2Title;
+      document.getElementById('skill2-desc').textContent = t.skill2Desc;
+      document.getElementById('skill3-title').textContent = t.skill3Title;
+      document.getElementById('skill3-desc').textContent = t.skill3Desc;
+      document.getElementById('skill4-title').textContent = t.skill4Title;
+      document.getElementById('skill4-desc').textContent = t.skill4Desc;
+      document.getElementById('languages-title').textContent = t.languagesTitle;
+      document.getElementById('lang1-name').textContent = t.lang1Name;
+      document.getElementById('lang1-fluency').textContent = t.lang1Fluency;
+      document.getElementById('lang2-name').textContent = t.lang2Name;
+      document.getElementById('lang2-fluency').textContent = t.lang2Fluency;
+      document.getElementById('lang3-fluency').textContent = t.lang3Fluency;
+      document.getElementById('lang4-fluency').textContent = t.lang4Fluency;
+
+      // Testimonials
+      document.getElementById('testim-tag').textContent = t.testimTag;
+      document.getElementById('testim-heading').textContent = t.testimHeading;
+      document.getElementById('testim-subheading').textContent = t.testimSubheading;
+      document.getElementById('testim1-text').textContent = t.testim1Text;
+      document.getElementById('testim1-role').textContent = t.testim1Role;
+      document.getElementById('testim2-text').textContent = t.testim2Text;
+      document.getElementById('testim2-role').textContent = t.testim2Role;
+
+      // About
+      document.getElementById('about-tag').textContent = t.aboutTag;
+      document.getElementById('about-heading').textContent = t.aboutHeading;
+      document.getElementById('about-subheading').textContent = t.aboutSubheading;
+      document.getElementById('about-p1').textContent = t.aboutP1;
+      document.getElementById('about-p2').textContent = t.aboutP2;
+      document.getElementById('about-resume-btn').textContent = t.aboutResumeBtn;
+      document.getElementById('about-msg-btn').textContent = t.aboutMsgBtn;
+      document.getElementById('about-interests-title').textContent = t.aboutInterestsTitle;
+      document.getElementById('interest-1').textContent = t.interest1;
+      document.getElementById('interest-2').textContent = t.interest2;
+      document.getElementById('interest-3').textContent = t.interest3;
+      document.getElementById('interest-4').textContent = t.interest4;
+      document.getElementById('interest-5').textContent = t.interest5;
+
+      // Contact
+      document.getElementById('contact-tag').textContent = t.contactTag;
+      document.getElementById('contact-heading').textContent = t.contactHeading;
+      document.getElementById('contact-subheading').textContent = t.contactSubheading;
+      document.getElementById('direct-channels-title').textContent = t.directChannelsTitle;
+      document.getElementById('contact-base-label').textContent = t.contactBaseLabel;
+      document.getElementById('contact-base-val').textContent = t.contactBaseVal;
+      document.querySelectorAll('.copy-btn').forEach(btn => {
+        if (!btn.textContent.includes('!')) btn.textContent = t.copyBtnText;
+      });
+
+      // Contact Form
+      document.getElementById('form-heading').textContent = t.formHeading;
+      document.getElementById('form-subheading').textContent = t.formSubheading;
+      document.getElementById('form-label-name').textContent = t.formLabelName;
+      document.getElementById('form-label-email').textContent = t.formLabelEmail;
+      document.getElementById('form-label-subject').textContent = t.formLabelSubject;
+      document.getElementById('form-label-message').textContent = t.formLabelMessage;
+      document.getElementById('form-name').placeholder = t.formPlaceholderName;
+      document.getElementById('form-email').placeholder = t.formPlaceholderEmail;
+      document.getElementById('form-subject').placeholder = t.formPlaceholderSubject;
+      document.getElementById('form-message').placeholder = t.formPlaceholderMessage;
+      document.getElementById('form-submit-btn').textContent = t.formSubmitBtn;
+      document.getElementById('contact-success-title').textContent = t.contactSuccessTitle;
+
+      // Footer
+      document.getElementById('footer-copy').innerHTML = t.footerCopy;
+      document.getElementById('footer-availability').textContent = t.footerAvailability;
+
+      // Resume Modal
+      document.getElementById('modal-resume-title').textContent = t.modalResumeTitle;
+      document.getElementById('modal-resume-role').textContent = t.modalResumeRole;
+      document.getElementById('modal-resume-summary-title').textContent = t.modalResumeSummaryTitle;
+      document.getElementById('modal-resume-summary-desc').textContent = t.modalResumeSummaryDesc;
+      document.getElementById('modal-resume-exp-title').textContent = t.modalResumeExpTitle;
+      document.getElementById('modal-resume-role1').textContent = t.modalResumeRole1;
+      document.getElementById('modal-resume-p1').textContent = t.modalResumeP1;
+      document.getElementById('modal-resume-desc1').textContent = t.modalResumeDesc1;
+      document.getElementById('modal-resume-role2').textContent = t.modalResumeRole2;
+      document.getElementById('modal-resume-desc2').textContent = t.modalResumeDesc2;
+      document.getElementById('modal-resume-role3').textContent = t.modalResumeRole3;
+      document.getElementById('modal-resume-desc3').textContent = t.modalResumeDesc3;
+      document.getElementById('modal-resume-close').textContent = t.modalClose;
+      document.getElementById('pm-close').textContent = t.modalClose;
+
+      // Update current rotated phrase immediately
+      updateRotatingHeadline();
+    }
+
+    // -------------------------------------------------------------
+    // Rotating Headline Engine
+    // -------------------------------------------------------------
+    let phraseIdx = 0;
+    const headlineElem = document.getElementById('headline-rotating');
+
+    function updateRotatingHeadline() {
+      const phrases = translations[currentLang].heroPhrases;
+      phraseIdx = phraseIdx % phrases.length;
+      headlineElem.textContent = phrases[phraseIdx];
+    }
+
+    setInterval(() => {
+      const phrases = translations[currentLang].heroPhrases;
+      phraseIdx = (phraseIdx + 1) % phrases.length;
+      headlineElem.style.opacity = '0';
+      setTimeout(() => {
+        headlineElem.textContent = phrases[phraseIdx];
+        headlineElem.style.opacity = '1';
+      }, 200);
+    }, 3200);
+
+    // -------------------------------------------------------------
     // Theme Toggle Logic
+    // -------------------------------------------------------------
     const themeToggleBtn = document.getElementById('theme-toggle');
     const htmlElem = document.documentElement;
 
@@ -1165,7 +1759,23 @@
 
     initTheme();
 
+    // -------------------------------------------------------------
+    // Initialize Language from Storage or Browser
+    // -------------------------------------------------------------
+    function initLanguage() {
+      const savedLang = localStorage.getItem('portfolio_lang');
+      if (savedLang === 'fr' || savedLang === 'en') {
+        setLanguage(savedLang);
+      } else {
+        const browserLang = (navigator.language || '').toLowerCase();
+        setLanguage(browserLang.startsWith('fr') ? 'fr' : 'en');
+      }
+    }
+    initLanguage();
+
+    // -------------------------------------------------------------
     // Mobile Menu
+    // -------------------------------------------------------------
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
 
@@ -1177,26 +1787,9 @@
       mobileMenu.classList.add('hidden');
     }
 
-    // Headline Word Rotator
-    const rotatingPhrases = [
-      "fast, scalable web experiences.",
-      "production-grade AI systems.",
-      "robust cloud architectures.",
-      "intuitive digital products."
-    ];
-    let phraseIdx = 0;
-    const headlineElem = document.getElementById('headline-rotating');
-
-    setInterval(() => {
-      phraseIdx = (phraseIdx + 1) % rotatingPhrases.length;
-      headlineElem.style.opacity = '0';
-      setTimeout(() => {
-        headlineElem.textContent = rotatingPhrases[phraseIdx];
-        headlineElem.style.opacity = '1';
-      }, 200);
-    }, 3200);
-
+    // -------------------------------------------------------------
     // Project Filtering
+    // -------------------------------------------------------------
     function filterProjects(category) {
       const buttons = document.querySelectorAll('.project-filter-btn');
       buttons.forEach(btn => {
@@ -1217,7 +1810,9 @@
       });
     }
 
-    // Resume Modal
+    // -------------------------------------------------------------
+    // Modals
+    // -------------------------------------------------------------
     const resumeModal = document.getElementById('resume-modal');
     function openResumeModal() {
       resumeModal.classList.remove('hidden');
@@ -1226,42 +1821,77 @@
       resumeModal.classList.add('hidden');
     }
 
-    // Project Detail Modal Data
     const projectDetails = {
       dlrms: {
-        title: "Digital Land Registration & Management System (DLRMS)",
-        img: "./assets/images/dlrms.png",
-        desc: "Architected a comprehensive web-based cadastral system designed to modernize land registration, ownership authentication, and dispute reduction in the DRC. Features automated deed generation, multi-tier notary authentication, tamper-evident transfer logs, and geospatial verification.",
+        title: {
+          en: "Digital Land Registration & Management System (DLRMS)",
+          fr: "Système Numérique d'Enregistrement Foncier (DLRMS)"
+        },
+        img: "./assets/images/projects/dlrms.png",
+        desc: {
+          en: "Architected a comprehensive web-based cadastral system designed to modernize land registration, ownership authentication, and dispute reduction in the DRC. Features automated deed generation, multi-tier notary authentication, tamper-evident transfer logs, and geospatial verification using GIS coordinates.",
+          fr: "Conception d'un système cadastral web exhaustif visant à moderniser l'enregistrement foncier, l'authentification des titres de propriété et la prévention des litiges en RDC. Comprend l'émission automatisée d'actes, la validation notariée multi-niveaux, un journal d'audit infalsifiable et la géolocalisation cartographique SIG."
+        },
         tags: ["Python", "Django", "PostgreSQL", "GIS Mapping", "Docker"]
       },
       learningspot: {
-        title: "LearningSpot E-Learning Ecosystem",
-        img: "./assets/images/learningspot.png",
-        desc: "An enterprise educational platform serving 10,000+ active learners with interactive course delivery, student tracking, automated certificate issuance, and real-time administrative analytics.",
+        title: {
+          en: "LearningSpot E-Learning Ecosystem",
+          fr: "Écosystème E-Learning LearningSpot"
+        },
+        img: "./assets/images/projects/learningspot.png",
+        desc: {
+          en: "Enterprise-grade educational ecosystem serving 10,000+ active learners across East & Central Africa. Built with high-concurrency microservices, automated certification generators, dynamic quiz evaluation pipelines, and real-time administrative analytics dashboards.",
+          fr: "Écosystème éducatif de niveau entreprise servant plus de 10 000 apprenants actifs en Afrique centrale et orientale. Conçu avec des microservices haute concurrence, la génération automatisée de certifications, des flux d'évaluation dynamique et des tableaux de bord administratifs en temps réel."
+        },
         tags: ["Python", "Django", "PostgreSQL", "Redis", "REST APIs"]
       },
       petrox: {
-        title: "Gas Station Management ERP (Petrox)",
-        img: "./assets/images/petrox.png",
-        desc: "Specialized ERP solution that streamlines fuel station operations through automated underground tank monitoring, pump sales auditing, attendant shifts, and real-time revenue analytics.",
+        title: {
+          en: "Gas Station Management ERP (Petrox)",
+          fr: "ERP de Gestion de Stations-Service (Petrox)"
+        },
+        img: "./assets/images/projects/petrox.png",
+        desc: {
+          en: "Specialized enterprise resource planning solution that streamlines multi-station fuel operations through automated underground tank monitoring, pump sales telemetry, automated attendant shift handovers, and anti-leak fraud detection algorithms.",
+          fr: "Solution ERP sur-mesure optimisant la gestion des réseaux de stations-service via le suivi automatisé des capteurs de cuves souterraines, la télémétrie des ventes aux pompes, les clôtures de caisse par rotation de personnel et la détection d'anomalies volumétriques."
+        },
         tags: ["Python", "Django", "PostgreSQL", "Telemetry", "Chart.js"]
       },
       sinoaf: {
-        title: "Sinoaf Global Sourcing & E-Commerce",
-        img: "./assets/images/sinoaf.png",
-        desc: "International sourcing platform connecting African import-export businesses to verified global manufacturers with live multi-currency quote calculators and container shipment milestones.",
+        title: {
+          en: "Sinoaf Global Sourcing & E-Commerce",
+          fr: "Sinoaf Approvisionnement Mondial & E-Commerce"
+        },
+        img: "./assets/images/projects/sinoaf.png",
+        desc: {
+          en: "International sourcing platform connecting African import-export businesses to verified global manufacturers with live multi-currency quote calculators, shipping container space estimations, automated customs duty estimates, and milestone shipment trackers.",
+          fr: "Plateforme de négoce international reliant les entreprises d'import-export africaines aux manufacturiers internationaux vérifiés, intégrant un calculateur de devis multi-devises en direct, l'estimation de fret maritime et le suivi des étapes logistiques."
+        },
         tags: ["Python", "Django", "REST APIs", "PostgreSQL", "Stripe"]
       },
       cassieposh: {
-        title: "Cassie Posh Luxury Events",
-        img: "./assets/images/cassieposh.png",
-        desc: "An elegant, bespoke event management website designed to showcase luxury wedding and corporate portfolios, facilitate reservation inquiries, and deliver white-glove client communications.",
+        title: {
+          en: "Cassie Posh Luxury Events",
+          fr: "Cassie Posh Événements Haut de Gamme"
+        },
+        img: "./assets/images/projects/cassieposh.png",
+        desc: {
+          en: "An elegant, bespoke event management website designed to showcase luxury wedding and corporate portfolios, facilitate reservation inquiries, integrate responsive booking calendars, and deliver white-glove client communications.",
+          fr: "Plateforme digitale élégante et sur-mesure conçue pour valoriser le portfolio d'événements privés et d'entreprises de prestige, faciliter les demandes de devis, synchroniser les plannings et offrir un canal d'échange privilégié avec la clientèle."
+        },
         tags: ["Python", "Django", "Tailwind CSS", "SEO"]
       },
       nysha: {
-        title: "Nysha Hair Salon Booking System",
-        img: "./assets/images/nyshahairsalon.png",
-        desc: "Modern appointment booking and service discovery web application for a premier hair and beauty studio, featuring calendar management and automated customer confirmations.",
+        title: {
+          en: "Nysha Hair Salon Booking System",
+          fr: "Système de Réservation Salon Nysha"
+        },
+        img: "./assets/images/projects/nyshahairsalon.png",
+        desc: {
+          en: "Modern appointment booking and service discovery web application for a premier hair and beauty studio, featuring dynamic staff schedule allocation, automated WhatsApp/SMS reminders, deposit tracking, and mobile-first self-checkout.",
+          fr: "Application web moderne de réservation et de catalogue de soins pour un institut de beauté renommé, comprenant la gestion dynamique des plannings coiffeurs, des notifications de confirmation automatisées et une expérience client 100% fluide sur smartphone."
+        },
         tags: ["React", "Python", "Django", "Render"]
       }
     };
@@ -1270,22 +1900,24 @@
     function openProjectModal(key) {
       const p = projectDetails[key];
       if (!p) return;
-      document.getElementById('pm-title').textContent = p.title;
-      document.getElementById('pm-desc').textContent = p.desc;
+      document.getElementById('pm-title').textContent = p.title[currentLang];
+      document.getElementById('pm-desc').textContent = p.desc[currentLang];
       document.getElementById('pm-img').src = p.img;
       const tagsContainer = document.getElementById('pm-tags');
-      tagsContainer.innerHTML = p.tags.map(t => `<span class="px-2.5 py-1 rounded-md bg-zinc-100 dark:bg-white/10 text-xs">${t}</span>`).join('');
+      tagsContainer.innerHTML = p.tags.map(t => `<span class="px-2.5 py-1 rounded-md bg-zinc-100 dark:bg-white/10 text-xs font-mono">${t}</span>`).join('');
       projectModal.classList.remove('hidden');
     }
     function closeProjectModal() {
       projectModal.classList.add('hidden');
     }
 
+    // -------------------------------------------------------------
     // Copy to Clipboard
+    // -------------------------------------------------------------
     function copyToClipboard(text, btn) {
       navigator.clipboard.writeText(text);
-      const originalText = btn.textContent;
-      btn.textContent = 'Copied!';
+      const originalText = translations[currentLang].copyBtnText;
+      btn.textContent = translations[currentLang].copiedBtnText;
       btn.classList.add('text-emerald-500');
       setTimeout(() => {
         btn.textContent = originalText;
@@ -1293,7 +1925,9 @@
       }, 2000);
     }
 
+    // -------------------------------------------------------------
     // Contact Form Handler
+    // -------------------------------------------------------------
     function handleContactSubmit(e) {
       e.preventDefault();
       document.getElementById('contact-form').classList.add('hidden');
